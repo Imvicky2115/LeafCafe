@@ -86,20 +86,20 @@
 </head>
 <body class="bg-cream text-charcoal font-sans antialiased selection:bg-leafolive selection:text-white bg-grain overflow-x-hidden">
 
-  <!-- Top Navigation Bar -->
-  <header id="navbar" class="fixed top-0 w-full z-40 transition-all duration-300 py-3 px-4 md:px-10">
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 bg-cream/92 backdrop-blur-md border border-leafolive/15 rounded-full px-3.5 sm:px-6 py-2 shadow-sm">
+  <!-- Top Navigation Bar (Clean, No Menu Icon, Full Tagline Visible) -->
+  <header id="navbar" class="fixed top-0 w-full z-40 transition-all duration-300 py-3 px-3 sm:px-6 md:px-10">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 bg-cream/92 backdrop-blur-md border border-leafolive/15 rounded-full px-3 sm:px-6 py-2 shadow-sm">
       
       <!-- Brand Logo -->
-      <a href="#" class="flex items-center gap-2.5 sm:gap-3 group min-w-0">
+      <a href="#" class="flex items-center gap-2 sm:gap-3 group shrink-0">
         <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-leafolive flex items-center justify-center shadow-sm transition-transform duration-500 group-hover:scale-105 shrink-0">
           <svg viewBox="0 0 100 100" class="w-6 h-6 sm:w-7 sm:h-7 text-white fill-current">
             <path d="M52,18 C72,18 85,32 85,50 C85,66 72,76 58,76 C47,76 39,68 39,58 C39,50 45,44 53,44 C59,44 64,49 64,55 C64,59 60,62 56,62 C53,62 51,60 51,57 C51,55 53,54 54,54 C53,52 49,53 48,57 C47,62 51,67 57,67 C65,67 71,60 71,52 C71,40 61,32 49,32 C34,32 23,44 23,60 C23,72 28,83 36,90 C32,78 33,63 40,51 C30,60 25,74 28,88 C18,78 14,62 18,46 C23,28 37,18 52,18 Z" />
           </svg>
         </div>
-        <div class="flex flex-col min-w-0">
+        <div class="flex flex-col">
           <span class="font-logo text-base sm:text-xl font-bold tracking-[0.14em] text-forest leading-none">LEAF</span>
-          <span class="text-[7.5px] sm:text-[9.5px] uppercase tracking-[0.16em] sm:tracking-[0.24em] text-leafolive font-semibold mt-1 whitespace-nowrap">FOOD &bull; ART &bull; COMMUNITY</span>
+          <span class="text-[7px] sm:text-[9.5px] uppercase tracking-[0.11em] sm:tracking-[0.22em] text-leafolive font-semibold mt-1 whitespace-nowrap">FOOD &bull; ART &bull; COMMUNITY</span>
         </div>
       </a>
 
@@ -111,13 +111,12 @@
         <a href="#visit" class="hover:text-leafolive transition-colors">Visit</a>
       </nav>
 
-      <!-- Menu Button (Replaces Duplicate Find a Table) -->
-      <div class="flex items-center gap-1.5 shrink-0">
-        <a href="#menu" class="inline-flex items-center gap-1.5 bg-leafolive hover:bg-forest text-white text-xs sm:text-sm font-medium px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 shadow-sm whitespace-nowrap">
-          <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
-          <span>Menu</span>
+      <!-- Clean Text-Only Menu Pill + Hamburger -->
+      <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
+        <a href="#menu" class="inline-flex items-center justify-center bg-leafolive hover:bg-forest text-white text-xs sm:text-sm font-medium px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 shadow-sm whitespace-nowrap">
+          Menu
         </a>
-        <button id="mobile-menu-btn" aria-label="Open Navigation" class="lg:hidden p-2 text-forest rounded-full hover:bg-sand transition-colors">
+        <button id="mobile-menu-btn" aria-label="Open Navigation" class="lg:hidden p-1.5 sm:p-2 text-forest rounded-full hover:bg-sand transition-colors">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
       </div>
@@ -161,7 +160,7 @@
     </div>
   </div>
 
-  <!-- Hero Section -->
+  <!-- Hero Section (Top Rating Pill Removed + Clean Single-Line Stats) -->
   <section class="relative min-h-screen flex items-center pt-28 pb-16 px-4 sm:px-8 md:px-12 overflow-hidden">
     <svg class="absolute top-20 right-[-50px] md:right-10 w-72 md:w-96 h-72 md:h-96 text-leafolive/10 animate-float-slow pointer-events-none" viewBox="0 0 200 200" fill="currentColor">
       <path d="M100,15 C145,15 180,55 180,105 C180,155 135,185 100,185 C100,130 130,85 100,15 Z" />
@@ -171,12 +170,6 @@
     <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
       <!-- Left Copy -->
       <div class="lg:col-span-7 space-y-6">
-        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-sand border border-leafolive/20 text-xs font-medium text-forest">
-          <span class="flex items-center gap-1 text-amber-600 font-bold">4.7 <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500 text-amber-500"></i></span>
-          <span class="text-forest/40">|</span>
-          <span>456 Google Reviews &bull; Hadapsar, Pune</span>
-        </div>
-
         <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl font-semibold text-forest leading-[1.06] tracking-tight">
           Food, Art &amp; <span class="italic font-normal text-leafolive">Community</span> under handcrafted lanterns.
         </h1>
@@ -195,24 +188,24 @@
           </a>
         </div>
 
-        <!-- Quick Facts -->
-        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-forest/10 max-w-lg">
-          <div>
-            <p class="font-serif text-2xl font-bold text-forest">₹400–600</p>
-            <p class="text-xs text-charcoal/60">Cost for two</p>
+        <!-- Improved 3-Column Hero Facts (No Awkward Line Wraps) -->
+        <div class="grid grid-cols-3 gap-2.5 sm:gap-6 pt-6 border-t border-forest/10 max-w-lg">
+          <div class="bg-white/60 sm:bg-transparent rounded-2xl p-2.5 sm:p-0 border border-forest/5 sm:border-0">
+            <p class="font-serif text-lg sm:text-2xl font-bold text-forest whitespace-nowrap leading-tight">₹400–600</p>
+            <p class="text-[11px] sm:text-xs text-charcoal/65 mt-0.5 leading-snug">Cost for two</p>
           </div>
-          <div>
-            <p class="font-serif text-2xl font-bold text-leafolive">Flat 15% Off</p>
-            <p class="text-xs text-charcoal/60">Swiggy &amp; Zomato Dining</p>
+          <div class="bg-white/60 sm:bg-transparent rounded-2xl p-2.5 sm:p-0 border border-forest/5 sm:border-0">
+            <p class="font-serif text-lg sm:text-2xl font-bold text-leafolive whitespace-nowrap leading-tight">15% Off</p>
+            <p class="text-[11px] sm:text-xs text-charcoal/65 mt-0.5 leading-snug">Swiggy &amp; Zomato</p>
           </div>
-          <div>
-            <p class="font-serif text-2xl font-bold text-forest">Tue–Sun</p>
-            <p class="text-xs text-charcoal/60">11 AM – 10 PM</p>
+          <div class="bg-white/60 sm:bg-transparent rounded-2xl p-2.5 sm:p-0 border border-forest/5 sm:border-0">
+            <p class="font-serif text-lg sm:text-2xl font-bold text-forest whitespace-nowrap leading-tight">Tue–Sun</p>
+            <p class="text-[11px] sm:text-xs text-charcoal/65 mt-0.5 leading-snug">11 AM – 10 PM</p>
           </div>
         </div>
       </div>
 
-      <!-- Right Visual Card with Single-Line FOOD . ART . COMMUNITY in Circular Emblem -->
+      <!-- Right Visual Card -->
       <div class="lg:col-span-5 relative flex justify-center">
         <div class="relative rounded-[2.25rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] w-full max-w-md bg-sand group">
           <img 
@@ -244,55 +237,69 @@
     </div>
   </section>
 
-  <!-- Google Rating & Community Reviews Bar -->
-  <section class="py-10 px-4 sm:px-8 md:px-12 bg-white border-y border-forest/10">
-    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 reveal">
-      <div class="flex items-center gap-5">
-        <div class="text-center">
-          <div class="font-serif text-5xl font-bold text-forest leading-none">4.7</div>
-          <div class="flex items-center justify-center gap-0.5 text-amber-500 mt-1.5">
+  <!-- Improved Google Rating & Diner Highlights Section -->
+  <section class="py-12 px-4 sm:px-8 md:px-12 bg-white border-y border-forest/10">
+    <div class="max-w-6xl mx-auto rounded-3xl bg-cream/75 border border-leafolive/15 p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-8 reveal">
+      
+      <!-- Score + Distribution -->
+      <div class="flex items-center gap-6">
+        <div class="text-center shrink-0">
+          <div class="font-serif text-5xl sm:text-6xl font-bold text-forest leading-none">4.7</div>
+          <div class="flex items-center justify-center gap-0.5 text-amber-500 mt-2">
             <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
             <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
             <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
             <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
             <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
           </div>
-          <p class="text-[11px] text-charcoal/60 mt-1 font-medium">456 Google Reviews</p>
+          <p class="text-xs text-charcoal/65 mt-1.5 font-medium">456 Google Reviews</p>
         </div>
 
-        <div class="hidden sm:block space-y-1.5 w-44 text-[11px] text-charcoal/70 border-l border-forest/10 pl-5">
+        <div class="space-y-1.5 w-36 sm:w-44 text-[11px] text-charcoal/70 border-l border-forest/10 pl-5">
           <div class="flex items-center gap-2">
-            <span class="w-3 font-semibold">5</span>
+            <span class="w-3 font-semibold text-forest">5</span>
             <div class="flex-1 h-2 bg-sand rounded-full overflow-hidden"><div class="bg-amber-400 h-full w-[82%] rounded-full"></div></div>
           </div>
           <div class="flex items-center gap-2">
-            <span class="w-3 font-semibold">4</span>
+            <span class="w-3 font-semibold text-forest">4</span>
             <div class="flex-1 h-2 bg-sand rounded-full overflow-hidden"><div class="bg-amber-400 h-full w-[13%] rounded-full"></div></div>
           </div>
           <div class="flex items-center gap-2">
-            <span class="w-3 font-semibold">3</span>
+            <span class="w-3 font-semibold text-forest">3</span>
             <div class="flex-1 h-2 bg-sand rounded-full overflow-hidden"><div class="bg-amber-400 h-full w-[3%] rounded-full"></div></div>
           </div>
           <div class="flex items-center gap-2">
-            <span class="w-3 font-semibold">2</span>
+            <span class="w-3 font-semibold text-forest">2</span>
             <div class="flex-1 h-2 bg-sand rounded-full overflow-hidden"><div class="bg-amber-400 h-full w-[1%] rounded-full"></div></div>
           </div>
           <div class="flex items-center gap-2">
-            <span class="w-3 font-semibold">1</span>
+            <span class="w-3 font-semibold text-forest">1</span>
             <div class="flex-1 h-2 bg-sand rounded-full overflow-hidden"><div class="bg-amber-400 h-full w-[1%] rounded-full"></div></div>
           </div>
         </div>
       </div>
 
-      <div class="flex flex-wrap items-center justify-center gap-2.5">
-        <span class="px-3.5 py-1.5 rounded-full bg-cream border border-forest/10 text-xs font-medium text-forest">&ldquo;Unmatched aesthetic &amp; calm vibe&rdquo;</span>
-        <span class="px-3.5 py-1.5 rounded-full bg-cream border border-forest/10 text-xs font-medium text-forest">&ldquo;Best Filter Coffee &amp; Khao Suey&rdquo;</span>
-        <span class="px-3.5 py-1.5 rounded-full bg-cream border border-forest/10 text-xs font-medium text-forest">&ldquo;Hidden gem in Hadapsar&rdquo;</span>
+      <!-- Verified Diner Quote Pills -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full lg:w-auto flex-1 max-w-2xl">
+        <div class="bg-white rounded-2xl p-3.5 border border-forest/10 shadow-2xs text-center sm:text-left">
+          <p class="text-xs font-medium text-forest leading-relaxed">&ldquo;Unmatched aesthetic &amp; calm vibe&rdquo;</p>
+          <span class="text-[10px] text-leafolive font-semibold mt-1 block">Ambience &amp; Art</span>
+        </div>
+        <div class="bg-white rounded-2xl p-3.5 border border-forest/10 shadow-2xs text-center sm:text-left">
+          <p class="text-xs font-medium text-forest leading-relaxed">&ldquo;Best Filter Coffee &amp; Khao Suey&rdquo;</p>
+          <span class="text-[10px] text-leafolive font-semibold mt-1 block">Food &amp; Brews</span>
+        </div>
+        <div class="bg-white rounded-2xl p-3.5 border border-forest/10 shadow-2xs text-center sm:text-left">
+          <p class="text-xs font-medium text-forest leading-relaxed">&ldquo;Hidden gem in Hadapsar&rdquo;</p>
+          <span class="text-[10px] text-leafolive font-semibold mt-1 block">Pune Diners</span>
+        </div>
       </div>
 
-      <div class="flex items-center gap-3 shrink-0">
-        <a href="https://maps.google.com/?q=Leaf+-+A+café+by+Advanced+Nature+Hadapsar+Pune" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full border border-forest/20 hover:border-forest text-xs font-semibold text-forest transition-colors">
-          Read Google Reviews
+      <!-- Review Action Button -->
+      <div class="shrink-0 w-full sm:w-auto">
+        <a href="https://maps.google.com/?q=Leaf+-+A+café+by+Advanced+Nature+Hadapsar+Pune" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3 rounded-full bg-white hover:bg-forest hover:text-white border border-forest/20 text-xs font-semibold text-forest inline-flex items-center justify-center gap-2 transition-all shadow-2xs">
+          <span>Read Google Reviews</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
         </a>
       </div>
     </div>
@@ -371,16 +378,17 @@
     </div>
   </section>
 
-  <!-- Complete Official Menu -->
+  <!-- Swipeable Horizontal Full Café Menu (Left / Right Swipe Cards) -->
   <section id="menu" class="py-20 md:py-28 px-4 sm:px-8 md:px-12">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center max-w-2xl mx-auto space-y-3 mb-10 reveal">
+      <div class="text-center max-w-2xl mx-auto space-y-3 mb-8 reveal">
         <span class="text-xs uppercase tracking-[0.25em] text-leafolive font-bold">Leaf Kitchen &amp; Coffee Bar</span>
         <h2 class="font-serif text-4xl sm:text-5xl font-semibold text-forest">Full Café Menu</h2>
         <p class="text-sm text-charcoal/70">Please inform your server of any allergies or intolerances. Government taxes as applicable.</p>
       </div>
 
-      <div class="space-y-4 mb-10 reveal">
+      <!-- Search + Category Filter Pills -->
+      <div class="space-y-4 mb-8 reveal">
         <div class="max-w-md mx-auto relative">
           <i data-lucide="search" class="w-4 h-4 text-charcoal/45 absolute left-4 top-1/2 -translate-y-1/2"></i>
           <input 
@@ -391,9 +399,8 @@
           />
         </div>
 
-        <div class="flex items-center justify-start md:justify-center gap-2 overflow-x-auto no-scrollbar pb-2" id="menu-tabs">
-          <button data-cat="all" class="menu-tab active shrink-0 px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-forest text-white transition-all cursor-pointer">All Categories</button>
-          <button data-cat="soups" class="menu-tab shrink-0 px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-sand text-forest hover:bg-leafolive/15 transition-all cursor-pointer">Soups</button>
+        <div class="flex items-center justify-start md:justify-center gap-2 overflow-x-auto no-scrollbar pb-1" id="menu-tabs">
+          <button data-cat="soups" class="menu-tab active shrink-0 px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-forest text-white transition-all cursor-pointer">Soups</button>
           <button data-cat="sliders" class="menu-tab shrink-0 px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-sand text-forest hover:bg-leafolive/15 transition-all cursor-pointer">Slider &amp; Sandwiches</button>
           <button data-cat="mains" class="menu-tab shrink-0 px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-sand text-forest hover:bg-leafolive/15 transition-all cursor-pointer">Main Course</button>
           <button data-cat="salads" class="menu-tab shrink-0 px-4 py-2 rounded-full text-xs sm:text-sm font-medium bg-sand text-forest hover:bg-leafolive/15 transition-all cursor-pointer">Fresh Salads &amp; Bowls</button>
@@ -404,11 +411,28 @@
         </div>
       </div>
 
-      <div id="menu-sections-container" class="space-y-12"></div>
+      <!-- Swipe Controls & Indicator Bar -->
+      <div id="menu-swipe-controls" class="flex items-center justify-between mb-4 px-1">
+        <div class="flex items-center gap-2 text-xs text-charcoal/65 font-medium">
+          <i data-lucide="move-horizontal" class="w-4 h-4 text-leafolive"></i>
+          <span id="menu-page-indicator">Swipe left or right &bull; 1 of 8</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="menu-prev-btn" aria-label="Previous Menu Category" class="w-9 h-9 rounded-full bg-white hover:bg-forest hover:text-white border border-forest/15 flex items-center justify-center text-forest transition-colors shadow-2xs cursor-pointer">
+            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+          </button>
+          <button id="menu-next-btn" aria-label="Next Menu Category" class="w-9 h-9 rounded-full bg-white hover:bg-forest hover:text-white border border-forest/15 flex items-center justify-center text-forest transition-colors shadow-2xs cursor-pointer">
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Horizontal Swipe Track -->
+      <div id="menu-sections-container" class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar pb-2"></div>
 
       <div id="menu-empty" class="hidden text-center py-12">
         <p class="font-serif text-2xl text-forest">No matching dishes found.</p>
-        <button onclick="resetMenuFilters()" class="mt-3 text-sm text-leafolive underline font-medium">Show all menu items</button>
+        <button onclick="resetMenuFilters()" class="mt-3 text-sm text-leafolive underline font-medium cursor-pointer">Show all menu items</button>
       </div>
     </div>
   </section>
@@ -475,7 +499,7 @@
     </div>
   </section>
 
-  <!-- Direct Table Booking Banner (Improved Swiggy & Zomato Buttons) -->
+  <!-- Direct Table Booking Banner -->
   <section class="py-16 px-4 sm:px-8 md:px-12 bg-sand/70 border-b border-forest/10">
     <div class="max-w-6xl mx-auto rounded-[2rem] bg-white border border-leafolive/20 p-8 md:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-sm reveal">
       <div class="space-y-3 text-center lg:text-left max-w-xl">
@@ -490,9 +514,8 @@
       </div>
 
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3.5 w-full sm:w-auto shrink-0">
-        <!-- Improved Swiggy Button -->
         <a href="https://www.swiggy.com/restaurants" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 bg-swiggy hover:bg-[#e8700c] text-white rounded-2xl flex items-center justify-between sm:justify-center gap-3.5 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 group">
-          <span class="w-8 h-8 rounded-xl bg-white text-swiggy font-extrabold text-sm flex items-center justify-center shadow-xs shrink-0">S</span>
+          <span class="w-8 h-8 rounded-xl bg-white text-swiggy font-extrabold text-sm flex items-center justify-center shadow-2xs shrink-0">S</span>
           <div class="text-left">
             <span class="block text-sm font-bold leading-tight">Book on Swiggy</span>
             <span class="block text-[10px] text-white/90 font-medium">Dineout &bull; Flat 15% Off</span>
@@ -500,9 +523,8 @@
           <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/90 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0"></i>
         </a>
 
-        <!-- Improved Zomato Button -->
         <a href="https://www.zomato.com/pune/leaf-a-cafe-by-advanced-nature-hadapsar" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 bg-zomato hover:bg-[#cb2633] text-white rounded-2xl flex items-center justify-between sm:justify-center gap-3.5 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 group">
-          <span class="w-8 h-8 rounded-xl bg-white text-zomato font-extrabold italic text-sm flex items-center justify-center shadow-xs shrink-0">Z</span>
+          <span class="w-8 h-8 rounded-xl bg-white text-zomato font-extrabold italic text-sm flex items-center justify-center shadow-2xs shrink-0">Z</span>
           <div class="text-left">
             <span class="block text-sm font-bold leading-tight">Book on Zomato</span>
             <span class="block text-[10px] text-white/90 font-medium">Instant Table Booking</span>
@@ -594,7 +616,7 @@
     </div>
   </footer>
 
-  <!-- Find a Table Modal (Routes to Swiggy & Zomato) -->
+  <!-- Find a Table Modal -->
   <div id="table-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
     <div class="bg-cream border border-leafolive/20 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative animate-[fadeUp_0.25s_ease]">
       <button onclick="closeTableModal()" aria-label="Close modal" class="absolute top-5 right-5 p-2 rounded-full hover:bg-sand text-forest cursor-pointer">
@@ -723,95 +745,141 @@
       }
     ];
 
-    let activeCategory = "all";
     let searchQuery = "";
+    let visibleSections = [];
 
     const container = document.getElementById("menu-sections-container");
     const emptyState = document.getElementById("menu-empty");
+    const swipeControls = document.getElementById("menu-swipe-controls");
+    const pageIndicator = document.getElementById("menu-page-indicator");
+    const menuTabs = document.querySelectorAll(".menu-tab");
+
+    function setActiveTabByCat(catId) {
+      menuTabs.forEach(t => {
+        if (t.getAttribute("data-cat") === catId) {
+          t.classList.add("bg-forest", "text-white");
+          t.classList.remove("bg-sand", "text-forest");
+          t.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        } else {
+          t.classList.remove("bg-forest", "text-white");
+          t.classList.add("bg-sand", "text-forest");
+        }
+      });
+    }
+
+    function updateSwipeIndicator() {
+      if (visibleSections.length === 0) return;
+      const cardWidth = container.clientWidth;
+      if (cardWidth === 0) return;
+      const currentIndex = Math.min(
+        visibleSections.length - 1,
+        Math.max(0, Math.round(container.scrollLeft / cardWidth))
+      );
+      pageIndicator.textContent = `Swipe left or right • ${currentIndex + 1} of ${visibleSections.length}`;
+      setActiveTabByCat(visibleSections[currentIndex].id);
+    }
 
     function renderMenu() {
       container.innerHTML = "";
-      let totalVisibleItems = 0;
+      visibleSections = [];
 
       CAFE_MENU.forEach(section => {
-        if (activeCategory !== "all" && section.id !== activeCategory) return;
-
         const filteredItems = section.items.filter(item => {
           const q = searchQuery.toLowerCase();
           return item.name.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q);
         });
 
         if (filteredItems.length === 0) return;
-        totalVisibleItems += filteredItems.length;
+        visibleSections.push(section);
 
         const sectionEl = document.createElement("div");
-        sectionEl.className = "bg-white/90 backdrop-blur-sm rounded-3xl p-6 sm:p-9 border border-forest/10 shadow-sm";
+        sectionEl.id = `menu-card-${section.id}`;
+        sectionEl.className = "w-full shrink-0 snap-center bg-white/95 backdrop-blur-sm rounded-3xl p-5 sm:p-9 border border-forest/10 shadow-sm flex flex-col justify-between";
 
         let itemsHtml = filteredItems.map(item => `
-          <div class="py-4 border-b border-forest/10 last:border-b-0 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+          <div class="py-3.5 sm:py-4 border-b border-forest/10 last:border-b-0 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1.5 sm:gap-4">
             <div class="max-w-2xl">
-              <h4 class="font-serif text-xl sm:text-2xl font-bold text-forest">${item.name}</h4>
+              <h4 class="font-serif text-xl sm:text-2xl font-bold text-forest leading-snug">${item.name}</h4>
               ${item.desc ? `<p class="text-xs sm:text-sm text-charcoal/70 mt-1 leading-relaxed">${item.desc}</p>` : ""}
             </div>
             <div class="flex items-center gap-3 shrink-0">
               <span class="hidden md:inline-block w-16 h-[1px] bg-forest/20"></span>
-              <span class="font-serif text-lg sm:text-xl font-bold text-leafolive">${item.price}</span>
+              <span class="font-serif text-base sm:text-xl font-bold text-leafolive">${item.price}</span>
             </div>
           </div>
         `).join("");
 
         sectionEl.innerHTML = `
-          <div class="flex items-center gap-3 mb-4 pb-3 border-b-2 border-leafolive/30">
-            <span class="w-2.5 h-2.5 rounded-full bg-leafolive"></span>
-            <h3 class="font-logo text-lg sm:text-xl font-bold tracking-[0.18em] text-forest">${section.title}</h3>
-          </div>
-          <div class="divide-y divide-forest/5">
-            ${itemsHtml}
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-4 pb-3 border-b-2 border-leafolive/30">
+              <div class="flex items-center gap-2.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-leafolive shrink-0"></span>
+                <h3 class="font-logo text-base sm:text-xl font-bold tracking-[0.16em] text-forest">${section.title}</h3>
+              </div>
+              <span class="text-[11px] font-medium text-charcoal/50">${filteredItems.length} items</span>
+            </div>
+            <div class="divide-y divide-forest/5">
+              ${itemsHtml}
+            </div>
           </div>
         `;
 
         container.appendChild(sectionEl);
       });
 
-      if (totalVisibleItems === 0) {
+      if (visibleSections.length === 0) {
         emptyState.classList.remove("hidden");
+        swipeControls.classList.add("hidden");
       } else {
         emptyState.classList.add("hidden");
+        swipeControls.classList.remove("hidden");
+        container.scrollTo({ left: 0, behavior: "auto" });
+        pageIndicator.textContent = `Swipe left or right • 1 of ${visibleSections.length}`;
+        setActiveTabByCat(visibleSections[0].id);
       }
     }
 
-    document.querySelectorAll(".menu-tab").forEach(tab => {
+    // Category Tabs Click -> Smooth Horizontal Swipe to That Category Card
+    menuTabs.forEach(tab => {
       tab.addEventListener("click", () => {
-        document.querySelectorAll(".menu-tab").forEach(t => {
-          t.classList.remove("bg-forest", "text-white");
-          t.classList.add("bg-sand", "text-forest");
-        });
-        tab.classList.remove("bg-sand", "text-forest");
-        tab.classList.add("bg-forest", "text-white");
-
-        activeCategory = tab.getAttribute("data-cat");
-        renderMenu();
+        const targetCat = tab.getAttribute("data-cat");
+        if (searchQuery !== "") {
+          searchQuery = "";
+          document.getElementById("menu-search").value = "";
+          renderMenu();
+        }
+        const targetCard = document.getElementById(`menu-card-${targetCat}`);
+        if (targetCard) {
+          container.scrollTo({ left: targetCard.offsetLeft - container.offsetLeft, behavior: "smooth" });
+        }
+        setActiveTabByCat(targetCat);
       });
     });
 
+    // Left / Right Arrow Buttons
+    document.getElementById("menu-prev-btn").addEventListener("click", () => {
+      container.scrollBy({ left: -container.clientWidth, behavior: "smooth" });
+    });
+    document.getElementById("menu-next-btn").addEventListener("click", () => {
+      container.scrollBy({ left: container.clientWidth, behavior: "smooth" });
+    });
+
+    // Update Active Pill on Touch Swipe / Horizontal Scroll
+    let scrollTimeout;
+    container.addEventListener("scroll", () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(updateSwipeIndicator, 80);
+    }, { passive: true });
+
+    // Search Input
     document.getElementById("menu-search").addEventListener("input", (e) => {
       searchQuery = e.target.value.trim();
       renderMenu();
     });
 
     function resetMenuFilters() {
-      activeCategory = "all";
       searchQuery = "";
       document.getElementById("menu-search").value = "";
-      document.querySelectorAll(".menu-tab").forEach((t, idx) => {
-        if (idx === 0) {
-          t.classList.add("bg-forest", "text-white");
-          t.classList.remove("bg-sand", "text-forest");
-        } else {
-          t.classList.remove("bg-forest", "text-white");
-          t.classList.add("bg-sand", "text-forest");
-        }
-      });
       renderMenu();
     }
 
