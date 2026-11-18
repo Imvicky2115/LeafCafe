@@ -86,12 +86,12 @@
 </head>
 <body class="bg-cream text-charcoal font-sans antialiased selection:bg-leafolive selection:text-white bg-grain overflow-x-hidden">
 
-  <!-- Top Navigation Bar (Clean, No Menu Icon, Full Tagline Visible) -->
+  <!-- Top Navigation Bar (Green Menu Button Removed; Hamburger Handles Mobile Navigation) -->
   <header id="navbar" class="fixed top-0 w-full z-40 transition-all duration-300 py-3 px-3 sm:px-6 md:px-10">
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 bg-cream/92 backdrop-blur-md border border-leafolive/15 rounded-full px-3 sm:px-6 py-2 shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 bg-cream/92 backdrop-blur-md border border-leafolive/15 rounded-full px-3.5 sm:px-6 py-2 shadow-sm">
       
       <!-- Brand Logo -->
-      <a href="#" class="flex items-center gap-2 sm:gap-3 group shrink-0">
+      <a href="#" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
         <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-leafolive flex items-center justify-center shadow-sm transition-transform duration-500 group-hover:scale-105 shrink-0">
           <svg viewBox="0 0 100 100" class="w-6 h-6 sm:w-7 sm:h-7 text-white fill-current">
             <path d="M52,18 C72,18 85,32 85,50 C85,66 72,76 58,76 C47,76 39,68 39,58 C39,50 45,44 53,44 C59,44 64,49 64,55 C64,59 60,62 56,62 C53,62 51,60 51,57 C51,55 53,54 54,54 C53,52 49,53 48,57 C47,62 51,67 57,67 C65,67 71,60 71,52 C71,40 61,32 49,32 C34,32 23,44 23,60 C23,72 28,83 36,90 C32,78 33,63 40,51 C30,60 25,74 28,88 C18,78 14,62 18,46 C23,28 37,18 52,18 Z" />
@@ -99,27 +99,22 @@
         </div>
         <div class="flex flex-col">
           <span class="font-logo text-base sm:text-xl font-bold tracking-[0.14em] text-forest leading-none">LEAF</span>
-          <span class="text-[7px] sm:text-[9.5px] uppercase tracking-[0.11em] sm:tracking-[0.22em] text-leafolive font-semibold mt-1 whitespace-nowrap">FOOD &bull; ART &bull; COMMUNITY</span>
+          <span class="text-[8px] sm:text-[9.5px] uppercase tracking-[0.16em] sm:tracking-[0.22em] text-leafolive font-semibold mt-1 whitespace-nowrap">FOOD &bull; ART &bull; COMMUNITY</span>
         </div>
       </a>
 
-      <!-- Centered Desktop Navigation -->
-      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-charcoal/80">
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-charcoal/80">
         <a href="#highlights" class="hover:text-leafolive transition-colors">Highlights</a>
         <a href="#menu" class="hover:text-leafolive transition-colors">Menu</a>
         <a href="#space" class="hover:text-leafolive transition-colors">The Space</a>
         <a href="#visit" class="hover:text-leafolive transition-colors">Visit</a>
       </nav>
 
-      <!-- Clean Text-Only Menu Pill + Hamburger -->
-      <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
-        <a href="#menu" class="inline-flex items-center justify-center bg-leafolive hover:bg-forest text-white text-xs sm:text-sm font-medium px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 shadow-sm whitespace-nowrap">
-          Menu
-        </a>
-        <button id="mobile-menu-btn" aria-label="Open Navigation" class="lg:hidden p-1.5 sm:p-2 text-forest rounded-full hover:bg-sand transition-colors">
-          <i data-lucide="menu" class="w-5 h-5"></i>
-        </button>
-      </div>
+      <!-- Mobile Hamburger Toggle -->
+      <button id="mobile-menu-btn" aria-label="Open Navigation" class="lg:hidden p-2 text-forest rounded-full hover:bg-sand transition-colors shrink-0">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
     </div>
   </header>
 
@@ -160,7 +155,7 @@
     </div>
   </div>
 
-  <!-- Hero Section (Top Rating Pill Removed + Clean Single-Line Stats) -->
+  <!-- Hero Section -->
   <section class="relative min-h-screen flex items-center pt-28 pb-16 px-4 sm:px-8 md:px-12 overflow-hidden">
     <svg class="absolute top-20 right-[-50px] md:right-10 w-72 md:w-96 h-72 md:h-96 text-leafolive/10 animate-float-slow pointer-events-none" viewBox="0 0 200 200" fill="currentColor">
       <path d="M100,15 C145,15 180,55 180,105 C180,155 135,185 100,185 C100,130 130,85 100,15 Z" />
@@ -188,7 +183,7 @@
           </a>
         </div>
 
-        <!-- Improved 3-Column Hero Facts (No Awkward Line Wraps) -->
+        <!-- 3-Column Hero Facts -->
         <div class="grid grid-cols-3 gap-2.5 sm:gap-6 pt-6 border-t border-forest/10 max-w-lg">
           <div class="bg-white/60 sm:bg-transparent rounded-2xl p-2.5 sm:p-0 border border-forest/5 sm:border-0">
             <p class="font-serif text-lg sm:text-2xl font-bold text-forest whitespace-nowrap leading-tight">₹400–600</p>
@@ -237,7 +232,7 @@
     </div>
   </section>
 
-  <!-- Improved Google Rating & Diner Highlights Section -->
+  <!-- Google Rating & Diner Highlights Section -->
   <section class="py-12 px-4 sm:px-8 md:px-12 bg-white border-y border-forest/10">
     <div class="max-w-6xl mx-auto rounded-3xl bg-cream/75 border border-leafolive/15 p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-8 reveal">
       
@@ -305,7 +300,7 @@
     </div>
   </section>
 
-  <!-- Menu Highlights Section -->
+  <!-- Menu Highlights Section (Standardized ₹ Currency) -->
   <section id="highlights" class="py-20 px-4 sm:px-8 md:px-12 bg-sand/60 border-b border-forest/10">
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 reveal">
@@ -327,7 +322,7 @@
           <div class="p-5">
             <div class="flex justify-between items-baseline gap-2 mb-1.5">
               <h3 class="font-serif text-xl font-bold text-forest">Chipotle falafel sliders</h3>
-              <span class="font-semibold text-sm text-leafolive shrink-0">450 RS</span>
+              <span class="font-semibold text-sm text-leafolive shrink-0">₹450</span>
             </div>
             <p class="text-xs text-charcoal/70 leading-relaxed">Mini chickpea patties, golden and crispy with fresh lettuce, ripe tomatoes, and creamy tahini sauce inside soft slider buns.</p>
           </div>
@@ -341,7 +336,7 @@
           <div class="p-5">
             <div class="flex justify-between items-baseline gap-2 mb-1.5">
               <h3 class="font-serif text-xl font-bold text-forest">Khao Suey</h3>
-              <span class="font-semibold text-sm text-leafolive shrink-0">350 RS</span>
+              <span class="font-semibold text-sm text-leafolive shrink-0">₹350</span>
             </div>
             <p class="text-xs text-charcoal/70 leading-relaxed">A rice noodles-inspired one-bowl meal featuring noodles served in a fragrant coconut curry broth, infused with garlic, ginger, and lemongrass.</p>
           </div>
@@ -355,7 +350,7 @@
           <div class="p-5">
             <div class="flex justify-between items-baseline gap-2 mb-1.5">
               <h3 class="font-serif text-xl font-bold text-forest">Lotus Biscoff Cheesecake</h3>
-              <span class="font-semibold text-sm text-leafolive shrink-0">319 RS</span>
+              <span class="font-semibold text-sm text-leafolive shrink-0">₹319</span>
             </div>
             <p class="text-xs text-charcoal/70 leading-relaxed">A Biscoff biscuit base, topped with a velvety smooth cream cheese layer infused with cookie crumbs for crushed Lotus Biscoff cookies.</p>
           </div>
@@ -369,7 +364,7 @@
           <div class="p-5">
             <div class="flex justify-between items-baseline gap-2 mb-1.5">
               <h3 class="font-serif text-xl font-bold text-forest">Coconut Filter Cold Coffee</h3>
-              <span class="font-semibold text-sm text-leafolive shrink-0">210 RS</span>
+              <span class="font-semibold text-sm text-leafolive shrink-0">₹210</span>
             </div>
             <p class="text-xs text-charcoal/70 leading-relaxed">Authentic South Indian filter coffee decoction blended with chilled coconut notes for a smooth, refreshing finish.</p>
           </div>
@@ -378,7 +373,7 @@
     </div>
   </section>
 
-  <!-- Swipeable Horizontal Full Café Menu (Left / Right Swipe Cards) -->
+  <!-- Swipeable Horizontal Full Café Menu -->
   <section id="menu" class="py-20 md:py-28 px-4 sm:px-8 md:px-12">
     <div class="max-w-6xl mx-auto">
       <div class="text-center max-w-2xl mx-auto space-y-3 mb-8 reveal">
@@ -661,86 +656,86 @@
         id: "soups",
         title: "SOUPS",
         items: [
-          { name: "Almond Broccoli Soup", price: "350 RS", desc: "Classic puréed broccoli with a light, creamy base. Almonds— warm, simple, and comforting." },
-          { name: "Minestrone Soup", price: "350 RS", desc: "Minestrone is a vibrant medley of seasonal vegetables, tender pasta, and hearty beans simmered in a rich tomato-based broth." },
-          { name: "Cream of Mushroom Soup", price: "375 RS", desc: "A smooth, velvety blend of sautéed mushrooms, slow-simmered with onions, garlic, and herbs, then finished with fresh cream." }
+          { name: "Almond Broccoli Soup", price: "₹350", desc: "Classic puréed broccoli with a light, creamy base. Almonds— warm, simple, and comforting." },
+          { name: "Minestrone Soup", price: "₹350", desc: "Minestrone is a vibrant medley of seasonal vegetables, tender pasta, and hearty beans simmered in a rich tomato-based broth." },
+          { name: "Cream of Mushroom Soup", price: "₹375", desc: "A smooth, velvety blend of sautéed mushrooms, slow-simmered with onions, garlic, and herbs, then finished with fresh cream." }
         ]
       },
       {
         id: "sliders",
         title: "SLIDER & SANDWICHES",
         items: [
-          { name: "Caprese Panini", price: "415 RS", desc: "Fresh mozzarella, sliced tomatoes, basil, and pesto on ciabatta, grilled to perfection." },
-          { name: "Cottage cheese Steak & Cheese Grilled", price: "415 RS", desc: "Grilled cottage steak, caramelized onions, provolone cheese, and garlic aioli on sourdough." },
-          { name: "Mushroom & Swiss Grilled Sandwich", price: "415 RS", desc: "Sautéed mushrooms, Swiss cheese, and truffle aioli on focaccia." },
-          { name: "Chipotle falafel sliders", price: "450 RS", desc: "Mini chickpea patties, golden and crispy with fresh lettuce, ripe tomatoes, and creamy tahini sauce inside soft slider buns." }
+          { name: "Caprese Panini", price: "₹415", desc: "Fresh mozzarella, sliced tomatoes, basil, and pesto on ciabatta, grilled to perfection." },
+          { name: "Cottage cheese Steak & Cheese Grilled", price: "₹415", desc: "Grilled cottage steak, caramelized onions, provolone cheese, and garlic aioli on sourdough." },
+          { name: "Mushroom & Swiss Grilled Sandwich", price: "₹415", desc: "Sautéed mushrooms, Swiss cheese, and truffle aioli on focaccia." },
+          { name: "Chipotle falafel sliders", price: "₹450", desc: "Mini chickpea patties, golden and crispy with fresh lettuce, ripe tomatoes, and creamy tahini sauce inside soft slider buns." }
         ]
       },
       {
         id: "mains",
         title: "MAIN COURSE",
         items: [
-          { name: "Vegetable Steak with Rice (Vegan / Non Vegan)", price: "299 RS", desc: "A grilled vegetable patty made from a savory blend of mashed potatoes, carrots, beans, and herbs with rice." },
-          { name: "Veg Thai Curry with Jasmine Rice (Green curry / Yellow curry)", price: "499 RS", desc: "Veg Thai Curry with Jasmine Rice (Green curry / Yellow curry) gently cooked in coconut milk infused with Thai herbs, lemongrass, and yellow or green curry paste." },
-          { name: "Khao Suey", price: "350 RS", desc: "A rice noodles-inspired one-bowl meal featuring noodles served in a fragrant coconut curry broth, infused with garlic, ginger, and lemongrass." },
-          { name: "Arrabbiata sauce (Penne / Spaghetti / Fettuccine)", price: "415 RS", desc: "Spicy tomato sauce with chili, garlic & basil." },
-          { name: "Alfredo sauce (Penne / Spaghetti / Fettuccine)", price: "415 RS", desc: "Creamy Parmesan sauce with butter & black pepper." },
-          { name: "Mushroom Stroganoff (Vegan / Non Vegan)", price: "515 RS", desc: "Creamy cashew-based sauce with sautéed mushrooms." },
-          { name: "French Fries (Salted / Peri Peri)", price: "150 RS", desc: "Crispy golden fries seasoned with your choice of classic sea salt or spicy peri peri." }
+          { name: "Vegetable Steak with Rice (Vegan / Non Vegan)", price: "₹299", desc: "A grilled vegetable patty made from a savory blend of mashed potatoes, carrots, beans, and herbs with rice." },
+          { name: "Veg Thai Curry with Jasmine Rice (Green curry / Yellow curry)", price: "₹499", desc: "Veg Thai Curry with Jasmine Rice (Green curry / Yellow curry) gently cooked in coconut milk infused with Thai herbs, lemongrass, and yellow or green curry paste." },
+          { name: "Khao Suey", price: "₹350", desc: "A rice noodles-inspired one-bowl meal featuring noodles served in a fragrant coconut curry broth, infused with garlic, ginger, and lemongrass." },
+          { name: "Arrabbiata sauce (Penne / Spaghetti / Fettuccine)", price: "₹415", desc: "Spicy tomato sauce with chili, garlic & basil." },
+          { name: "Alfredo sauce (Penne / Spaghetti / Fettuccine)", price: "₹415", desc: "Creamy Parmesan sauce with butter & black pepper." },
+          { name: "Mushroom Stroganoff (Vegan / Non Vegan)", price: "₹515", desc: "Creamy cashew-based sauce with sautéed mushrooms." },
+          { name: "French Fries (Salted / Peri Peri)", price: "₹150", desc: "Crispy golden fries seasoned with your choice of classic sea salt or spicy peri peri." }
         ]
       },
       {
         id: "salads",
         title: "FRESH SALADS & BOWLS",
         items: [
-          { name: "Avocado Power Bowl (Gluten Free)", price: "515 RS", desc: "Quinoa, black beans, avocado, cherry tomatoes, corn, cilantro-lime dressing." },
-          { name: "Smoky Tofu and sprout Arugula", price: "465 RS", desc: "Smoky Tofu with freshness of Sprouts, peppery arugula and Lemon-Ginger dressing." },
-          { name: "Garden Salad", price: "199 RS", desc: "A vibrant mix of farm-fresh vegetables including crisp lettuce, tomatoes, cucumbers, bell peppers, and carrots, tossed in a light vinaigrette dressing." },
-          { name: "Caesar Salad", price: "350 RS", desc: "A crisp romaine lettuce tossed in a creamy Caesar dressing, topped with crunchy garlic croutons and a generous sprinkle of Parmesan cheese." }
+          { name: "Avocado Power Bowl (Gluten Free)", price: "₹515", desc: "Quinoa, black beans, avocado, cherry tomatoes, corn, cilantro-lime dressing." },
+          { name: "Smoky Tofu and sprout Arugula", price: "₹465", desc: "Smoky Tofu with freshness of Sprouts, peppery arugula and Lemon-Ginger dressing." },
+          { name: "Garden Salad", price: "₹199", desc: "A vibrant mix of farm-fresh vegetables including crisp lettuce, tomatoes, cucumbers, bell peppers, and carrots, tossed in a light vinaigrette dressing." },
+          { name: "Caesar Salad", price: "₹350", desc: "A crisp romaine lettuce tossed in a creamy Caesar dressing, topped with crunchy garlic croutons and a generous sprinkle of Parmesan cheese." }
         ]
       },
       {
         id: "appetizers",
         title: "APPETIZERS",
         items: [
-          { name: "Bruschetta Trio (Cold)", price: "350 RS", desc: "Tomato & Basil, Mushroom & Truffle, Avocado." },
-          { name: "Tex Mex Poppers", price: "400 RS", desc: "Crispy golden bites bursting with a spicy Tex-Mex filling of creamy cheese, jalapeños, bell peppers, corn." },
-          { name: "Middle Eastern Mezze Platter", price: "515 RS", desc: "Hummus, falafel, baba ghanoush, quinoa tabbouleh, and grilled pita." }
+          { name: "Bruschetta Trio (Cold)", price: "₹350", desc: "Tomato & Basil, Mushroom & Truffle, Avocado." },
+          { name: "Tex Mex Poppers", price: "₹400", desc: "Crispy golden bites bursting with a spicy Tex-Mex filling of creamy cheese, jalapeños, bell peppers, corn." },
+          { name: "Middle Eastern Mezze Platter", price: "₹515", desc: "Hummus, falafel, baba ghanoush, quinoa tabbouleh, and grilled pita." }
         ]
       },
       {
         id: "desserts",
         title: "SIGNATURE DESSERTS",
         items: [
-          { name: "Lotus Biscoff Cheesecake", price: "319 RS", desc: "A Biscoff biscuit base, topped with a velvety smooth cream cheese layer infused with cookie crumbs for crushed Lotus Biscoff cookies." },
-          { name: "Tub Tim Grob", price: "299 RS", desc: "Tub Tim Grob which combines crunchy water chestnuts with creamy coconut milk and chia seed." },
-          { name: "Pistachio Tart", price: "310 RS", desc: "A buttery, crisp tart shell filled with a smooth and nutty pistachio cream, made from finely ground roasted pistachios and rich pastry custard." }
+          { name: "Lotus Biscoff Cheesecake", price: "₹319", desc: "A Biscoff biscuit base, topped with a velvety smooth cream cheese layer infused with cookie crumbs for crushed Lotus Biscoff cookies." },
+          { name: "Tub Tim Grob", price: "₹299", desc: "Tub Tim Grob which combines crunchy water chestnuts with creamy coconut milk and chia seed." },
+          { name: "Pistachio Tart", price: "₹310", desc: "A buttery, crisp tart shell filled with a smooth and nutty pistachio cream, made from finely ground roasted pistachios and rich pastry custard." }
         ]
       },
       {
         id: "drinks",
         title: "SMOOTHIES & COOLERS",
         items: [
-          { name: "Mango Smoothie", price: "199 RS", desc: "Smoothies" },
-          { name: "Chocolate Berry Banana Smoothie", price: "249 RS", desc: "Smoothies" },
-          { name: "Guava Delight Punch", price: "199 RS", desc: "Coolers & Refreshers" },
-          { name: "Watermelon juice", price: "199 RS", desc: "Coolers & Refreshers" },
-          { name: "Blue Lagoon", price: "150 RS", desc: "Coolers & Refreshers" },
-          { name: "Spicy Kokum Cooler", price: "150 RS", desc: "Coolers & Refreshers" }
+          { name: "Mango Smoothie", price: "₹199", desc: "Smoothies" },
+          { name: "Chocolate Berry Banana Smoothie", price: "₹249", desc: "Smoothies" },
+          { name: "Guava Delight Punch", price: "₹199", desc: "Coolers & Refreshers" },
+          { name: "Watermelon juice", price: "₹199", desc: "Coolers & Refreshers" },
+          { name: "Blue Lagoon", price: "₹150", desc: "Coolers & Refreshers" },
+          { name: "Spicy Kokum Cooler", price: "₹150", desc: "Coolers & Refreshers" }
         ]
       },
       {
         id: "coffee",
         title: "TEA, COFFEE & WATER",
         items: [
-          { name: "Assorted Tea", price: "130 RS", desc: "(Masala Chai, English breakfast Tea, Pure Chamomile, Lemon & Ginger, Earl Grey)" },
-          { name: "Sarita's Filter Coffee", price: "150 RS", desc: "Traditional South Indian filter coffee." },
-          { name: "Black Coffee", price: "105 RS", desc: "Freshly brewed black coffee." },
-          { name: "Filter Mocha Madras", price: "150 RS", desc: "Filter coffee + dark chocolate ganache + steamed milk." },
-          { name: "Bournvita", price: "150 RS", desc: "Classic malted chocolate drink." },
-          { name: "Classic Filter Cold Coffee", price: "210 RS", desc: "Chilled South Indian filter coffee." },
-          { name: "Coconut Filter Cold Coffee", price: "210 RS", desc: "Chilled filter coffee infused with coconut." },
-          { name: "Veen water (660 ML)", price: "199 RS", desc: "Natural mineral water." }
+          { name: "Assorted Tea", price: "₹130", desc: "(Masala Chai, English breakfast Tea, Pure Chamomile, Lemon & Ginger, Earl Grey)" },
+          { name: "Sarita's Filter Coffee", price: "₹150", desc: "Traditional South Indian filter coffee." },
+          { name: "Black Coffee", price: "₹105", desc: "Freshly brewed black coffee." },
+          { name: "Filter Mocha Madras", price: "₹150", desc: "Filter coffee + dark chocolate ganache + steamed milk." },
+          { name: "Bournvita", price: "₹150", desc: "Classic malted chocolate drink." },
+          { name: "Classic Filter Cold Coffee", price: "₹210", desc: "Chilled South Indian filter coffee." },
+          { name: "Coconut Filter Cold Coffee", price: "₹210", desc: "Chilled filter coffee infused with coconut." },
+          { name: "Veen water (660 ML)", price: "₹199", desc: "Natural mineral water." }
         ]
       }
     ];
@@ -839,7 +834,6 @@
       }
     }
 
-    // Category Tabs Click -> Smooth Horizontal Swipe to That Category Card
     menuTabs.forEach(tab => {
       tab.addEventListener("click", () => {
         const targetCat = tab.getAttribute("data-cat");
@@ -856,7 +850,6 @@
       });
     });
 
-    // Left / Right Arrow Buttons
     document.getElementById("menu-prev-btn").addEventListener("click", () => {
       container.scrollBy({ left: -container.clientWidth, behavior: "smooth" });
     });
@@ -864,14 +857,12 @@
       container.scrollBy({ left: container.clientWidth, behavior: "smooth" });
     });
 
-    // Update Active Pill on Touch Swipe / Horizontal Scroll
     let scrollTimeout;
     container.addEventListener("scroll", () => {
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(updateSwipeIndicator, 80);
     }, { passive: true });
 
-    // Search Input
     document.getElementById("menu-search").addEventListener("input", (e) => {
       searchQuery = e.target.value.trim();
       renderMenu();
