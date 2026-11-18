@@ -87,9 +87,9 @@
 </head>
 <body class="bg-cream text-charcoal font-sans antialiased selection:bg-leafolive selection:text-white bg-grain overflow-x-hidden">
 
-  <!-- Top Navigation Bar -->
+  <!-- Top Navigation Bar (Original Transparent Frosted Look Restored) -->
   <header id="navbar" class="fixed top-0 w-full z-40 transition-all duration-300 py-3 px-3 sm:px-6 md:px-10">
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 bg-cream/95 backdrop-blur-md border border-leafolive/15 rounded-full px-3.5 sm:px-6 py-2 shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 bg-cream/85 backdrop-blur-md border border-leafolive/15 rounded-full px-3.5 sm:px-6 py-2 shadow-sm">
       
       <!-- Brand Logo -->
       <a href="#" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
@@ -113,13 +113,13 @@
       </nav>
 
       <!-- Mobile Hamburger Toggle -->
-      <button id="mobile-menu-btn" aria-label="Open Navigation" class="lg:hidden p-2 text-forest rounded-full hover:bg-sand transition-colors shrink-0 cursor-pointer">
+      <button id="mobile-menu-btn" aria-label="Open Navigation" class="lg:hidden p-2 text-forest rounded-full hover:bg-sand/60 transition-colors shrink-0 cursor-pointer">
         <i data-lucide="menu" class="w-5 h-5"></i>
       </button>
     </div>
   </header>
 
-  <!-- Compact Mobile Navigation Popover (Solid Forest Background, Doesn't Take Whole Screen) -->
+  <!-- Compact Mobile Navigation Popover -->
   <div id="mobile-drawer" class="fixed inset-0 z-50 hidden bg-black/45 backdrop-blur-xs px-4 pt-20 lg:hidden">
     <div id="mobile-drawer-card" class="max-w-md mx-auto bg-forest text-cream rounded-3xl p-6 shadow-2xl border border-sage/20 animate-[fadeUp_0.2s_ease]">
       <!-- Card Header -->
@@ -171,7 +171,7 @@
     </div>
   </div>
 
-  <!-- Hero Section (3-Box Stats Removed as Requested) -->
+  <!-- Hero Section -->
   <section class="relative min-h-screen flex items-center pt-28 pb-16 px-4 sm:px-8 md:px-12 overflow-hidden">
     <svg class="absolute top-20 right-[-50px] md:right-10 w-72 md:w-96 h-72 md:h-96 text-leafolive/10 animate-float-slow pointer-events-none" viewBox="0 0 200 200" fill="currentColor">
       <path d="M100,15 C145,15 180,55 180,105 C180,155 135,185 100,185 C100,130 130,85 100,15 Z" />
@@ -494,7 +494,7 @@
     </div>
   </section>
 
-  <!-- Direct Table Booking Banner (Proper Brand Logos for Swiggy, Zomato & District) -->
+  <!-- Direct Table Booking Banner -->
   <section class="py-16 px-4 sm:px-8 md:px-12 bg-sand/70 border-b border-forest/10">
     <div class="max-w-6xl mx-auto rounded-[2rem] bg-white border border-leafolive/20 p-8 md:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-sm reveal">
       <div class="space-y-3 text-center lg:text-left max-w-lg">
@@ -509,7 +509,7 @@
       </div>
 
       <div class="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap items-stretch sm:items-center justify-center gap-3 w-full lg:w-auto shrink-0">
-        <!-- Swiggy with Brand Pin Emblem -->
+        <!-- Swiggy -->
         <a href="https://www.swiggy.com/restaurants" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 bg-swiggy hover:bg-[#e8700c] text-white rounded-2xl flex items-center justify-between sm:justify-center gap-3 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 group">
           <span class="w-9 h-9 rounded-xl bg-white flex items-center justify-center shadow-2xs shrink-0">
             <svg viewBox="0 0 36 36" class="w-5 h-5 fill-swiggy">
@@ -523,7 +523,7 @@
           <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/90 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0"></i>
         </a>
 
-        <!-- Zomato with Brand Wordmark Badge -->
+        <!-- Zomato -->
         <a href="https://www.zomato.com/pune/leaf-a-cafe-by-advanced-nature-hadapsar" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 bg-zomato hover:bg-[#cb2633] text-white rounded-2xl flex items-center justify-between sm:justify-center gap-3 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 group">
           <span class="w-9 h-9 rounded-xl bg-white flex items-center justify-center shadow-2xs shrink-0 px-1">
             <span class="text-zomato font-black italic tracking-tighter text-[9.5px] leading-none">zomato</span>
@@ -535,7 +535,7 @@
           <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/90 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0"></i>
         </a>
 
-        <!-- District by Zomato with Brand Badge -->
+        <!-- District by Zomato -->
         <a href="https://www.district.in/" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 bg-district hover:bg-[#6622a3] text-white rounded-2xl flex items-center justify-between sm:justify-center gap-3 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 group">
           <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#9D4EDD] to-[#5A189A] border border-white/30 flex flex-col items-center justify-center shadow-2xs shrink-0 px-1">
             <span class="text-white font-extrabold tracking-tight text-[8px] leading-none">district</span>
@@ -605,7 +605,7 @@
     </div>
   </section>
 
-  <!-- Clean Simplified Footer (Address & Google Rating Text Removed) -->
+  <!-- Clean Simplified Footer -->
   <footer class="bg-forest text-cream/85 py-12 px-4 sm:px-8 md:px-12 border-t border-cream/10">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
       <div class="flex items-center gap-3">
@@ -627,7 +627,7 @@
     </div>
   </footer>
 
-  <!-- Find a Table Modal (With Proper Brand Logos for Swiggy, Zomato & District) -->
+  <!-- Find a Table Modal -->
   <div id="table-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
     <div class="bg-cream border border-leafolive/20 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative animate-[fadeUp_0.25s_ease]">
       <button onclick="closeTableModal()" aria-label="Close modal" class="absolute top-5 right-5 p-2 rounded-full hover:bg-sand text-forest cursor-pointer">
