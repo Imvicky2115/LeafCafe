@@ -50,7 +50,7 @@
       50% { transform: translateY(-14px) rotate(3deg); }
     }
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -89,7 +89,7 @@
 
   <!-- Top Navigation Bar -->
   <header id="navbar" class="fixed top-0 w-full z-40 transition-all duration-300 py-3 px-3 sm:px-6 md:px-10">
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 bg-cream/92 backdrop-blur-md border border-leafolive/15 rounded-full px-3.5 sm:px-6 py-2 shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 bg-cream/95 backdrop-blur-md border border-leafolive/15 rounded-full px-3.5 sm:px-6 py-2 shadow-sm">
       
       <!-- Brand Logo -->
       <a href="#" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
@@ -113,81 +113,65 @@
       </nav>
 
       <!-- Mobile Hamburger Toggle -->
-      <button id="mobile-menu-btn" aria-label="Open Navigation" class="lg:hidden p-2 text-forest rounded-full hover:bg-sand transition-colors shrink-0">
+      <button id="mobile-menu-btn" aria-label="Open Navigation" class="lg:hidden p-2 text-forest rounded-full hover:bg-sand transition-colors shrink-0 cursor-pointer">
         <i data-lucide="menu" class="w-5 h-5"></i>
       </button>
     </div>
   </header>
 
-  <!-- Refined Mobile Navigation Drawer -->
-  <div id="mobile-drawer" class="fixed inset-0 z-50 bg-forest/98 backdrop-blur-xl text-cream transform translate-x-full transition-transform duration-400 ease-out flex flex-col justify-between px-6 py-7 lg:hidden">
-    <!-- Top Drawer Header -->
-    <div class="flex items-center justify-between pb-5 border-b border-cream/10">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full bg-leafolive flex items-center justify-center shrink-0 shadow-sm">
-          <svg viewBox="0 0 100 100" class="w-6 h-6 text-white fill-current">
-            <path d="M52,18 C72,18 85,32 85,50 C85,66 72,76 58,76 C47,76 39,68 39,58 C39,50 45,44 53,44 C59,44 64,49 64,55 C64,59 60,62 56,62 C53,62 51,60 51,57 C51,55 53,54 54,54 C53,52 49,53 48,57 C47,62 51,67 57,67 C65,67 71,60 71,52 C71,40 61,32 49,32 C34,32 23,44 23,60 C23,72 28,83 36,90 C32,78 33,63 40,51 C30,60 25,74 28,88 C18,78 14,62 18,46 C23,28 37,18 52,18 Z" />
-          </svg>
+  <!-- Compact Mobile Navigation Popover (Solid Forest Background, Doesn't Take Whole Screen) -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 hidden bg-black/45 backdrop-blur-xs px-4 pt-20 lg:hidden">
+    <div id="mobile-drawer-card" class="max-w-md mx-auto bg-forest text-cream rounded-3xl p-6 shadow-2xl border border-sage/20 animate-[fadeUp_0.2s_ease]">
+      <!-- Card Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-cream/10">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-leafolive flex items-center justify-center shrink-0">
+            <svg viewBox="0 0 100 100" class="w-5 h-5 text-white fill-current">
+              <path d="M52,18 C72,18 85,32 85,50 C85,66 72,76 58,76 C47,76 39,68 39,58 C39,50 45,44 53,44 C59,44 64,49 64,55 C64,59 60,62 56,62 C53,62 51,60 51,57 C51,55 53,54 54,54 C53,52 49,53 48,57 C47,62 51,67 57,67 C65,67 71,60 71,52 C71,40 61,32 49,32 C34,32 23,44 23,60 C23,72 28,83 36,90 C32,78 33,63 40,51 C30,60 25,74 28,88 C18,78 14,62 18,46 C23,28 37,18 52,18 Z" />
+            </svg>
+          </div>
+          <span class="font-logo text-sm font-bold tracking-[0.14em] text-white">LEAF MENU</span>
         </div>
-        <div>
-          <span class="font-logo text-lg font-bold tracking-[0.14em] text-white block leading-none">LEAF</span>
-          <span class="text-[8.5px] uppercase tracking-[0.2em] text-sage block mt-1 whitespace-nowrap">FOOD &bull; ART &bull; COMMUNITY</span>
-        </div>
+        <button id="close-drawer-btn" aria-label="Close Menu" class="w-8 h-8 rounded-full bg-cream/10 hover:bg-cream/20 text-cream flex items-center justify-center transition-colors cursor-pointer">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
       </div>
-      <button id="close-drawer-btn" aria-label="Close Menu" class="w-10 h-10 rounded-full bg-cream/10 hover:bg-cream/20 text-cream flex items-center justify-center transition-colors">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-    </div>
 
-    <!-- Clean Structured Navigation Links -->
-    <nav class="flex flex-col divide-y divide-cream/10 my-auto">
-      <a href="#highlights" class="mobile-link py-4 flex items-center justify-between group">
-        <div>
-          <span class="font-serif text-2xl font-medium text-white group-hover:text-sage transition-colors block">Menu Highlights</span>
-          <span class="text-[11px] text-cream/55">Signature plates &amp; filter brews</span>
-        </div>
-        <i data-lucide="chevron-right" class="w-5 h-5 text-sage/70 group-hover:translate-x-1 transition-transform"></i>
-      </a>
+      <!-- Compact Navigation List -->
+      <nav class="flex flex-col divide-y divide-cream/10 my-2">
+        <a href="#highlights" class="mobile-link py-3.5 flex items-center justify-between group">
+          <span class="font-serif text-xl font-medium text-white group-hover:text-sage transition-colors">Menu Highlights</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-sage"></i>
+        </a>
+        <a href="#menu" class="mobile-link py-3.5 flex items-center justify-between group">
+          <span class="font-serif text-xl font-medium text-white group-hover:text-sage transition-colors">Full Café Menu</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-sage"></i>
+        </a>
+        <a href="#space" class="mobile-link py-3.5 flex items-center justify-between group">
+          <span class="font-serif text-xl font-medium text-white group-hover:text-sage transition-colors">The Space &amp; Gallery</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-sage"></i>
+        </a>
+        <a href="#visit" class="mobile-link py-3.5 flex items-center justify-between group">
+          <span class="font-serif text-xl font-medium text-white group-hover:text-sage transition-colors">Location &amp; Hours</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-sage"></i>
+        </a>
+      </nav>
 
-      <a href="#menu" class="mobile-link py-4 flex items-center justify-between group">
-        <div>
-          <span class="font-serif text-2xl font-medium text-white group-hover:text-sage transition-colors block">Full Café Menu</span>
-          <span class="text-[11px] text-cream/55">Swipe across 8 curated categories</span>
-        </div>
-        <i data-lucide="chevron-right" class="w-5 h-5 text-sage/70 group-hover:translate-x-1 transition-transform"></i>
-      </a>
-
-      <a href="#space" class="mobile-link py-4 flex items-center justify-between group">
-        <div>
-          <span class="font-serif text-2xl font-medium text-white group-hover:text-sage transition-colors block">The Space &amp; Gallery</span>
-          <span class="text-[11px] text-cream/55">Inside Advanced Nature Studio</span>
-        </div>
-        <i data-lucide="chevron-right" class="w-5 h-5 text-sage/70 group-hover:translate-x-1 transition-transform"></i>
-      </a>
-
-      <a href="#visit" class="mobile-link py-4 flex items-center justify-between group">
-        <div>
-          <span class="font-serif text-2xl font-medium text-white group-hover:text-sage transition-colors block">Location &amp; Hours</span>
-          <span class="text-[11px] text-cream/55">Hadapsar Industrial Estate, Pune</span>
-        </div>
-        <i data-lucide="chevron-right" class="w-5 h-5 text-sage/70 group-hover:translate-x-1 transition-transform"></i>
-      </a>
-    </nav>
-
-    <!-- Bottom Action Stack -->
-    <div class="space-y-2.5 pt-5 border-t border-cream/10">
-      <button onclick="closeDrawer(); openTableModal();" class="w-full py-3.5 px-5 bg-leafolive hover:bg-moss text-white font-sans text-sm font-semibold rounded-full flex items-center justify-center gap-2 shadow-md transition-colors">
-        <span>Find a Table</span>
-        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
-      </button>
-      <a href="https://www.instagram.com/leafcafepune?jplx=MTdoM2ZxcGtmaDhmbg==" target="_blank" rel="noopener noreferrer" class="w-full py-3 px-5 bg-cream/10 hover:bg-cream/15 text-cream font-sans text-xs font-medium rounded-full flex items-center justify-center gap-2 transition-colors">
-        <i data-lucide="instagram" class="w-4 h-4 text-sage"></i>
-        <span>Follow @leafcafepune</span>
-      </a>
+      <!-- Action Buttons -->
+      <div class="grid grid-cols-2 gap-2.5 pt-4 border-t border-cream/10">
+        <button onclick="closeDrawer(); openTableModal();" class="py-3 px-4 bg-leafolive hover:bg-moss text-white text-xs font-semibold rounded-full flex items-center justify-center gap-1.5 transition-colors cursor-pointer">
+          <span>Find a Table</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </button>
+        <a href="https://www.instagram.com/leafcafepune?jplx=MTdoM2ZxcGtmaDhmbg==" target="_blank" rel="noopener noreferrer" class="py-3 px-4 bg-cream/10 hover:bg-cream/20 text-white text-xs font-medium rounded-full flex items-center justify-center gap-1.5 transition-colors">
+          <i data-lucide="instagram" class="w-3.5 h-3.5 text-sage"></i>
+          <span>Instagram</span>
+        </a>
+      </div>
     </div>
   </div>
 
-  <!-- Hero Section -->
+  <!-- Hero Section (3-Box Stats Removed as Requested) -->
   <section class="relative min-h-screen flex items-center pt-28 pb-16 px-4 sm:px-8 md:px-12 overflow-hidden">
     <svg class="absolute top-20 right-[-50px] md:right-10 w-72 md:w-96 h-72 md:h-96 text-leafolive/10 animate-float-slow pointer-events-none" viewBox="0 0 200 200" fill="currentColor">
       <path d="M100,15 C145,15 180,55 180,105 C180,155 135,185 100,185 C100,130 130,85 100,15 Z" />
@@ -213,22 +197,6 @@
           <a href="#menu" class="px-7 py-4 bg-white/85 hover:bg-white border border-forest/20 text-forest rounded-full font-medium text-sm sm:text-base transition-all duration-300">
             Explore Menu
           </a>
-        </div>
-
-        <!-- 3-Column Hero Facts -->
-        <div class="grid grid-cols-3 gap-2.5 sm:gap-6 pt-6 border-t border-forest/10 max-w-lg">
-          <div class="bg-white/60 sm:bg-transparent rounded-2xl p-2.5 sm:p-0 border border-forest/5 sm:border-0">
-            <p class="font-serif text-lg sm:text-2xl font-bold text-forest whitespace-nowrap leading-tight">₹400–600</p>
-            <p class="text-[11px] sm:text-xs text-charcoal/65 mt-0.5 leading-snug">Cost for two</p>
-          </div>
-          <div class="bg-white/60 sm:bg-transparent rounded-2xl p-2.5 sm:p-0 border border-forest/5 sm:border-0">
-            <p class="font-serif text-lg sm:text-2xl font-bold text-leafolive whitespace-nowrap leading-tight">15% Off</p>
-            <p class="text-[11px] sm:text-xs text-charcoal/65 mt-0.5 leading-snug">Swiggy &amp; Zomato</p>
-          </div>
-          <div class="bg-white/60 sm:bg-transparent rounded-2xl p-2.5 sm:p-0 border border-forest/5 sm:border-0">
-            <p class="font-serif text-lg sm:text-2xl font-bold text-forest whitespace-nowrap leading-tight">Tue–Sun</p>
-            <p class="text-[11px] sm:text-xs text-charcoal/65 mt-0.5 leading-snug">11 AM – 10 PM</p>
-          </div>
         </div>
       </div>
 
@@ -526,7 +494,7 @@
     </div>
   </section>
 
-  <!-- Direct Table Booking Banner (Exciting Dining Offers + Swiggy + Zomato + District) -->
+  <!-- Direct Table Booking Banner (Proper Brand Logos for Swiggy, Zomato & District) -->
   <section class="py-16 px-4 sm:px-8 md:px-12 bg-sand/70 border-b border-forest/10">
     <div class="max-w-6xl mx-auto rounded-[2rem] bg-white border border-leafolive/20 p-8 md:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-sm reveal">
       <div class="space-y-3 text-center lg:text-left max-w-lg">
@@ -541,9 +509,13 @@
       </div>
 
       <div class="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap items-stretch sm:items-center justify-center gap-3 w-full lg:w-auto shrink-0">
-        <!-- Swiggy -->
+        <!-- Swiggy with Brand Pin Emblem -->
         <a href="https://www.swiggy.com/restaurants" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 bg-swiggy hover:bg-[#e8700c] text-white rounded-2xl flex items-center justify-between sm:justify-center gap-3 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 group">
-          <span class="w-8 h-8 rounded-xl bg-white text-swiggy font-extrabold text-sm flex items-center justify-center shadow-2xs shrink-0">S</span>
+          <span class="w-9 h-9 rounded-xl bg-white flex items-center justify-center shadow-2xs shrink-0">
+            <svg viewBox="0 0 36 36" class="w-5 h-5 fill-swiggy">
+              <path d="M18 3C11.37 3 6 8.22 6 14.66C6 22.7 16.56 32.16 17.01 32.56C17.58 33.06 18.42 33.06 18.99 32.56C19.44 32.16 30 22.7 30 14.66C30 8.22 24.63 3 18 3ZM21.2 17.5C21.2 19.7 19.3 21.3 16.8 21.3C14.8 21.3 13.3 20.3 12.8 18.8L15.1 17.9C15.4 18.7 16 19.1 16.9 19.1C17.9 19.1 18.6 18.5 18.6 17.7C18.6 16.9 18 16.5 16.5 16.1C14.3 15.5 13.1 14.4 13.1 12.5C13.1 10.4 14.9 8.9 17.2 8.9C19 8.9 20.4 9.8 21 11.2L18.8 12.1C18.5 11.4 17.9 11 17.1 11C16.2 11 15.6 11.5 15.6 12.3C15.6 13 16.2 13.4 17.6 13.8C19.9 14.4 21.2 15.5 21.2 17.5Z"/>
+            </svg>
+          </span>
           <div class="text-left">
             <span class="block text-sm font-bold leading-tight whitespace-nowrap">Book on Swiggy</span>
             <span class="block text-[10px] text-white/90 font-medium whitespace-nowrap">Dineout &bull; Flat 15% Off</span>
@@ -551,9 +523,11 @@
           <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/90 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0"></i>
         </a>
 
-        <!-- Zomato -->
+        <!-- Zomato with Brand Wordmark Badge -->
         <a href="https://www.zomato.com/pune/leaf-a-cafe-by-advanced-nature-hadapsar" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 bg-zomato hover:bg-[#cb2633] text-white rounded-2xl flex items-center justify-between sm:justify-center gap-3 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 group">
-          <span class="w-8 h-8 rounded-xl bg-white text-zomato font-extrabold italic text-sm flex items-center justify-center shadow-2xs shrink-0">Z</span>
+          <span class="w-9 h-9 rounded-xl bg-white flex items-center justify-center shadow-2xs shrink-0 px-1">
+            <span class="text-zomato font-black italic tracking-tighter text-[9.5px] leading-none">zomato</span>
+          </span>
           <div class="text-left">
             <span class="block text-sm font-bold leading-tight whitespace-nowrap">Book on Zomato</span>
             <span class="block text-[10px] text-white/90 font-medium whitespace-nowrap">Instant Table Booking</span>
@@ -561,9 +535,12 @@
           <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/90 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0"></i>
         </a>
 
-        <!-- District by Zomato -->
+        <!-- District by Zomato with Brand Badge -->
         <a href="https://www.district.in/" target="_blank" rel="noopener noreferrer" class="px-5 py-3.5 bg-district hover:bg-[#6622a3] text-white rounded-2xl flex items-center justify-between sm:justify-center gap-3 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 group">
-          <span class="w-8 h-8 rounded-xl bg-white text-district font-extrabold text-sm flex items-center justify-center shadow-2xs shrink-0">D</span>
+          <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#9D4EDD] to-[#5A189A] border border-white/30 flex flex-col items-center justify-center shadow-2xs shrink-0 px-1">
+            <span class="text-white font-extrabold tracking-tight text-[8px] leading-none">district</span>
+            <span class="text-white/80 font-semibold text-[4.2px] uppercase tracking-wider mt-0.5 leading-none">by zomato</span>
+          </span>
           <div class="text-left">
             <span class="block text-sm font-bold leading-tight whitespace-nowrap">Book on District</span>
             <span class="block text-[10px] text-white/90 font-medium whitespace-nowrap">By Zomato &bull; Flat 10% Off</span>
@@ -574,7 +551,7 @@
     </div>
   </section>
 
-  <!-- Visit & Location (Duplicate Find a Table Button Removed) -->
+  <!-- Visit & Location -->
   <section id="visit" class="py-20 px-4 sm:px-8 md:px-12">
     <div class="max-w-7xl mx-auto bg-white rounded-[2.5rem] p-7 sm:p-12 border border-forest/10 shadow-sm reveal">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -628,9 +605,9 @@
     </div>
   </section>
 
-  <!-- Clean Simplified Footer -->
+  <!-- Clean Simplified Footer (Address & Google Rating Text Removed) -->
   <footer class="bg-forest text-cream/85 py-12 px-4 sm:px-8 md:px-12 border-t border-cream/10">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
       <div class="flex items-center gap-3">
         <div class="w-9 h-9 rounded-full bg-leafolive flex items-center justify-center shrink-0">
           <svg viewBox="0 0 100 100" class="w-6 h-6 text-white fill-current">
@@ -643,16 +620,14 @@
         </div>
       </div>
 
-      <p class="text-xs text-cream/65 text-center">Hadapsar Industrial Estate, Pune &bull; 4.7 ★ on Google</p>
-
-      <a href="https://www.instagram.com/leafcafepune?jplx=MTdoM2ZxcGtmaDhmbg==" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cream/10 hover:bg-leafolive text-white text-xs font-medium transition-colors">
+      <a href="https://www.instagram.com/leafcafepune?jplx=MTdoM2ZxcGtmaDhmbg==" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-cream/10 hover:bg-leafolive text-white text-xs font-medium transition-colors">
         <i data-lucide="instagram" class="w-4 h-4"></i>
         <span>@leafcafepune</span>
       </a>
     </div>
   </footer>
 
-  <!-- Find a Table Modal (Includes Swiggy, Zomato & District) -->
+  <!-- Find a Table Modal (With Proper Brand Logos for Swiggy, Zomato & District) -->
   <div id="table-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
     <div class="bg-cream border border-leafolive/20 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative animate-[fadeUp_0.25s_ease]">
       <button onclick="closeTableModal()" aria-label="Close modal" class="absolute top-5 right-5 p-2 rounded-full hover:bg-sand text-forest cursor-pointer">
@@ -666,9 +641,14 @@
       <p class="text-xs text-charcoal/70 mb-6">Choose your preferred platform to check live table availability and claim dining offers at Leaf Café, Pune.</p>
 
       <div class="space-y-3">
+        <!-- Swiggy -->
         <a href="https://www.swiggy.com/restaurants" target="_blank" rel="noopener noreferrer" class="w-full p-4 rounded-2xl bg-white hover:bg-swiggy/5 border border-swiggy/30 flex items-center justify-between transition-all group">
           <div class="flex items-center gap-3.5">
-            <div class="w-11 h-11 rounded-xl bg-swiggy text-white flex items-center justify-center font-bold text-lg shadow-sm">S</div>
+            <div class="w-11 h-11 rounded-xl bg-swiggy flex items-center justify-center shadow-sm shrink-0">
+              <svg viewBox="0 0 36 36" class="w-6 h-6 fill-white">
+                <path d="M18 3C11.37 3 6 8.22 6 14.66C6 22.7 16.56 32.16 17.01 32.56C17.58 33.06 18.42 33.06 18.99 32.56C19.44 32.16 30 22.7 30 14.66C30 8.22 24.63 3 18 3ZM21.2 17.5C21.2 19.7 19.3 21.3 16.8 21.3C14.8 21.3 13.3 20.3 12.8 18.8L15.1 17.9C15.4 18.7 16 19.1 16.9 19.1C17.9 19.1 18.6 18.5 18.6 17.7C18.6 16.9 18 16.5 16.5 16.1C14.3 15.5 13.1 14.4 13.1 12.5C13.1 10.4 14.9 8.9 17.2 8.9C19 8.9 20.4 9.8 21 11.2L18.8 12.1C18.5 11.4 17.9 11 17.1 11C16.2 11 15.6 11.5 15.6 12.3C15.6 13 16.2 13.4 17.6 13.8C19.9 14.4 21.2 15.5 21.2 17.5Z"/>
+              </svg>
+            </div>
             <div>
               <p class="font-semibold text-forest text-sm group-hover:text-swiggy transition-colors">Book on Swiggy</p>
               <p class="text-[11px] text-charcoal/60">Dineout &bull; Flat 15% off dining</p>
@@ -677,9 +657,12 @@
           <i data-lucide="arrow-up-right" class="w-5 h-5 text-swiggy"></i>
         </a>
 
+        <!-- Zomato -->
         <a href="https://www.zomato.com/pune/leaf-a-cafe-by-advanced-nature-hadapsar" target="_blank" rel="noopener noreferrer" class="w-full p-4 rounded-2xl bg-white hover:bg-zomato/5 border border-zomato/30 flex items-center justify-between transition-all group">
           <div class="flex items-center gap-3.5">
-            <div class="w-11 h-11 rounded-xl bg-zomato text-white flex items-center justify-center font-bold italic text-lg shadow-sm">Z</div>
+            <div class="w-11 h-11 rounded-xl bg-zomato text-white flex items-center justify-center shadow-sm shrink-0 px-1">
+              <span class="font-black italic tracking-tighter text-[11px] leading-none">zomato</span>
+            </div>
             <div>
               <p class="font-semibold text-forest text-sm group-hover:text-zomato transition-colors">Book on Zomato</p>
               <p class="text-[11px] text-charcoal/60">Instant table booking &amp; offers</p>
@@ -688,9 +671,13 @@
           <i data-lucide="arrow-up-right" class="w-5 h-5 text-zomato"></i>
         </a>
 
+        <!-- District by Zomato -->
         <a href="https://www.district.in/" target="_blank" rel="noopener noreferrer" class="w-full p-4 rounded-2xl bg-white hover:bg-district/5 border border-district/30 flex items-center justify-between transition-all group">
           <div class="flex items-center gap-3.5">
-            <div class="w-11 h-11 rounded-xl bg-district text-white flex items-center justify-center font-bold text-lg shadow-sm">D</div>
+            <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#9D4EDD] to-[#5A189A] text-white flex flex-col items-center justify-center shadow-sm shrink-0 px-1">
+              <span class="font-extrabold tracking-tight text-[9.5px] leading-none">district</span>
+              <span class="text-white/80 font-semibold text-[4.8px] uppercase tracking-wider mt-0.5 leading-none">by zomato</span>
+            </div>
             <div>
               <p class="font-semibold text-forest text-sm group-hover:text-district transition-colors">Book on District</p>
               <p class="text-[11px] text-charcoal/60">By Zomato &bull; Flat 10% off</p>
@@ -929,17 +916,26 @@
     renderMenu();
     lucide.createIcons();
 
+    // Mobile Popover Drawer Logic
     const mobileMenuBtn = document.getElementById("mobile-menu-btn");
     const closeDrawerBtn = document.getElementById("close-drawer-btn");
     const mobileDrawer = document.getElementById("mobile-drawer");
 
-    function openDrawer() { mobileDrawer.classList.remove("translate-x-full"); }
-    function closeDrawer() { mobileDrawer.classList.add("translate-x-full"); }
+    function openDrawer() {
+      mobileDrawer.classList.remove("hidden");
+    }
+    function closeDrawer() {
+      mobileDrawer.classList.add("hidden");
+    }
 
     mobileMenuBtn.addEventListener("click", openDrawer);
     closeDrawerBtn.addEventListener("click", closeDrawer);
+    mobileDrawer.addEventListener("click", (e) => {
+      if (e.target === mobileDrawer) closeDrawer();
+    });
     document.querySelectorAll(".mobile-link").forEach(l => l.addEventListener("click", closeDrawer));
 
+    // Find a Table Modal
     const tableModal = document.getElementById("table-modal");
     function openTableModal() {
       tableModal.classList.remove("hidden");
