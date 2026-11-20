@@ -129,6 +129,32 @@
     @media(max-width:390px){.leaf-scene{height:420px}.coffee-stage{transform:translate(-50%,-50%) scale(.7) rotateX(8deg) rotateY(-12deg) translateZ(55px)}}
     @media(prefers-reduced-motion:reduce){.coffee-stage,.steam,.floating-leaf{animation:none!important}.reveal{transition:none;opacity:1;transform:none}}
 
+
+/* Scroll-scrubbed Lotus Biscoff cheesecake story */
+.biscoff-story{position:relative;background:#17140f;color:#f8f1e5;isolation:isolate}
+.biscoff-story:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;background:radial-gradient(ellipse at 50% 42%,#8d572c 0,transparent 48%),linear-gradient(115deg,transparent 20%,#f5c27a10 50%,transparent 80%)}
+.biscoff-track{height:560vh;position:relative}
+.biscoff-sticky{height:100svh;min-height:620px;position:sticky;top:0;overflow:hidden;display:grid;grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr);align-items:center;max-width:1500px;margin:0 auto;padding:100px clamp(20px,6vw,100px) 55px;gap:clamp(8px,4vw,60px)}
+.biscoff-copy{position:relative;z-index:3;max-width:480px;align-self:center}
+.biscoff-kicker{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:#d7a66b;font-weight:700}
+.biscoff-title{font:500 clamp(42px,5.5vw,78px)/.92 'Cormorant Garamond',Georgia,serif;letter-spacing:-.045em;margin:22px 0;color:#fff7e9}
+.biscoff-title em{color:#dba66d;font-weight:500}
+.biscoff-description{font-size:clamp(13px,1.2vw,16px);line-height:1.85;color:#e7d8c6b8;max-width:390px;min-height:82px}
+.biscoff-step{display:flex;align-items:center;gap:12px;margin-top:34px;color:#d7a66b;font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+.biscoff-progress{height:2px;width:140px;background:#ffffff25;position:relative;overflow:hidden}.biscoff-progress span{display:block;width:0;height:100%;background:#d7a66b}
+.biscoff-canvas-wrap{position:relative;height:min(76vh,760px);min-height:430px;align-self:center;transform:translateZ(0)}
+#biscoff-canvas{width:100%;height:100%;display:block;touch-action:pan-y}
+.biscoff-halo{position:absolute;width:70%;aspect-ratio:1;left:15%;top:13%;border-radius:50%;background:radial-gradient(circle,#b9783b35,transparent 68%);filter:blur(16px);pointer-events:none}
+.biscoff-scrollhint{position:absolute;z-index:4;bottom:34px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#d8c7ae99;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.biscoff-scrollhint:before,.biscoff-scrollhint:after{content:"";width:28px;height:1px;background:#d8c7ae55}
+.biscoff-counter{position:absolute;right:clamp(20px,5vw,75px);bottom:32px;color:#d7a66b;font:italic 18px Georgia,serif;z-index:4}
+.biscoff-endcard{position:absolute;z-index:5;right:6%;bottom:12%;opacity:0;transform:translateY(18px);pointer-events:none;text-align:right}
+.biscoff-endcard strong{display:block;font:500 clamp(26px,3vw,42px) Georgia,serif;color:#fff5e7}
+.biscoff-endcard span{font-size:10px;letter-spacing:.22em;color:#d7a66b;text-transform:uppercase}
+@media(max-width:800px){.biscoff-sticky{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:0;padding:92px 20px 50px;align-items:start}.biscoff-copy{max-width:600px}.biscoff-title{font-size:clamp(40px,10vw,58px);margin:12px 0}.biscoff-description{min-height:54px;max-width:520px;font-size:12px;line-height:1.55}.biscoff-step{margin-top:14px}.biscoff-canvas-wrap{height:48vh;min-height:280px;width:100%;margin-top:-4px}.biscoff-scrollhint{bottom:18px}.biscoff-counter{bottom:15px;right:18px}.biscoff-endcard{right:5%;bottom:9%}}
+@media(max-height:700px) and (min-width:801px){.biscoff-sticky{min-height:560px;padding-top:72px}.biscoff-canvas-wrap{height:70vh}}
+@media(prefers-reduced-motion:reduce){.biscoff-track{height:auto}.biscoff-sticky{position:relative;height:auto;min-height:800px}}
+
   </style>
 </head>
 <body class="bg-cream text-charcoal font-sans antialiased selection:bg-leafolive selection:text-white bg-grain overflow-x-hidden">
@@ -343,6 +369,28 @@
           <span>Read Google Reviews</span>
           <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
         </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 30-second scroll-controlled signature dessert story -->
+  <section class="biscoff-story" id="biscoff-story" aria-label="Scroll to assemble the Lotus Biscoff cheesecake">
+    <div class="biscoff-track" id="biscoff-track">
+      <div class="biscoff-sticky">
+        <div class="biscoff-copy">
+          <span class="biscoff-kicker">A signature from the Leaf kitchen</span>
+          <h2 class="biscoff-title">A little <em>crunch.</em><br>A lot of love.</h2>
+          <p class="biscoff-description" id="biscoff-description">A dessert begins with a simple promise: buttery biscuit, a cloud-soft centre, and the unmistakable warmth of Biscoff.</p>
+          <div class="biscoff-step"><span id="biscoff-step-label">01 / The foundation</span><div class="biscoff-progress"><span id="biscoff-progress-fill"></span></div></div>
+        </div>
+        <div class="biscoff-canvas-wrap">
+          <div class="biscoff-halo"></div>
+          <canvas id="biscoff-canvas" aria-label="Interactive 3D Lotus Biscoff cheesecake assembling as you scroll"></canvas>
+          <div class="biscoff-endcard" id="biscoff-endcard"><span>Made for the last bite</span><strong>Lotus Biscoff<br>Cheesecake</strong></div>
+        </div>
+        <div class="biscoff-scrollhint" id="biscoff-scrollhint">Scroll to assemble · scroll back to undo</div>
+        <div class="biscoff-counter" id="biscoff-counter">00:00 / 00:30</div>
       </div>
     </div>
   </section>
@@ -1157,6 +1205,84 @@
       cup.style.transform = '';
     });
   })();
+</script>
+
+
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+import { gsap } from 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js';
+import { ScrollTrigger } from 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.js';
+gsap.registerPlugin(ScrollTrigger);
+(() => {
+  const canvas=document.getElementById('biscoff-canvas'); if(!canvas) return;
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const scene=new THREE.Scene(); scene.fog=new THREE.FogExp2(0x17140f,.055);
+  const camera=new THREE.PerspectiveCamera(34,1,.1,100); camera.position.set(0,4.3,10.8); camera.lookAt(0,1.35,0);
+  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'high-performance'});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,1.7)); renderer.outputColorSpace=THREE.SRGBColorSpace; renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.22;
+  scene.add(new THREE.HemisphereLight(0xffe7c7,0x39251a,2.0));
+  const key=new THREE.DirectionalLight(0xffd4a0,3.3);key.position.set(-4,8,6);scene.add(key);
+  const rim=new THREE.PointLight(0xffa34e,65,18);rim.position.set(4,4,2);scene.add(rim);
+  const fill=new THREE.PointLight(0xffead3,24,16);fill.position.set(-4,2,-4);scene.add(fill);
+  const root=new THREE.Group();scene.add(root);
+  const cake=new THREE.Group();root.add(cake);
+  const mat=(color,rough=.65,metal=0)=>new THREE.MeshStandardMaterial({color,roughness:rough,metalness:metal});
+  const biscuit=mat(0x9b5427,.82), biscuitLight=mat(0xc17a3d,.78), cream=mat(0xf1dfbd,.48), creamShadow=mat(0xd6c19f,.7), glaze=mat(0x9a4d22,.23), plateMat=mat(0x30271f,.32,.18), gold=mat(0xc58b4a,.3,.65);
+  const cylinder=(rTop,rBottom,h,m,rad=96)=>new THREE.Mesh(new THREE.CylinderGeometry(rTop,rBottom,h,rad,1,false),m);
+  const plate=cylinder(2.45,2.5,.16,plateMat);plate.position.y=.16;cake.add(plate);
+  const plateRing=new THREE.Mesh(new THREE.TorusGeometry(2.28,.018,8,120),gold);plateRing.rotation.x=Math.PI/2;plateRing.position.y=.245;cake.add(plateRing);
+  // Biscuit crumb foundation: a compressed, irregular biscuit disc with a visible edge.
+  const base=cylinder(1.78,1.84,.38,biscuit);base.position.y=.48;cake.add(base);
+  const baseTop=cylinder(1.79,1.79,.07,biscuitLight);baseTop.position.y=.705;cake.add(baseTop);
+  const filling=cylinder(1.77,1.77,1.22,cream);filling.position.y=1.34;cake.add(filling);
+  const fillingFoot=cylinder(1.79,1.79,.09,creamShadow);fillingFoot.position.y=.78;cake.add(fillingFoot);
+  const fillingTop=cylinder(1.78,1.78,.10,cream);fillingTop.position.y=1.99;cake.add(fillingTop);
+  const glazeTop=cylinder(1.77,1.77,.12,glaze);glazeTop.position.y=2.09;cake.add(glazeTop);
+  const glazeSurface=new THREE.Mesh(new THREE.CircleGeometry(1.77,96),new THREE.MeshPhysicalMaterial({color:0x9c542b,roughness:.18,clearcoat:1,clearcoatRoughness:.12}));glazeSurface.rotation.x=-Math.PI/2;glazeSurface.position.y=2.155;cake.add(glazeSurface);
+  // Soft irregular drips down the cake rim.
+  const drips=new THREE.Group();cake.add(drips);
+  for(let i=0;i<18;i++){const a=i/18*Math.PI*2;const h=.12+Math.random()*.28;const d=new THREE.Mesh(new THREE.SphereGeometry(.075+Math.random()*.045,16,12),glaze);d.scale.set(.8,h/.13,.8);d.position.set(Math.cos(a)*1.73,2.06-h*.35,Math.sin(a)*1.73);drips.add(d)}
+  // Biscoff cookie shards, embossed-looking biscuit tiles and crumb field.
+  const toppings=new THREE.Group();cake.add(toppings);
+  for(let i=0;i<9;i++){const a=i/9*Math.PI*2;const shard=new THREE.Mesh(new THREE.BoxGeometry(.25,.075,.48),i%2?biscuit:biscuitLight);shard.position.set(Math.cos(a)*(.65+Math.random()*.65),2.24,Math.sin(a)*(.65+Math.random()*.65));shard.rotation.set((Math.random()-.5)*.3,a,(Math.random()-.5)*.35);toppings.add(shard)}
+  const crumbs=new THREE.Group();scene.add(crumbs);const crumbGeo=new THREE.IcosahedronGeometry(1,0);
+  const crumbData=[];for(let i=0;i<150;i++){const m=new THREE.Mesh(crumbGeo,i%3===0?biscuitLight:biscuit);const scale=.018+Math.random()*.045;m.scale.setScalar(scale);const a=Math.random()*Math.PI*2,r=.4+Math.random()*2.5;m.position.set(Math.cos(a)*r,2.8+Math.random()*4,Math.sin(a)*r);crumbs.add(m);crumbData.push({mesh:m,final:new THREE.Vector3(Math.cos(a)*(.25+Math.random()*1.45),2.23+Math.random()*.05,Math.sin(a)*(.25+Math.random()*1.45)),start:m.position.clone(),rot:new THREE.Vector3(Math.random()*8,Math.random()*8,Math.random()*8)})}
+  // Biscuit crumbs form a visible textured top layer.
+  const topCrumbs=new THREE.Group();cake.add(topCrumbs);
+  for(let i=0;i<85;i++){const a=Math.random()*Math.PI*2,r=Math.sqrt(Math.random())*1.58;const m=new THREE.Mesh(crumbGeo,i%4===0?biscuitLight:biscuit);m.scale.setScalar(.018+Math.random()*.035);m.position.set(Math.cos(a)*r,2.225,Math.sin(a)*r);topCrumbs.add(m)}
+  // A small branded biscuit medallion on the finished dessert.
+  const cookie=new THREE.Group();cake.add(cookie);const cookieDisk=cylinder(.39,.39,.12,biscuitLight,64);cookieDisk.rotation.x=0;cookieDisk.position.y=2.31;cookie.add(cookieDisk);
+  const cookieInner=new THREE.Mesh(new THREE.CircleGeometry(.29,64),biscuit);cookieInner.rotation.x=-Math.PI/2;cookieInner.position.y=2.375;cookie.add(cookieInner);
+  // A few floating cookie chunks arrive from above.
+  const chunks=new THREE.Group();scene.add(chunks);const chunkData=[];for(let i=0;i<12;i++){const m=new THREE.Mesh(new THREE.BoxGeometry(.18+Math.random()*.16,.09,.18+Math.random()*.22),i%2?biscuit:biscuitLight);const a=Math.random()*Math.PI*2;m.position.set(Math.cos(a)*(2+Math.random()),4+Math.random()*3,Math.sin(a)*(2+Math.random()));m.rotation.set(Math.random()*3,Math.random()*3,Math.random()*3);chunks.add(m);chunkData.push({mesh:m,start:m.position.clone(),end:new THREE.Vector3(Math.cos(a)*(.8+Math.random()*.8),2.25,Math.sin(a)*(.8+Math.random()*.8))})}
+  // Pedestal and studio floor.
+  const pedestal=cylinder(1.45,1.55,.45,mat(0x211a15,.38,.12));pedestal.position.y=-.13;cake.add(pedestal);
+  const floor=new THREE.Mesh(new THREE.CircleGeometry(30,80),mat(0x17140f,1));floor.rotation.x=-Math.PI/2;floor.position.y=-.37;scene.add(floor);
+  const points=[
+   ['01 / The foundation','We begin with a buttery Biscoff biscuit base. Fine cookie crumbs tumble together and settle into a golden, gently textured foundation.'],
+   ['02 / The velvet centre','A velvety smooth cream-cheese layer rises above the base, light and rich with crushed Lotus Biscoff cookies folded through.'],
+   ['03 / The golden crown','A glossy Biscoff spread flows over the top, catching the light before soft drips find their way down the edges.'],
+   ['04 / The finishing touch','More cookie crumbs and delicate biscuit pieces fall into place. Every layer comes together, one tactile detail at a time.'],
+   ['05 / Ready to savour','The Lotus Biscoff Cheesecake is complete: buttery crunch, a smooth cookie-studded centre, and a golden Biscoff finish.']
+  ];
+  const desc=document.getElementById('biscoff-description'),step=document.getElementById('biscoff-step-label'),fillBar=document.getElementById('biscoff-progress-fill'),counter=document.getElementById('biscoff-counter'),endcard=document.getElementById('biscoff-endcard'),hint=document.getElementById('biscoff-scrollhint');
+  const state={p:0};
+  function smooth(a,b,t){return THREE.MathUtils.smoothstep(t,a,b)}
+  function update(p){state.p=p;const idx=Math.min(4,Math.floor(p*5));desc.textContent=points[idx][1];step.textContent=points[idx][0];fillBar.style.width=(p*100)+'%';const sec=Math.round(p*30);counter.textContent=`00:${String(sec).padStart(2,'0')} / 00:30`;endcard.style.opacity=String(smooth(.78,.96,p));endcard.style.transform=`translateY(${(1-smooth(.78,.96,p))*18}px)`;hint.style.opacity=String(1-smooth(.82,.96,p));
+    // Exploded assembly stages resolve into a finished cake.
+    base.position.y=.18+.30*smooth(0,.18,p);base.scale.y=.15+.85*smooth(0,.18,p);baseTop.position.y=.42+.285*smooth(.08,.22,p);
+    filling.position.y=1.0+.34*smooth(.2,.43,p);filling.scale.y=.08+.92*smooth(.2,.43,p);fillingFoot.position.y=.75+.03*smooth(.2,.4,p);fillingTop.position.y=1.65+.34*smooth(.2,.43,p);fillingTop.scale.y=.1+.9*smooth(.2,.43,p);
+    glazeTop.position.y=2.35-.26*smooth(.42,.64,p);glazeSurface.position.y=2.415-.26*smooth(.42,.64,p);drips.position.y=-.2*smooth(.48,.7,p);toppings.position.y=.9*(1-smooth(.62,.86,p));topCrumbs.position.y=.7*(1-smooth(.62,.88,p));cookie.position.y=.7*(1-smooth(.7,.9,p));
+    crumbData.forEach((d,i)=>{const t=smooth(.03,.55,p);d.mesh.position.lerpVectors(d.start,d.final,t);d.mesh.rotation.set(d.rot.x*(1-t),d.rot.y*(1-t),d.rot.z*(1-t));d.mesh.visible=p<.88});
+    chunkData.forEach((d,i)=>{const t=smooth(.48,.82,p);d.mesh.position.lerpVectors(d.start,d.end,t);d.mesh.rotation.x+=.002;d.mesh.rotation.z+=.001;d.mesh.scale.setScalar(1-.45*t)});
+    cake.rotation.y=-.38+p*1.55;cake.rotation.x=.06+Math.sin(p*Math.PI)*.04;cake.position.y=-.35+smooth(.78,1,p)*.1;
+    camera.position.x=Math.sin(p*Math.PI*1.1)*.8;camera.position.z=10.8-.55*smooth(.8,1,p);camera.position.y=4.2-.55*smooth(.8,1,p);camera.lookAt(0,1.35,0);
+  }
+  const resize=()=>{const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()};new ResizeObserver(resize).observe(canvas.parentElement);resize();
+  let raf=0;function render(){raf=requestAnimationFrame(render);const t=performance.now()*.00025;rim.position.x=4+Math.sin(t)*.5;renderer.render(scene,camera)}render();
+  if(!reduced){gsap.to(state,{p:1,ease:'none',onUpdate:()=>update(state.p),scrollTrigger:{trigger:'#biscoff-track',start:'top top',end:'bottom bottom',scrub:1}})}else{update(1)}
+  window.addEventListener('pagehide',()=>{cancelAnimationFrame(raf);renderer.dispose()},{once:true});
+})();
 </script>
 
 </body>
