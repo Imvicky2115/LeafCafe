@@ -82,53 +82,44 @@
       will-change: transform;
     }
 
-    /* Visible Warm Lantern Sway & Flickering Glow */
-    @keyframes lanternSway {
-      0%, 100% { transform: rotate(-1.5deg); }
-      50% { transform: rotate(1.5deg); }
-    }
-    @keyframes lanternFlicker {
-      0%, 100% { opacity: 0.78; transform: scale(1); }
-      20% { opacity: 0.96; transform: scale(1.07); }
-      38% { opacity: 0.72; transform: scale(0.97); }
-      62% { opacity: 1; transform: scale(1.1); }
-      84% { opacity: 0.82; transform: scale(1.02); }
-    }
-    @keyframes lanternFlickerAlt {
-      0%, 100% { opacity: 0.70; transform: scale(0.98); }
-      28% { opacity: 0.95; transform: scale(1.08); }
-      54% { opacity: 0.75; transform: scale(1); }
-      76% { opacity: 0.98; transform: scale(1.06); }
-    }
-
-    .lantern-swing-1 {
-      transform-origin: top center;
-      animation: lanternSway 6.5s ease-in-out infinite;
-    }
-    .lantern-swing-2 {
-      transform-origin: top center;
-      animation: lanternSway 7.8s ease-in-out 1.2s infinite;
-    }
-    .lantern-glow-aura-1 {
-      background: radial-gradient(circle, rgba(255, 224, 145, 0.95) 0%, rgba(255, 174, 66, 0.55) 36%, rgba(235, 128, 38, 0.22) 62%, rgba(235, 128, 38, 0) 78%);
-      animation: lanternFlicker 4.4s ease-in-out infinite;
-    }
-    .lantern-glow-aura-2 {
-      background: radial-gradient(circle, rgba(255, 228, 158, 0.92) 0%, rgba(255, 168, 58, 0.50) 38%, rgba(224, 120, 34, 0.18) 64%, rgba(224, 120, 34, 0) 78%);
-      animation: lanternFlickerAlt 5.3s ease-in-out infinite;
-    }
-
-    /* Soft Warm Light Overlay Shifting Opacity */
+    /* Soft Warm Light Overlay Shifting Opacity on Hero Photo */
     @keyframes softLightOverlay {
-      0%, 100% { opacity: 0.22; }
-      50% { opacity: 0.56; }
+      0%, 100% { opacity: 0.18; }
+      50% { opacity: 0.44; }
     }
     .hero-warm-overlay {
-      background: radial-gradient(circle at 32% 24%, rgba(255, 206, 118, 0.65) 0%, rgba(214, 124, 56, 0.28) 52%, rgba(30, 47, 35, 0.15) 100%);
-      animation: softLightOverlay 7.5s ease-in-out infinite;
+      background: radial-gradient(circle at 38% 28%, rgba(255, 210, 128, 0.55) 0%, rgba(214, 124, 56, 0.22) 55%, rgba(30, 47, 35, 0.10) 100%);
+      mix-blend-mode: soft-light;
+      animation: softLightOverlay 8s ease-in-out infinite;
     }
 
-    /* Growing Botanical Sprigs Animation (Left Side - Upper & Lower) */
+    /* Ambient Drifting Warm Light Motes on the Canvas (Off the Photo) */
+    @keyframes moteDrift1 {
+      0%, 100% { transform: translate(0px, 0px) scale(1); opacity: 0.35; }
+      50% { transform: translate(18px, -28px) scale(1.35); opacity: 0.85; }
+    }
+    @keyframes moteDrift2 {
+      0%, 100% { transform: translate(0px, 0px) scale(0.9); opacity: 0.28; }
+      50% { transform: translate(-16px, -22px) scale(1.3); opacity: 0.78; }
+    }
+    @keyframes moteDrift3 {
+      0%, 100% { transform: translate(0px, 0px) scale(1.1); opacity: 0.3; }
+      50% { transform: translate(12px, -32px) scale(0.85); opacity: 0.72; }
+    }
+    .ambient-mote-1 {
+      background: radial-gradient(circle, rgba(235, 168, 72, 0.85) 0%, rgba(235, 168, 72, 0) 70%);
+      animation: moteDrift1 7.2s ease-in-out infinite;
+    }
+    .ambient-mote-2 {
+      background: radial-gradient(circle, rgba(138, 166, 98, 0.8) 0%, rgba(138, 166, 98, 0) 70%);
+      animation: moteDrift2 8.6s ease-in-out 1.4s infinite;
+    }
+    .ambient-mote-3 {
+      background: radial-gradient(circle, rgba(242, 184, 96, 0.8) 0%, rgba(242, 184, 96, 0) 70%);
+      animation: moteDrift3 9.4s ease-in-out 2.5s infinite;
+    }
+
+    /* Growing Botanical Sprigs Animation (Left Side - Upper & Sweeping Lower) */
     @keyframes drawStem {
       to { stroke-dashoffset: 0; }
     }
@@ -147,7 +138,7 @@
     }
     @keyframes gentleBreezeLower {
       0%, 100% { transform: rotate(0deg) translateY(0px); }
-      50% { transform: rotate(-1.8deg) translateY(-2.5px); }
+      50% { transform: rotate(-2.2deg) translateY(-4px); }
     }
 
     .botanical-sprig-wrap {
@@ -155,7 +146,7 @@
       animation: gentleBreeze 8s ease-in-out 2.2s infinite;
     }
     .botanical-sprig-lower {
-      transform-origin: 8px 310px;
+      transform-origin: 10px 440px;
       animation: gentleBreezeLower 9s ease-in-out 2.8s infinite;
     }
     .sprig-stem {
@@ -189,35 +180,46 @@
       animation: leafBloom 0.95s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
     }
 
+    /* Sweeping Lower Branch Animations */
     .sprig-lower-stem {
-      stroke-dasharray: 420;
-      stroke-dashoffset: 420;
-      animation: drawStem 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.65s forwards;
+      stroke-dasharray: 650;
+      stroke-dashoffset: 650;
+      animation: drawStem 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards;
     }
     .sprig-lower-twig {
-      stroke-dasharray: 120;
-      stroke-dashoffset: 120;
-      animation: drawStem 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.95s forwards;
+      stroke-dasharray: 160;
+      stroke-dashoffset: 160;
+      animation: drawStem 1.0s cubic-bezier(0.22, 1, 0.36, 1) 0.85s forwards;
     }
     .sprig-lower-leaf-1 {
       opacity: 0;
-      transform-origin: 145px 215px;
-      animation: leafBloom 0.95s cubic-bezier(0.22, 1, 0.36, 1) 1.05s forwards;
+      transform-origin: 165px 315px;
+      animation: leafBloom 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.95s forwards;
     }
     .sprig-lower-leaf-2 {
       opacity: 0;
-      transform-origin: 148px 195px;
-      animation: leafBloom 0.95s cubic-bezier(0.22, 1, 0.36, 1) 1.25s forwards;
+      transform-origin: 195px 275px;
+      animation: leafBloom 0.95s cubic-bezier(0.22, 1, 0.36, 1) 1.15s forwards;
     }
     .sprig-lower-leaf-3 {
       opacity: 0;
-      transform-origin: 185px 175px;
-      animation: leafBloom 1.05s cubic-bezier(0.22, 1, 0.36, 1) 1.45s forwards;
+      transform-origin: 280px 235px;
+      animation: leafBloom 1.05s cubic-bezier(0.22, 1, 0.36, 1) 1.35s forwards;
     }
     .sprig-lower-leaf-4 {
       opacity: 0;
-      transform-origin: 195px 185px;
-      animation: leafBloom 0.95s cubic-bezier(0.22, 1, 0.36, 1) 1.65s forwards;
+      transform-origin: 295px 260px;
+      animation: leafBloom 0.95s cubic-bezier(0.22, 1, 0.36, 1) 1.55s forwards;
+    }
+    .sprig-lower-leaf-5 {
+      opacity: 0;
+      transform-origin: 375px 190px;
+      animation: leafBloom 1.05s cubic-bezier(0.22, 1, 0.36, 1) 1.75s forwards;
+    }
+    .sprig-lower-leaf-6 {
+      opacity: 0;
+      transform-origin: 390px 210px;
+      animation: leafBloom 0.95s cubic-bezier(0.22, 1, 0.36, 1) 1.92s forwards;
     }
     .sprig-wash {
       opacity: 0;
@@ -397,8 +399,8 @@
     </div>
   </div>
 
-  <!-- Hero Section (Two Growing Botanical Sprigs on Left + Visible Glowing Hanging Lanterns + Slow Zoom) -->
-  <section class="relative pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 px-4 sm:px-8 md:px-10 overflow-hidden">
+  <!-- Hero Section (Sweeping Lower Botanical Sprig + Ambient Floating Light Motes + Clean Slow-Zoom Photo) -->
+  <section class="relative pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-32 md:pb-24 px-4 sm:px-8 md:px-10 overflow-hidden">
     
     <!-- Upper Growing Botanical Sprig From Left Side -->
     <svg class="absolute -left-6 sm:-left-4 top-14 sm:top-16 w-48 sm:w-64 md:w-72 h-auto pointer-events-none select-none z-0 botanical-sprig-wrap opacity-80" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -434,41 +436,58 @@
       </g>
     </svg>
 
-    <!-- Second Companion Growing Leaf Sprig Just Below on the Left -->
-    <svg class="absolute -left-8 sm:-left-6 top-[290px] sm:top-[335px] md:top-[355px] w-44 sm:w-56 md:w-64 h-auto pointer-events-none select-none z-0 botanical-sprig-lower opacity-75" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g transform="rotate(14 10 310)">
-        <path class="sprig-lower-stem" d="M 8 338 C 72 288, 145 232, 232 146" stroke="#2D3E32" stroke-width="1.55" stroke-linecap="round"/>
-        <path class="sprig-lower-twig" d="M 78 282 C 74 252, 72 232, 70 212" stroke="#2D3E32" stroke-width="1.45" stroke-linecap="round"/>
+    <!-- Sweeping Lower Botanical Branch Covering Half the Lower Hero Width -->
+    <svg class="absolute -left-6 sm:-left-4 bottom-0 sm:bottom-2 w-[320px] sm:w-[460px] md:w-[540px] lg:w-[620px] h-auto pointer-events-none select-none z-0 botanical-sprig-lower opacity-85" viewBox="0 0 560 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Long Sweeping Branch Stem & Side Offshoot -->
+      <path class="sprig-lower-stem" d="M 6 446 C 110 385, 245 305, 425 182" stroke="#2D3E32" stroke-width="1.75" stroke-linecap="round"/>
+      <path class="sprig-lower-twig" d="M 102 388 C 94 348, 90 318, 86 286" stroke="#2D3E32" stroke-width="1.5" stroke-linecap="round"/>
 
-        <g class="sprig-lower-leaf-1">
-          <path class="sprig-wash" d="M 134 224 C 122 246, 134 274, 166 280 C 198 284, 224 274, 226 266 C 204 250, 174 232, 134 224 Z" fill="#9EB384"/>
-          <path d="M 145 215 C 132 238, 144 265, 176 268 C 206 271, 232 260, 238 254 C 216 238, 184 220, 145 215 Z" stroke="#2D3E32" stroke-width="1.35" stroke-linejoin="round"/>
-          <path d="M 145 215 C 176 232, 206 244, 238 254" stroke="#2D3E32" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M 164 225 C 156 238, 152 248, 151 258 M 182 233 C 174 246, 170 256, 169 266 M 200 241 C 193 252, 190 260, 190 267 M 170 224 C 180 222, 188 223, 195 227" stroke="#2D3E32" stroke-width="0.7" stroke-linecap="round" opacity="0.7"/>
-        </g>
+      <!-- Leaf 1 (Lower-Mid Rounded Leaf) -->
+      <g class="sprig-lower-leaf-1">
+        <path class="sprig-wash" d="M 154 326 C 140 354, 156 388, 196 394 C 236 400, 268 386, 272 376 C 244 356, 204 334, 154 326 Z" fill="#9EB384"/>
+        <path d="M 168 315 C 152 344, 168 378, 208 382 C 246 386, 278 372, 286 364 C 258 344, 218 320, 168 315 Z" stroke="#2D3E32" stroke-width="1.45" stroke-linejoin="round"/>
+        <path d="M 168 315 C 208 336, 246 352, 286 364" stroke="#2D3E32" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M 192 328 C 182 344, 177 356, 176 370 M 214 338 C 204 354, 199 366, 198 378 M 238 348 C 229 362, 225 372, 225 380 M 200 326 C 212 324, 222 326, 232 330 M 228 338 C 240 338, 250 340, 260 346" stroke="#2D3E32" stroke-width="0.8" stroke-linecap="round" opacity="0.72"/>
+      </g>
 
-        <g class="sprig-lower-leaf-2">
-          <path class="sprig-wash" d="M 136 206 C 92 204, 68 164, 76 122 C 80 104, 86 98, 92 98 C 118 122, 134 158, 136 206 Z" fill="#9EB384"/>
-          <path d="M 148 202 C 102 200, 78 160, 86 116 C 90 98, 96 92, 102 92 C 132 118, 150 156, 148 202 Z" stroke="#2D3E32" stroke-width="1.35" stroke-linejoin="round"/>
-          <path d="M 148 202 C 132 162, 118 128, 102 92" stroke="#2D3E32" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M 138 180 C 122 182, 106 180, 95 174 M 128 158 C 112 160, 98 156, 87 148 M 118 136 C 104 137, 94 133, 86 125 M 136 174 C 142 162, 144 152, 143 142" stroke="#2D3E32" stroke-width="0.7" stroke-linecap="round" opacity="0.7"/>
-        </g>
+      <!-- Leaf 2 (Mid-Left Upright Leaf) -->
+      <g class="sprig-lower-leaf-2">
+        <path class="sprig-wash" d="M 186 286 C 132 282, 104 232, 114 180 C 120 156, 128 148, 136 148 C 168 180, 186 226, 186 286 Z" fill="#8EA69B"/>
+        <path d="M 200 280 C 144 276, 114 226, 124 172 C 130 148, 138 140, 146 140 C 182 174, 202 222, 200 280 Z" stroke="#2D3E32" stroke-width="1.45" stroke-linejoin="round"/>
+        <path d="M 200 280 C 180 230, 164 186, 146 140" stroke="#2D3E32" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M 188 252 C 168 254, 148 252, 134 244 M 176 224 C 156 226, 138 222, 124 212 M 164 196 C 146 198, 132 192, 122 182 M 154 168 C 142 170, 132 166, 126 158 M 186 244 C 194 230, 196 216, 194 204 M 172 212 C 180 196, 182 184, 178 174" stroke="#2D3E32" stroke-width="0.8" stroke-linecap="round" opacity="0.72"/>
+      </g>
 
-        <g class="sprig-lower-leaf-3">
-          <path class="sprig-wash" d="M 192 178 C 188 124, 218 76, 272 52 C 280 58, 286 78, 282 108 C 276 154, 240 182, 192 178 Z" fill="#9EB384"/>
-          <path d="M 178 176 C 172 118, 206 66, 266 38 C 272 44, 278 68, 274 102 C 266 152, 228 180, 178 176 Z" stroke="#2D3E32" stroke-width="1.4" stroke-linejoin="round"/>
-          <path d="M 178 176 C 212 128, 240 84, 266 38" stroke="#2D3E32" stroke-width="1.25" stroke-linecap="round"/>
-          <path d="M 196 152 C 188 134, 186 116, 190 100 M 214 126 C 206 108, 206 90, 212 74 M 232 100 C 226 84, 227 68, 234 56 M 200 148 C 218 152, 236 150, 250 142 M 218 122 C 236 126, 252 122, 265 112" stroke="#2D3E32" stroke-width="0.7" stroke-linecap="round" opacity="0.7"/>
-        </g>
+      <!-- Leaf 3 (Upper-Center Large Leaf) -->
+      <g class="sprig-lower-leaf-3">
+        <path class="sprig-wash" d="M 284 238 C 278 172, 316 112, 384 82 C 394 90, 402 114, 396 152 C 388 210, 344 244, 284 238 Z" fill="#9EB384"/>
+        <path d="M 268 236 C 260 164, 302 100, 376 66 C 384 74, 392 102, 386 144 C 376 206, 330 242, 268 236 Z" stroke="#2D3E32" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 268 236 C 310 176, 344 122, 376 66" stroke="#2D3E32" stroke-width="1.35" stroke-linecap="round"/>
+        <path d="M 290 206 C 280 184, 278 162, 282 142 M 312 174 C 302 152, 302 130, 310 110 M 334 142 C 326 122, 328 102, 336 86 M 294 202 C 316 206, 338 204, 356 194 M 316 170 C 338 174, 358 170, 374 158 M 338 138 C 356 140, 370 134, 382 122" stroke="#2D3E32" stroke-width="0.8" stroke-linecap="round" opacity="0.72"/>
+      </g>
 
-        <g class="sprig-lower-leaf-4">
-          <path class="sprig-wash" d="M 192 192 C 228 174, 274 172, 314 176 C 306 196, 272 214, 228 212 C 212 210, 200 202, 192 192 Z" fill="#9EB384"/>
-          <path d="M 196 186 C 234 166, 282 162, 324 166 C 314 188, 278 206, 232 204 C 216 202, 204 196, 196 186 Z" stroke="#2D3E32" stroke-width="1.35" stroke-linejoin="round"/>
-          <path d="M 196 186 C 242 180, 284 174, 324 166" stroke="#2D3E32" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M 224 182 C 238 174, 252 168, 266 165 M 254 178 C 268 171, 282 167, 296 165 M 228 183 C 242 191, 256 196, 272 198" stroke="#2D3E32" stroke-width="0.7" stroke-linecap="round" opacity="0.7"/>
-        </g>
+      <!-- Leaf 4 (Lower-Right Sweeping Leaf) -->
+      <g class="sprig-lower-leaf-4">
+        <path class="sprig-wash" d="M 284 264 C 328 242, 386 238, 436 244 C 426 268, 384 290, 328 288 C 308 286, 294 276, 284 264 Z" fill="#8EA69B"/>
+        <path d="M 290 256 C 336 232, 396 226, 448 232 C 436 258, 392 280, 334 278 C 314 276, 300 268, 290 256 Z" stroke="#2D3E32" stroke-width="1.45" stroke-linejoin="round"/>
+        <path d="M 290 256 C 346 248, 398 240, 448 232" stroke="#2D3E32" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M 324 252 C 342 242, 358 234, 376 230 M 362 246 C 380 238, 396 232, 414 230 M 330 252 C 348 262, 366 268, 384 270 M 370 248 C 388 256, 404 260, 422 258" stroke="#2D3E32" stroke-width="0.8" stroke-linecap="round" opacity="0.72"/>
+      </g>
+
+      <!-- Leaf 5 (Tip Crown Leaf Reaching Halfway Across Page) -->
+      <g class="sprig-lower-leaf-5">
+        <path class="sprig-wash" d="M 392 198 C 414 152, 464 126, 524 122 C 524 146, 496 184, 446 202 C 424 208, 406 206, 392 198 Z" fill="#9EB384"/>
+        <path d="M 384 192 C 408 144, 462 116, 526 112 C 526 138, 496 178, 442 196 C 420 202, 400 200, 384 192 Z" stroke="#2D3E32" stroke-width="1.45" stroke-linejoin="round"/>
+        <path d="M 384 192 C 436 168, 482 142, 526 112" stroke="#2D3E32" stroke-width="1.3" stroke-linecap="round"/>
+        <path d="M 416 176 C 422 158, 432 144, 446 132 M 448 160 C 454 142, 464 130, 478 120 M 422 174 C 442 178, 460 176, 478 170 M 456 156 C 474 160, 490 156, 504 148" stroke="#2D3E32" stroke-width="0.8" stroke-linecap="round" opacity="0.72"/>
       </g>
     </svg>
+
+    <!-- Creative Ambient Floating Warm Light Motes (Drifting Gently in Open Space, Not Over Photo) -->
+    <div class="absolute top-36 left-[28%] w-3.5 h-3.5 rounded-full ambient-mote-1 pointer-events-none"></div>
+    <div class="absolute top-64 left-[44%] w-4 h-4 rounded-full ambient-mote-2 pointer-events-none"></div>
+    <div class="absolute bottom-28 left-[36%] w-3 h-3 rounded-full ambient-mote-3 pointer-events-none"></div>
+    <div class="absolute top-28 right-[42%] w-3.5 h-3.5 rounded-full ambient-mote-2 pointer-events-none"></div>
 
     <svg class="absolute top-20 right-[-50px] md:right-10 w-64 md:w-96 h-64 md:h-96 text-leafolive/10 animate-float-slow pointer-events-none" viewBox="0 0 200 200" fill="currentColor">
       <path d="M100,15 C145,15 180,55 180,105 C180,155 135,185 100,185 C100,130 130,85 100,15 Z" />
@@ -497,57 +516,21 @@
         </div>
       </div>
 
-      <!-- Right Visual Card (Slow Zoom + Visible Glowing Hanging Lanterns + Soft Opacity-Shifting Light Overlay) -->
+      <!-- Right Visual Card (Clean Café Photo with Slow Zoom + Soft Breathing Light Overlay) -->
       <div class="md:col-span-5 relative flex justify-center">
         <div class="relative rounded-[2.25rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] w-full max-w-sm lg:max-w-md bg-sand group">
-          <!-- Very Slow Zooming Café Ceiling Photo -->
           <img 
             src="assets/cafe-ceiling.webp" 
             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=80';"
             alt="Leaf Café hanging sculptural lamps, mezzanine and rustic art" 
-            class="w-full h-full object-cover hero-slow-zoom brightness-[0.86]"
+            class="w-full h-full object-cover hero-slow-zoom"
           />
-
-          <!-- Warm Evening Ambience Tint so Lantern Glow Pops -->
-          <div class="absolute inset-0 bg-gradient-to-b from-[#1a130b]/45 via-transparent to-forest/90 pointer-events-none"></div>
 
           <!-- Soft Warm Light Overlay That Changes Opacity -->
           <div class="absolute inset-0 hero-warm-overlay pointer-events-none"></div>
 
-          <!-- Visible Glowing Hanging Lantern #1 (Left-Top) -->
-          <div class="absolute top-0 left-[14%] lantern-swing-1 pointer-events-none z-10 flex flex-col items-center">
-            <!-- Warm Flickering Glow Aura Behind Lantern -->
-            <div class="absolute top-12 -left-14 w-44 h-44 rounded-full lantern-glow-aura-1"></div>
-            <!-- Suspension Cord & Woven Sculptural Lantern -->
-            <svg viewBox="0 0 80 140" class="w-16 sm:w-20 h-28 sm:h-36 relative z-10 drop-shadow-[0_0_14px_rgba(255,196,92,0.85)]">
-              <line x1="40" y1="0" x2="40" y2="34" stroke="#2B1D12" stroke-width="2" />
-              <!-- Upper Tier -->
-              <path d="M24 38 C24 30, 56 30, 56 38 L62 56 C62 64, 18 64, 18 56 Z" fill="#F4A236" stroke="#7C4314" stroke-width="1.5"/>
-              <!-- Main Glowing Lantern Body -->
-              <path d="M16 58 C12 74, 16 94, 26 102 L54 102 C64 94, 68 74, 64 58 Z" fill="#FFD166" stroke="#8C4A16" stroke-width="1.5"/>
-              <!-- Warm Filament Core -->
-              <ellipse cx="40" cy="78" rx="14" ry="16" fill="#FFF6CC" opacity="0.92" />
-              <!-- Woven Ribs -->
-              <path d="M26 58 C24 76, 26 92, 31 102 M40 58 L40 102 M54 58 C56 76, 54 92, 49 102" stroke="#9E561B" stroke-width="1.1" fill="none" opacity="0.75"/>
-              <!-- Bottom Finial -->
-              <path d="M28 102 L52 102 L46 112 L34 112 Z" fill="#C86D28" stroke="#6E380E" stroke-width="1.2"/>
-            </svg>
-          </div>
-
-          <!-- Visible Glowing Hanging Lantern #2 (Center-Left Lower) -->
-          <div class="absolute top-0 left-[37%] lantern-swing-2 pointer-events-none z-10 flex flex-col items-center">
-            <!-- Warm Flickering Glow Aura Behind Lantern -->
-            <div class="absolute top-24 -left-12 w-36 h-36 rounded-full lantern-glow-aura-2"></div>
-            <!-- Suspension Cord & Rounded Lantern -->
-            <svg viewBox="0 0 70 175" class="w-14 sm:w-16 h-36 sm:h-44 relative z-10 drop-shadow-[0_0_12px_rgba(255,196,92,0.85)]">
-              <line x1="35" y1="0" x2="35" y2="78" stroke="#2B1D12" stroke-width="1.8" />
-              <ellipse cx="35" cy="106" rx="22" ry="26" fill="#FFC857" stroke="#8C4A16" stroke-width="1.5"/>
-              <ellipse cx="35" cy="106" rx="11" ry="14" fill="#FFF7D6" opacity="0.95" />
-              <path d="M23 84 C20 100, 20 112, 23 128 M35 80 L35 132 M47 84 C50 100, 50 112, 47 128" stroke="#9E561B" stroke-width="1" fill="none" opacity="0.7"/>
-              <rect x="27" y="77" width="16" height="5" rx="2" fill="#7C4314" />
-              <rect x="28" y="130" width="14" height="5" rx="2" fill="#7C4314" />
-            </svg>
-          </div>
+          <!-- Bottom Readability Gradient -->
+          <div class="absolute inset-0 bg-gradient-to-t from-forest/85 via-forest/15 to-transparent pointer-events-none"></div>
           
           <!-- Official Circular Emblem Overlay -->
           <div class="absolute top-4 right-4 w-28 h-28 lg:w-36 lg:h-36 rounded-full bg-leafolive shadow-xl border-2 border-white/25 flex flex-col items-center justify-center px-2 text-white text-center animate-float-slow z-20">
