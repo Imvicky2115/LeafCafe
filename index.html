@@ -53,6 +53,11 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    @keyframes lockPulse {
+      0% { box-shadow: 0 0 0 0 rgba(85, 107, 47, 0.35); }
+      70% { box-shadow: 0 0 0 12px rgba(85, 107, 47, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(85, 107, 47, 0); }
+    }
 
     .animate-float-slow { animation: floatSlow 7s ease-in-out infinite; }
 
@@ -63,6 +68,29 @@
       -webkit-backdrop-filter: blur(16px) saturate(160%);
       border: 1px solid rgba(255, 255, 255, 0.55);
       box-shadow: 0 4px 24px -4px rgba(30, 47, 35, 0.08);
+    }
+
+    /* 3D Suit-Selector Stage for Menu Highlights */
+    .suit-stage {
+      perspective: 1400px;
+      transform-style: preserve-3d;
+      touch-action: pan-y;
+    }
+    .suit-card {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.55s ease,
+                  border-color 0.4s ease;
+      will-change: transform, opacity;
+      user-select: none;
+    }
+    .suit-card.is-equipped {
+      border-color: #556B2F;
+      box-shadow: 0 24px 48px -12px rgba(30, 47, 35, 0.22);
+      animation: lockPulse 0.9s ease-out;
     }
 
     /* Scroll Reveal */
@@ -113,7 +141,7 @@
         </div>
       </a>
 
-      <!-- Desktop & Tablet/Desktop-Mode Navigation Links (md:flex) -->
+      <!-- Desktop & Tablet/Desktop-Mode Navigation Links -->
       <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-forest/90">
         <a href="#highlights" class="hover:text-leafolive transition-colors">Highlights</a>
         <a href="#menu" class="hover:text-leafolive transition-colors">Menu</a>
@@ -186,7 +214,7 @@
     </div>
   </div>
 
-  <!-- Hero Section (Natural Height + Side-by-Side md:grid-cols-12 so Desktop Mode Has Zero Blank Space) -->
+  <!-- Hero Section -->
   <section class="relative pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 px-4 sm:px-8 md:px-10 overflow-hidden">
     <svg class="absolute top-20 right-[-50px] md:right-10 w-64 md:w-96 h-64 md:h-96 text-leafolive/10 animate-float-slow pointer-events-none" viewBox="0 0 200 200" fill="currentColor">
       <path d="M100,15 C145,15 180,55 180,105 C180,155 135,185 100,185 C100,130 130,85 100,15 Z" />
@@ -315,75 +343,41 @@
     </div>
   </section>
 
-  <!-- Menu Highlights Section -->
-  <section id="highlights" class="py-16 sm:py-20 px-4 sm:px-8 md:px-10 bg-sand/60 border-b border-forest/10">
+  <!-- 3D Suit-Selector Menu Highlights Deck (6 Swipeable Placeholder Cards) -->
+  <section id="highlights" class="py-16 sm:py-24 px-4 sm:px-8 md:px-10 bg-sand/60 border-b border-forest/10 overflow-hidden">
     <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 reveal">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 reveal">
         <div>
-          <span class="text-xs uppercase tracking-[0.25em] text-leafolive font-bold">Guest Favorites</span>
+          <span class="text-xs uppercase tracking-[0.25em] text-leafolive font-bold">Select Your Signature</span>
           <h2 class="font-serif text-4xl sm:text-5xl font-semibold text-forest mt-1">Menu Highlights</h2>
         </div>
-        <p class="text-sm text-charcoal/70 max-w-md">
-          Most-loved plates and signature South Indian filter brews from our kitchen.
-        </p>
+        <div class="flex items-center gap-3">
+          <span id="suit-status-badge" class="text-xs font-semibold text-forest bg-white/90 border border-leafolive/25 px-3.5 py-1.5 rounded-full shadow-2xs">
+            01 / 06 &bull; Equipped
+          </span>
+          <div class="flex items-center gap-1.5">
+            <button id="suit-prev-btn" aria-label="Previous Highlight" class="w-10 h-10 rounded-full bg-white hover:bg-forest hover:text-white border border-forest/15 flex items-center justify-center text-forest transition-colors shadow-2xs cursor-pointer">
+              <i data-lucide="chevron-left" class="w-4 h-4"></i>
+            </button>
+            <button id="suit-next-btn" aria-label="Next Highlight" class="w-10 h-10 rounded-full bg-white hover:bg-forest hover:text-white border border-forest/15 flex items-center justify-center text-forest transition-colors shadow-2xs cursor-pointer">
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white rounded-3xl overflow-hidden border border-forest/10 shadow-sm hover:shadow-md transition-all group reveal">
-          <div class="aspect-[4/3] overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=700&q=80" alt="Chipotle falafel sliders" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            <span class="absolute top-3 left-3 bg-forest/90 text-white text-[10px] uppercase tracking-wider px-3 py-1 rounded-full">Slider &amp; Sandwiches</span>
-          </div>
-          <div class="p-5">
-            <div class="flex justify-between items-baseline gap-2 mb-1.5">
-              <h3 class="font-serif text-xl font-bold text-forest">Chipotle falafel sliders</h3>
-              <span class="font-semibold text-sm text-leafolive shrink-0">₹450</span>
-            </div>
-            <p class="text-xs text-charcoal/70 leading-relaxed">Mini chickpea patties, golden and crispy with fresh lettuce, ripe tomatoes, and creamy tahini sauce inside soft slider buns.</p>
-          </div>
-        </div>
+      <!-- 3D Perspective Stage -->
+      <div id="suit-stage" class="suit-stage relative h-[430px] sm:h-[460px] w-full flex items-center justify-center cursor-grab active:cursor-grabbing">
+        <!-- 6 Suit Cards Rendered Dynamically -->
+      </div>
 
-        <div class="bg-white rounded-3xl overflow-hidden border border-forest/10 shadow-sm hover:shadow-md transition-all group reveal reveal-delay-1">
-          <div class="aspect-[4/3] overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=700&q=80" alt="Khao Suey" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            <span class="absolute top-3 left-3 bg-forest/90 text-white text-[10px] uppercase tracking-wider px-3 py-1 rounded-full">Main Course</span>
-          </div>
-          <div class="p-5">
-            <div class="flex justify-between items-baseline gap-2 mb-1.5">
-              <h3 class="font-serif text-xl font-bold text-forest">Khao Suey</h3>
-              <span class="font-semibold text-sm text-leafolive shrink-0">₹350</span>
-            </div>
-            <p class="text-xs text-charcoal/70 leading-relaxed">A rice noodles-inspired one-bowl meal featuring noodles served in a fragrant coconut curry broth, infused with garlic, ginger, and lemongrass.</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-3xl overflow-hidden border border-forest/10 shadow-sm hover:shadow-md transition-all group reveal reveal-delay-2">
-          <div class="aspect-[4/3] overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=700&q=80" alt="Lotus Biscoff Cheesecake" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            <span class="absolute top-3 left-3 bg-terracotta text-white text-[10px] uppercase tracking-wider px-3 py-1 rounded-full">Signature Dessert</span>
-          </div>
-          <div class="p-5">
-            <div class="flex justify-between items-baseline gap-2 mb-1.5">
-              <h3 class="font-serif text-xl font-bold text-forest">Lotus Biscoff Cheesecake</h3>
-              <span class="font-semibold text-sm text-leafolive shrink-0">₹319</span>
-            </div>
-            <p class="text-xs text-charcoal/70 leading-relaxed">A Biscoff biscuit base, topped with a velvety smooth cream cheese layer infused with cookie crumbs for crushed Lotus Biscoff cookies.</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-3xl overflow-hidden border border-forest/10 shadow-sm hover:shadow-md transition-all group reveal reveal-delay-3">
-          <div class="aspect-[4/3] overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80" alt="Coconut Filter Cold Coffee" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            <span class="absolute top-3 left-3 bg-leafolive text-white text-[10px] uppercase tracking-wider px-3 py-1 rounded-full">Tea &amp; Coffee</span>
-          </div>
-          <div class="p-5">
-            <div class="flex justify-between items-baseline gap-2 mb-1.5">
-              <h3 class="font-serif text-xl font-bold text-forest">Coconut Filter Cold Coffee</h3>
-              <span class="font-semibold text-sm text-leafolive shrink-0">₹210</span>
-            </div>
-            <p class="text-xs text-charcoal/70 leading-relaxed">Authentic South Indian filter coffee decoction blended with chilled coconut notes for a smooth, refreshing finish.</p>
-          </div>
-        </div>
+      <!-- Selector Dock / Suit Pips -->
+      <div class="mt-6 flex flex-col items-center gap-3">
+        <div id="suit-dots" class="flex items-center justify-center gap-2"></div>
+        <p class="text-[11px] text-charcoal/55 font-medium flex items-center gap-1.5">
+          <i data-lucide="move-horizontal" class="w-3.5 h-3.5 text-leafolive"></i>
+          <span>Swipe left or right to lock in your dish</span>
+        </p>
       </div>
     </div>
   </section>
@@ -773,6 +767,221 @@
   </div>
 
   <script>
+    // 6 Placeholder Menu Highlight Cards (Easy to swap with real dishes & photos later)
+    const HIGHLIGHT_SUITS = [
+      {
+        code: "01",
+        tag: "Signature Brew",
+        name: "Spiced Jaggery Cold Brew",
+        price: "₹220",
+        desc: "18-hour steeped estate roast infused with organic Kolhapuri jaggery, roasted cinnamon, and a velvety oat-milk crown.",
+        image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80"
+      },
+      {
+        code: "02",
+        tag: "Artisan Toast",
+        name: "Truffle Wild Mushroom Tartine",
+        price: "₹380",
+        desc: "Charred country sourdough layered with whipped herbed ricotta, garlic-thyme forest mushrooms, and white truffle oil.",
+        image: "https://images.unsplash.com/photo-1525351484163-7529414342d8?auto=format&fit=crop&w=700&q=80"
+      },
+      {
+        code: "03",
+        tag: "Garden Bowl",
+        name: "Charred Avocado & Quinoa Bowl",
+        price: "₹440",
+        desc: "Tri-color organic quinoa, flame-kissed Hass avocado, roasted sweet potato, pickled radish, and citrus-tahini dressing.",
+        image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=700&q=80"
+      },
+      {
+        code: "04",
+        tag: "House Slider",
+        name: "Smoked Cottage Cheese Brioche",
+        price: "₹420",
+        desc: "Pillowy butter-toasted brioche sliders loaded with chargrilled paneer steak, caramelized onion jam, and mint aioli.",
+        image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=700&q=80"
+      },
+      {
+        code: "05",
+        tag: "Sweet Finish",
+        name: "Pistachio & Rose Tres Leches",
+        price: "₹340",
+        desc: "Saffron-cardamom sponge soaked in three milks, topped with roasted Iranian pistachio crumble and dried rose petals.",
+        image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=700&q=80"
+      },
+      {
+        code: "06",
+        tag: "Botanical Cooler",
+        name: "Hibiscus & Garden Basil Fizz",
+        price: "₹195",
+        desc: "Cold-pressed crimson hibiscus flower reduction shaken with crushed sweet basil leaves, kaffir lime, and sparkling tonic.",
+        image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=700&q=80"
+      }
+    ];
+
+    let activeSuitIndex = 0;
+    const suitStage = document.getElementById("suit-stage");
+    const suitDots = document.getElementById("suit-dots");
+    const suitBadge = document.getElementById("suit-status-badge");
+
+    function initSuitDeck() {
+      suitStage.innerHTML = "";
+      suitDots.innerHTML = "";
+
+      HIGHLIGHT_SUITS.forEach((suit, idx) => {
+        const card = document.createElement("div");
+        card.className = "suit-card w-[285px] sm:w-[330px] bg-white rounded-[2rem] overflow-hidden border-2 border-forest/10 cursor-pointer";
+        card.setAttribute("data-index", idx);
+        card.innerHTML = `
+          <div class="aspect-[4/3] overflow-hidden relative bg-sand">
+            <img src="${suit.image}" alt="${suit.name}" draggable="false" class="w-full h-full object-cover transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-forest/65 via-transparent to-transparent"></div>
+            <span class="absolute top-3.5 left-3.5 bg-forest/90 backdrop-blur-xs text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-semibold">
+              ${suit.tag}
+            </span>
+            <span class="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-cream/95 text-forest font-logo text-xs font-bold flex items-center justify-center shadow-xs">
+              ${suit.code}
+            </span>
+            <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
+              <span class="text-[10px] uppercase tracking-widest text-sage font-semibold suit-equip-label">Signature Selection</span>
+              <span class="font-serif text-xl font-bold">${suit.price}</span>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6">
+            <h3 class="font-serif text-2xl font-bold text-forest leading-snug mb-2">${suit.name}</h3>
+            <p class="text-xs text-charcoal/70 leading-relaxed line-clamp-3">${suit.desc}</p>
+          </div>
+        `;
+        card.addEventListener("click", () => {
+          if (idx !== activeSuitIndex) {
+            activeSuitIndex = idx;
+            updateSuitDeck();
+          }
+        });
+        suitStage.appendChild(card);
+
+        const dot = document.createElement("button");
+        dot.setAttribute("aria-label", `Select ${suit.name}`);
+        dot.className = "h-2 rounded-full transition-all duration-300 cursor-pointer";
+        dot.addEventListener("click", () => {
+          activeSuitIndex = idx;
+          updateSuitDeck();
+        });
+        suitDots.appendChild(dot);
+      });
+
+      updateSuitDeck();
+    }
+
+    function updateSuitDeck() {
+      const cards = suitStage.querySelectorAll(".suit-card");
+      const dots = suitDots.querySelectorAll("button");
+      const total = HIGHLIGHT_SUITS.length;
+      const isMobile = window.innerWidth < 640;
+      const spreadX = isMobile ? 165 : 275;
+      const farSpreadX = isMobile ? 275 : 460;
+
+      cards.forEach((card, idx) => {
+        let offset = idx - activeSuitIndex;
+        if (offset > total / 2) offset -= total;
+        if (offset < -total / 2) offset += total;
+
+        const label = card.querySelector(".suit-equip-label");
+
+        if (offset === 0) {
+          card.style.transform = "translate3d(-50%, 0px, 90px) rotateY(0deg) scale(1)";
+          card.style.opacity = "1";
+          card.style.zIndex = "30";
+          card.style.pointerEvents = "auto";
+          card.classList.add("is-equipped");
+          if (label) label.textContent = "★ Selected Highlight";
+        } else if (offset === -1) {
+          card.style.transform = `translate3d(calc(-50% - ${spreadX}px), 16px, -40px) rotateY(22deg) scale(0.86)`;
+          card.style.opacity = "0.82";
+          card.style.zIndex = "20";
+          card.style.pointerEvents = "auto";
+          card.classList.remove("is-equipped");
+          if (label) label.textContent = "Swipe / Tap to Equip";
+        } else if (offset === 1) {
+          card.style.transform = `translate3d(calc(-50% + ${spreadX}px), 16px, -40px) rotateY(-22deg) scale(0.86)`;
+          card.style.opacity = "0.82";
+          card.style.zIndex = "20";
+          card.style.pointerEvents = "auto";
+          card.classList.remove("is-equipped");
+          if (label) label.textContent = "Swipe / Tap to Equip";
+        } else if (offset === -2) {
+          card.style.transform = `translate3d(calc(-50% - ${farSpreadX}px), 30px, -140px) rotateY(34deg) scale(0.72)`;
+          card.style.opacity = isMobile ? "0" : "0.42";
+          card.style.zIndex = "10";
+          card.style.pointerEvents = isMobile ? "none" : "auto";
+          card.classList.remove("is-equipped");
+        } else if (offset === 2) {
+          card.style.transform = `translate3d(calc(-50% + ${farSpreadX}px), 30px, -140px) rotateY(-34deg) scale(0.72)`;
+          card.style.opacity = isMobile ? "0" : "0.42";
+          card.style.zIndex = "10";
+          card.style.pointerEvents = isMobile ? "none" : "auto";
+          card.classList.remove("is-equipped");
+        } else {
+          card.style.transform = "translate3d(-50%, 40px, -220px) rotateY(0deg) scale(0.6)";
+          card.style.opacity = "0";
+          card.style.zIndex = "1";
+          card.style.pointerEvents = "none";
+          card.classList.remove("is-equipped");
+        }
+      });
+
+      dots.forEach((dot, idx) => {
+        if (idx === activeSuitIndex) {
+          dot.className = "h-2.5 w-8 rounded-full bg-leafolive transition-all duration-300 cursor-pointer";
+        } else {
+          dot.className = "h-2.5 w-2.5 rounded-full bg-forest/20 hover:bg-forest/40 transition-all duration-300 cursor-pointer";
+        }
+      });
+
+      const currentSuit = HIGHLIGHT_SUITS[activeSuitIndex];
+      suitBadge.textContent = `${currentSuit.code} / 0${total} • ${currentSuit.tag}`;
+    }
+
+    function nextSuit() {
+      activeSuitIndex = (activeSuitIndex + 1) % HIGHLIGHT_SUITS.length;
+      updateSuitDeck();
+    }
+
+    function prevSuit() {
+      activeSuitIndex = (activeSuitIndex - 1 + HIGHLIGHT_SUITS.length) % HIGHLIGHT_SUITS.length;
+      updateSuitDeck();
+    }
+
+    document.getElementById("suit-next-btn").addEventListener("click", nextSuit);
+    document.getElementById("suit-prev-btn").addEventListener("click", prevSuit);
+
+    // Touch & Mouse Swipe Gesture on the 3D Suit Stage
+    let dragStartX = 0;
+    let isDraggingSuit = false;
+
+    suitStage.addEventListener("pointerdown", (e) => {
+      dragStartX = e.clientX;
+      isDraggingSuit = true;
+    });
+
+    suitStage.addEventListener("pointerup", (e) => {
+      if (!isDraggingSuit) return;
+      isDraggingSuit = false;
+      const diffX = e.clientX - dragStartX;
+      if (Math.abs(diffX) > 36) {
+        if (diffX < 0) nextSuit();
+        else prevSuit();
+      }
+    });
+
+    suitStage.addEventListener("pointercancel", () => {
+      isDraggingSuit = false;
+    });
+
+    window.addEventListener("resize", updateSuitDeck);
+    initSuitDeck();
+
+    // Full Official Café Menu
     const CAFE_MENU = [
       {
         id: "soups",
