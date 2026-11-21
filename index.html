@@ -54,8 +54,8 @@
       to { opacity: 1; transform: translateY(0); }
     }
     @keyframes lockPulse {
-      0% { box-shadow: 0 0 0 0 rgba(85, 107, 47, 0.35); }
-      70% { box-shadow: 0 0 0 12px rgba(85, 107, 47, 0); }
+      0% { box-shadow: 0 0 0 0 rgba(85, 107, 47, 0.32); }
+      70% { box-shadow: 0 0 0 10px rgba(85, 107, 47, 0); }
       100% { box-shadow: 0 0 0 0 rgba(85, 107, 47, 0); }
     }
 
@@ -80,17 +80,21 @@
       position: absolute;
       left: 50%;
       top: 0;
-      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-                  opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-                  box-shadow 0.55s ease,
-                  border-color 0.4s ease;
+      transition: transform 0.52s cubic-bezier(0.16, 1, 0.3, 1),
+                  opacity 0.52s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.45s ease,
+                  border-color 0.35s ease;
       will-change: transform, opacity;
       user-select: none;
+      -webkit-user-select: none;
+    }
+    .suit-card.is-dragging {
+      transition: none !important;
     }
     .suit-card.is-equipped {
       border-color: #556B2F;
-      box-shadow: 0 24px 48px -12px rgba(30, 47, 35, 0.22);
-      animation: lockPulse 0.9s ease-out;
+      box-shadow: 0 22px 44px -12px rgba(30, 47, 35, 0.22);
+      animation: lockPulse 0.85s ease-out;
     }
 
     /* Scroll Reveal */
@@ -282,7 +286,7 @@
       <!-- Score + Distribution -->
       <div class="flex items-center gap-5 shrink-0">
         <div class="text-center shrink-0">
-          <div class="font-serif text-5xl sm:text-6xl font-bold text-forest leading-none">4.7</div>
+          <div class="font-sans text-4xl sm:text-5xl font-bold text-forest leading-none">4.7</div>
           <div class="flex items-center justify-center gap-0.5 text-amber-500 mt-2">
             <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
             <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
@@ -343,36 +347,36 @@
     </div>
   </section>
 
-  <!-- 3D Suit-Selector Menu Highlights Deck (6 Swipeable Placeholder Cards) -->
-  <section id="highlights" class="py-16 sm:py-24 px-4 sm:px-8 md:px-10 bg-sand/60 border-b border-forest/10 overflow-hidden">
+  <!-- 3D Suit-Selector Menu Highlights Deck (6 Real Highlights, Compact Cards, Smooth Drag Swipe) -->
+  <section id="highlights" class="py-16 sm:py-20 px-4 sm:px-8 md:px-10 bg-sand/60 border-b border-forest/10 overflow-hidden">
     <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 reveal">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-7 gap-4 reveal">
         <div>
           <span class="text-xs uppercase tracking-[0.25em] text-leafolive font-bold">Select Your Signature</span>
           <h2 class="font-serif text-4xl sm:text-5xl font-semibold text-forest mt-1">Menu Highlights</h2>
         </div>
         <div class="flex items-center gap-3">
           <span id="suit-status-badge" class="text-xs font-semibold text-forest bg-white/90 border border-leafolive/25 px-3.5 py-1.5 rounded-full shadow-2xs">
-            01 / 06 &bull; Equipped
+            01 / 06 &bull; Smoothies &amp; Coolers
           </span>
           <div class="flex items-center gap-1.5">
-            <button id="suit-prev-btn" aria-label="Previous Highlight" class="w-10 h-10 rounded-full bg-white hover:bg-forest hover:text-white border border-forest/15 flex items-center justify-center text-forest transition-colors shadow-2xs cursor-pointer">
+            <button id="suit-prev-btn" aria-label="Previous Highlight" class="w-9 h-9 rounded-full bg-white hover:bg-forest hover:text-white border border-forest/15 flex items-center justify-center text-forest transition-colors shadow-2xs cursor-pointer">
               <i data-lucide="chevron-left" class="w-4 h-4"></i>
             </button>
-            <button id="suit-next-btn" aria-label="Next Highlight" class="w-10 h-10 rounded-full bg-white hover:bg-forest hover:text-white border border-forest/15 flex items-center justify-center text-forest transition-colors shadow-2xs cursor-pointer">
+            <button id="suit-next-btn" aria-label="Next Highlight" class="w-9 h-9 rounded-full bg-white hover:bg-forest hover:text-white border border-forest/15 flex items-center justify-center text-forest transition-colors shadow-2xs cursor-pointer">
               <i data-lucide="chevron-right" class="w-4 h-4"></i>
             </button>
           </div>
         </div>
       </div>
 
-      <!-- 3D Perspective Stage -->
-      <div id="suit-stage" class="suit-stage relative h-[430px] sm:h-[460px] w-full flex items-center justify-center cursor-grab active:cursor-grabbing">
-        <!-- 6 Suit Cards Rendered Dynamically -->
+      <!-- Compact 3D Perspective Stage -->
+      <div id="suit-stage" class="suit-stage relative h-[375px] sm:h-[405px] w-full flex items-center justify-center cursor-grab active:cursor-grabbing">
+        <!-- 6 Highlight Suit Cards Rendered Dynamically -->
       </div>
 
       <!-- Selector Dock / Suit Pips -->
-      <div class="mt-6 flex flex-col items-center gap-3">
+      <div class="mt-4 flex flex-col items-center gap-2.5">
         <div id="suit-dots" class="flex items-center justify-center gap-2"></div>
         <p class="text-[11px] text-charcoal/55 font-medium flex items-center gap-1.5">
           <i data-lucide="move-horizontal" class="w-3.5 h-3.5 text-leafolive"></i>
@@ -767,55 +771,55 @@
   </div>
 
   <script>
-    // 6 Placeholder Menu Highlight Cards (Easy to swap with real dishes & photos later)
+    // 6 Official Menu Highlights with Curated Food Photos & Standard Rupee Prices
     const HIGHLIGHT_SUITS = [
       {
         code: "01",
-        tag: "Signature Brew",
-        name: "Spiced Jaggery Cold Brew",
-        price: "₹220",
-        desc: "18-hour steeped estate roast infused with organic Kolhapuri jaggery, roasted cinnamon, and a velvety oat-milk crown.",
-        image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80"
+        tag: "Smoothies",
+        name: "Mango Smoothie",
+        price: "₹199",
+        desc: "Thick, velvety Alphonso mango smoothie blended chilled to creamy perfection.",
+        image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=700&q=80"
       },
       {
         code: "02",
-        tag: "Artisan Toast",
-        name: "Truffle Wild Mushroom Tartine",
-        price: "₹380",
-        desc: "Charred country sourdough layered with whipped herbed ricotta, garlic-thyme forest mushrooms, and white truffle oil.",
-        image: "https://images.unsplash.com/photo-1525351484163-7529414342d8?auto=format&fit=crop&w=700&q=80"
+        tag: "Appetizers",
+        name: "Bruschetta Trio (Cold)",
+        price: "₹350",
+        desc: "Crisp artisanal bread topped with Tomato & Basil, Mushroom & Truffle, and fresh Avocado.",
+        image: "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?auto=format&fit=crop&w=700&q=80"
       },
       {
         code: "03",
-        tag: "Garden Bowl",
-        name: "Charred Avocado & Quinoa Bowl",
-        price: "₹440",
-        desc: "Tri-color organic quinoa, flame-kissed Hass avocado, roasted sweet potato, pickled radish, and citrus-tahini dressing.",
-        image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=700&q=80"
+        tag: "Appetizers",
+        name: "Tex Mex Poppers",
+        price: "₹400",
+        desc: "Crispy golden bites bursting with a spicy Tex-Mex filling of creamy cheese, jalapeños, bell peppers, and corn.",
+        image: "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=700&q=80"
       },
       {
         code: "04",
-        tag: "House Slider",
-        name: "Smoked Cottage Cheese Brioche",
-        price: "₹420",
-        desc: "Pillowy butter-toasted brioche sliders loaded with chargrilled paneer steak, caramelized onion jam, and mint aioli.",
-        image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=700&q=80"
+        tag: "Coolers & Refreshers",
+        name: "Spicy Kokum Cooler",
+        price: "₹150",
+        desc: "Tangy Konkan kokum infusion balanced with roasted cumin, fresh lime, and a subtle spiced kick.",
+        image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=700&q=80"
       },
       {
         code: "05",
-        tag: "Sweet Finish",
-        name: "Pistachio & Rose Tres Leches",
-        price: "₹340",
-        desc: "Saffron-cardamom sponge soaked in three milks, topped with roasted Iranian pistachio crumble and dried rose petals.",
-        image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=700&q=80"
+        tag: "Slider & Sandwiches",
+        name: "Chipotle falafel sliders",
+        price: "₹450",
+        desc: "Mini chickpea patties, golden and crispy with fresh lettuce, ripe tomatoes, and creamy tahini sauce inside soft slider buns.",
+        image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=700&q=80"
       },
       {
         code: "06",
-        tag: "Botanical Cooler",
-        name: "Hibiscus & Garden Basil Fizz",
-        price: "₹195",
-        desc: "Cold-pressed crimson hibiscus flower reduction shaken with crushed sweet basil leaves, kaffir lime, and sparkling tonic.",
-        image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=700&q=80"
+        tag: "Tea & Coffee",
+        name: "Filter Mocha Madras",
+        price: "₹150",
+        desc: "Authentic South Indian filter coffee decoction layered with rich dark chocolate ganache and steamed milk.",
+        image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=700&q=80"
       }
     ];
 
@@ -830,32 +834,33 @@
 
       HIGHLIGHT_SUITS.forEach((suit, idx) => {
         const card = document.createElement("div");
-        card.className = "suit-card w-[285px] sm:w-[330px] bg-white rounded-[2rem] overflow-hidden border-2 border-forest/10 cursor-pointer";
+        card.className = "suit-card w-[250px] sm:w-[295px] bg-white rounded-[1.75rem] overflow-hidden border-2 border-forest/10 cursor-pointer";
         card.setAttribute("data-index", idx);
         card.innerHTML = `
           <div class="aspect-[4/3] overflow-hidden relative bg-sand">
-            <img src="${suit.image}" alt="${suit.name}" draggable="false" class="w-full h-full object-cover transition-transform duration-700" />
-            <div class="absolute inset-0 bg-gradient-to-t from-forest/65 via-transparent to-transparent"></div>
-            <span class="absolute top-3.5 left-3.5 bg-forest/90 backdrop-blur-xs text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-semibold">
+            <img src="${suit.image}" alt="${suit.name}" draggable="false" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-forest/70 via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 bg-forest/90 backdrop-blur-xs text-white text-[9.5px] uppercase tracking-widest px-2.5 py-1 rounded-full font-semibold">
               ${suit.tag}
             </span>
-            <span class="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-cream/95 text-forest font-logo text-xs font-bold flex items-center justify-center shadow-xs">
+            <span class="absolute top-3 right-3 w-7 h-7 rounded-full bg-cream/95 text-forest font-sans text-xs font-bold flex items-center justify-center shadow-2xs">
               ${suit.code}
             </span>
-            <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
-              <span class="text-[10px] uppercase tracking-widest text-sage font-semibold suit-equip-label">Signature Selection</span>
-              <span class="font-serif text-xl font-bold">${suit.price}</span>
+            <div class="absolute bottom-2.5 left-3.5 right-3.5 flex items-center justify-between text-white">
+              <span class="text-[9.5px] uppercase tracking-widest text-sage font-semibold suit-equip-label">Signature</span>
+              <span class="font-sans text-base sm:text-lg font-bold tracking-tight">${suit.price}</span>
             </div>
           </div>
-          <div class="p-5 sm:p-6">
-            <h3 class="font-serif text-2xl font-bold text-forest leading-snug mb-2">${suit.name}</h3>
-            <p class="text-xs text-charcoal/70 leading-relaxed line-clamp-3">${suit.desc}</p>
+          <div class="p-4 sm:p-5">
+            <h3 class="font-serif text-xl sm:text-2xl font-bold text-forest leading-snug mb-1.5">${suit.name}</h3>
+            <p class="text-[11.5px] sm:text-xs text-charcoal/70 leading-relaxed line-clamp-3">${suit.desc}</p>
           </div>
         `;
         card.addEventListener("click", () => {
+          if (Math.abs(lastDragDelta) > 8) return;
           if (idx !== activeSuitIndex) {
             activeSuitIndex = idx;
-            updateSuitDeck();
+            updateSuitDeck(0);
           }
         });
         suitStage.appendChild(card);
@@ -865,64 +870,56 @@
         dot.className = "h-2 rounded-full transition-all duration-300 cursor-pointer";
         dot.addEventListener("click", () => {
           activeSuitIndex = idx;
-          updateSuitDeck();
+          updateSuitDeck(0);
         });
         suitDots.appendChild(dot);
       });
 
-      updateSuitDeck();
+      updateSuitDeck(0);
     }
 
-    function updateSuitDeck() {
+    function updateSuitDeck(dragOffsetPx = 0) {
       const cards = suitStage.querySelectorAll(".suit-card");
       const dots = suitDots.querySelectorAll("button");
       const total = HIGHLIGHT_SUITS.length;
       const isMobile = window.innerWidth < 640;
-      const spreadX = isMobile ? 165 : 275;
-      const farSpreadX = isMobile ? 275 : 460;
+      const spreadX = isMobile ? 160 : 250;
+      const farSpreadX = isMobile ? 270 : 420;
+      const dragProgress = Math.max(-1, Math.min(1, dragOffsetPx / spreadX));
 
       cards.forEach((card, idx) => {
         let offset = idx - activeSuitIndex;
         if (offset > total / 2) offset -= total;
         if (offset < -total / 2) offset += total;
 
+        const continuousOffset = offset + dragProgress;
+        const absOff = Math.abs(continuousOffset);
         const label = card.querySelector(".suit-equip-label");
 
-        if (offset === 0) {
-          card.style.transform = "translate3d(-50%, 0px, 90px) rotateY(0deg) scale(1)";
-          card.style.opacity = "1";
-          card.style.zIndex = "30";
-          card.style.pointerEvents = "auto";
-          card.classList.add("is-equipped");
-          if (label) label.textContent = "★ Selected Highlight";
-        } else if (offset === -1) {
-          card.style.transform = `translate3d(calc(-50% - ${spreadX}px), 16px, -40px) rotateY(22deg) scale(0.86)`;
-          card.style.opacity = "0.82";
-          card.style.zIndex = "20";
-          card.style.pointerEvents = "auto";
-          card.classList.remove("is-equipped");
-          if (label) label.textContent = "Swipe / Tap to Equip";
-        } else if (offset === 1) {
-          card.style.transform = `translate3d(calc(-50% + ${spreadX}px), 16px, -40px) rotateY(-22deg) scale(0.86)`;
-          card.style.opacity = "0.82";
-          card.style.zIndex = "20";
-          card.style.pointerEvents = "auto";
-          card.classList.remove("is-equipped");
-          if (label) label.textContent = "Swipe / Tap to Equip";
-        } else if (offset === -2) {
-          card.style.transform = `translate3d(calc(-50% - ${farSpreadX}px), 30px, -140px) rotateY(34deg) scale(0.72)`;
-          card.style.opacity = isMobile ? "0" : "0.42";
-          card.style.zIndex = "10";
-          card.style.pointerEvents = isMobile ? "none" : "auto";
-          card.classList.remove("is-equipped");
-        } else if (offset === 2) {
-          card.style.transform = `translate3d(calc(-50% + ${farSpreadX}px), 30px, -140px) rotateY(-34deg) scale(0.72)`;
-          card.style.opacity = isMobile ? "0" : "0.42";
-          card.style.zIndex = "10";
-          card.style.pointerEvents = isMobile ? "none" : "auto";
-          card.classList.remove("is-equipped");
+        if (absOff <= 2.3) {
+          const translateX = continuousOffset * spreadX;
+          const translateY = Math.min(34, absOff * 16);
+          const translateZ = 80 - absOff * 110;
+          const rotateY = Math.max(-34, Math.min(34, -continuousOffset * 22));
+          const scale = Math.max(0.72, 1 - absOff * 0.14);
+          const opacity = isMobile
+            ? Math.max(0, 1 - Math.max(0, absOff - 0.55) * 1.1)
+            : Math.max(0, 1 - Math.max(0, absOff - 1) * 0.65);
+
+          card.style.transform = `translate3d(calc(-50% + ${translateX}px), ${translateY}px, ${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`;
+          card.style.opacity = opacity.toFixed(2);
+          card.style.zIndex = Math.round(30 - absOff * 10);
+          card.style.pointerEvents = opacity > 0.25 ? "auto" : "none";
+
+          if (offset === 0 && dragOffsetPx === 0) {
+            card.classList.add("is-equipped");
+            if (label) label.textContent = "★ Selected Highlight";
+          } else {
+            card.classList.remove("is-equipped");
+            if (label) label.textContent = "Swipe / Tap to Equip";
+          }
         } else {
-          card.style.transform = "translate3d(-50%, 40px, -220px) rotateY(0deg) scale(0.6)";
+          card.style.transform = `translate3d(calc(-50% + ${continuousOffset > 0 ? farSpreadX : -farSpreadX}px), 40px, -220px) rotateY(0deg) scale(0.6)`;
           card.style.opacity = "0";
           card.style.zIndex = "1";
           card.style.pointerEvents = "none";
@@ -932,9 +929,9 @@
 
       dots.forEach((dot, idx) => {
         if (idx === activeSuitIndex) {
-          dot.className = "h-2.5 w-8 rounded-full bg-leafolive transition-all duration-300 cursor-pointer";
+          dot.className = "h-2 w-7 rounded-full bg-leafolive transition-all duration-300 cursor-pointer";
         } else {
-          dot.className = "h-2.5 w-2.5 rounded-full bg-forest/20 hover:bg-forest/40 transition-all duration-300 cursor-pointer";
+          dot.className = "h-2 w-2 rounded-full bg-forest/20 hover:bg-forest/40 transition-all duration-300 cursor-pointer";
         }
       });
 
@@ -944,44 +941,59 @@
 
     function nextSuit() {
       activeSuitIndex = (activeSuitIndex + 1) % HIGHLIGHT_SUITS.length;
-      updateSuitDeck();
+      updateSuitDeck(0);
     }
 
     function prevSuit() {
       activeSuitIndex = (activeSuitIndex - 1 + HIGHLIGHT_SUITS.length) % HIGHLIGHT_SUITS.length;
-      updateSuitDeck();
+      updateSuitDeck(0);
     }
 
     document.getElementById("suit-next-btn").addEventListener("click", nextSuit);
     document.getElementById("suit-prev-btn").addEventListener("click", prevSuit);
 
-    // Touch & Mouse Swipe Gesture on the 3D Suit Stage
+    // Real-Time Interactive Finger / Mouse Tracking for Smooth Swiping
     let dragStartX = 0;
+    let lastDragDelta = 0;
     let isDraggingSuit = false;
 
     suitStage.addEventListener("pointerdown", (e) => {
       dragStartX = e.clientX;
+      lastDragDelta = 0;
       isDraggingSuit = true;
+      suitStage.querySelectorAll(".suit-card").forEach(c => c.classList.add("is-dragging"));
     });
 
-    suitStage.addEventListener("pointerup", (e) => {
+    suitStage.addEventListener("pointermove", (e) => {
+      if (!isDraggingSuit) return;
+      lastDragDelta = e.clientX - dragStartX;
+      updateSuitDeck(lastDragDelta);
+    });
+
+    function finishSuitDrag() {
       if (!isDraggingSuit) return;
       isDraggingSuit = false;
-      const diffX = e.clientX - dragStartX;
-      if (Math.abs(diffX) > 36) {
-        if (diffX < 0) nextSuit();
-        else prevSuit();
+      suitStage.querySelectorAll(".suit-card").forEach(c => c.classList.remove("is-dragging"));
+      if (lastDragDelta < -42) {
+        nextSuit();
+      } else if (lastDragDelta > 42) {
+        prevSuit();
+      } else {
+        updateSuitDeck(0);
       }
+      setTimeout(() => { lastDragDelta = 0; }, 50);
+    }
+
+    suitStage.addEventListener("pointerup", finishSuitDrag);
+    suitStage.addEventListener("pointercancel", finishSuitDrag);
+    suitStage.addEventListener("pointerleave", () => {
+      if (isDraggingSuit) finishSuitDrag();
     });
 
-    suitStage.addEventListener("pointercancel", () => {
-      isDraggingSuit = false;
-    });
-
-    window.addEventListener("resize", updateSuitDeck);
+    window.addEventListener("resize", () => updateSuitDeck(0));
     initSuitDeck();
 
-    // Full Official Café Menu
+    // Full Official Café Menu (Standardized Normal Sans-Serif ₹ Prices)
     const CAFE_MENU = [
       {
         id: "soups",
@@ -1130,7 +1142,7 @@
             </div>
             <div class="flex items-center gap-3 shrink-0">
               <span class="hidden md:inline-block w-16 h-[1px] bg-forest/20"></span>
-              <span class="font-serif text-base sm:text-xl font-bold text-leafolive">${item.price}</span>
+              <span class="font-sans text-base sm:text-lg font-bold text-leafolive">${item.price}</span>
             </div>
           </div>
         `).join("");
