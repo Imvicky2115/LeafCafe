@@ -55,13 +55,18 @@
   </script>
 
   <style>
+    html {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
     @keyframes floatSlow {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-14px) rotate(3deg); }
+      0%, 100% { transform: translate3d(0, 0px, 0) rotate(0deg); }
+      50% { transform: translate3d(0, -10px, 0) rotate(2.5deg); }
     }
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translate3d(0, 16px, 0); }
+      to { opacity: 1; transform: translate3d(0, 0, 0); }
     }
     @keyframes lockPulse {
       0% { box-shadow: 0 0 0 0 rgba(85, 107, 47, 0.32); }
@@ -74,10 +79,10 @@
       100% { opacity: 1; transform: scale(1) rotate(0deg); }
     }
 
-    /* Very Slow Cinematic Hero Image Zoom */
+    /* GPU-Accelerated Slow Cinematic Hero Zoom */
     @keyframes heroSlowZoom {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.07); }
+      0%, 100% { transform: scale3d(1, 1, 1); }
+      50% { transform: scale3d(1.06, 1.06, 1); }
     }
     .hero-slow-zoom {
       animation: heroSlowZoom 24s ease-in-out infinite;
@@ -87,26 +92,25 @@
     /* Soft Warm Light Overlay Shifting Opacity on Hero Photo */
     @keyframes softLightOverlay {
       0%, 100% { opacity: 0.18; }
-      50% { opacity: 0.44; }
+      50% { opacity: 0.42; }
     }
     .hero-warm-overlay {
-      background: radial-gradient(circle at 38% 28%, rgba(255, 210, 128, 0.55) 0%, rgba(214, 124, 56, 0.22) 55%, rgba(30, 47, 35, 0.10) 100%);
-      mix-blend-mode: soft-light;
+      background: radial-gradient(circle at 38% 28%, rgba(255, 210, 128, 0.5) 0%, rgba(214, 124, 56, 0.2) 55%, rgba(30, 47, 35, 0.08) 100%);
       animation: softLightOverlay 8s ease-in-out infinite;
     }
 
-    /* Ambient Drifting Warm Light Motes on the Canvas (Off the Photo) */
+    /* Ambient Drifting Warm Light Motes on the Canvas */
     @keyframes moteDrift1 {
-      0%, 100% { transform: translate(0px, 0px) scale(1); opacity: 0.35; }
-      50% { transform: translate(18px, -28px) scale(1.35); opacity: 0.85; }
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.35; }
+      50% { transform: translate3d(16px, -24px, 0) scale(1.3); opacity: 0.8; }
     }
     @keyframes moteDrift2 {
-      0%, 100% { transform: translate(0px, 0px) scale(0.9); opacity: 0.28; }
-      50% { transform: translate(-16px, -22px) scale(1.3); opacity: 0.78; }
+      0%, 100% { transform: translate3d(0, 0, 0) scale(0.9); opacity: 0.28; }
+      50% { transform: translate3d(-14px, -20px, 0) scale(1.25); opacity: 0.75; }
     }
     @keyframes moteDrift3 {
-      0%, 100% { transform: translate(0px, 0px) scale(1.1); opacity: 0.3; }
-      50% { transform: translate(12px, -32px) scale(0.85); opacity: 0.72; }
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1.1); opacity: 0.3; }
+      50% { transform: translate3d(10px, -28px, 0) scale(0.85); opacity: 0.7; }
     }
     .ambient-mote-1 {
       background: radial-gradient(circle, rgba(235, 168, 72, 0.85) 0%, rgba(235, 168, 72, 0) 70%);
@@ -121,7 +125,7 @@
       animation: moteDrift3 9.4s ease-in-out 2.5s infinite;
     }
 
-    /* Growing Botanical Sprigs Animation (Left Side - Upper & Sweeping Lower) */
+    /* Growing Botanical Sprigs Animation (GPU Composited) */
     @keyframes drawStem {
       to { stroke-dashoffset: 0; }
     }
@@ -135,21 +139,23 @@
       100% { opacity: 0.52; transform: scale(1); }
     }
     @keyframes gentleBreeze {
-      0%, 100% { transform: rotate(0deg) translateY(0px); }
-      50% { transform: rotate(2deg) translateY(-3px); }
+      0%, 100% { transform: rotate(0deg) translate3d(0, 0, 0); }
+      50% { transform: rotate(2deg) translate3d(0, -3px, 0); }
     }
     @keyframes gentleBreezeLower {
-      0%, 100% { transform: rotate(0deg) translateY(0px); }
-      50% { transform: rotate(-2.2deg) translateY(-4px); }
+      0%, 100% { transform: rotate(0deg) translate3d(0, 0, 0); }
+      50% { transform: rotate(-2.2deg) translate3d(0, -4px, 0); }
     }
 
     .botanical-sprig-wrap {
       transform-origin: 10px 330px;
       animation: gentleBreeze 8s ease-in-out 2.2s infinite;
+      will-change: transform;
     }
     .botanical-sprig-lower {
       transform-origin: 10px 440px;
       animation: gentleBreezeLower 9s ease-in-out 2.8s infinite;
+      will-change: transform;
     }
     .sprig-stem {
       stroke-dasharray: 420;
@@ -182,7 +188,6 @@
       animation: leafBloom 0.95s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
     }
 
-    /* Sweeping Lower Branch Animations */
     .sprig-lower-stem {
       stroke-dasharray: 650;
       stroke-dashoffset: 650;
@@ -218,14 +223,21 @@
       transform-origin: 375px 190px;
       animation: leafBloom 1.05s cubic-bezier(0.22, 1, 0.36, 1) 1.75s forwards;
     }
-    .sprig-lower-leaf-6 {
-      opacity: 0;
-      transform-origin: 390px 210px;
-      animation: leafBloom 0.95s cubic-bezier(0.22, 1, 0.36, 1) 1.92s forwards;
-    }
     .sprig-wash {
       opacity: 0;
       animation: washFade 1.1s ease-out 0.95s forwards;
+    }
+
+    /* Pause off-screen hero animations when scrolled down for 60fps mobile scroll */
+    .hero-paused .hero-slow-zoom,
+    .hero-paused .hero-warm-overlay,
+    .hero-paused .ambient-mote-1,
+    .hero-paused .ambient-mote-2,
+    .hero-paused .ambient-mote-3,
+    .hero-paused .botanical-sprig-wrap,
+    .hero-paused .botanical-sprig-lower,
+    .hero-paused .animate-float-slow {
+      animation-play-state: paused !important;
     }
 
     .animate-float-slow { animation: floatSlow 7s ease-in-out infinite; }
@@ -244,13 +256,14 @@
       transition: width 1.15s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    /* True Translucent Frosted Glass Top Bar */
+    /* Lightweight Translucent Frosted Glass Top Bar */
     .glass-nav {
-      background: rgba(248, 246, 240, 0.45);
-      backdrop-filter: blur(16px) saturate(160%);
-      -webkit-backdrop-filter: blur(16px) saturate(160%);
-      border: 1px solid rgba(255, 255, 255, 0.55);
-      box-shadow: 0 4px 24px -4px rgba(30, 47, 35, 0.08);
+      background: rgba(248, 246, 240, 0.72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      box-shadow: 0 4px 20px -4px rgba(30, 47, 35, 0.08);
+      transform: translateZ(0);
     }
 
     /* 3D Suit-Selector Stage for Menu Highlights */
@@ -280,36 +293,30 @@
       animation: lockPulse 0.85s ease-out;
     }
 
-    /* Scroll Reveal */
+    /* GPU-Composited Scroll Reveal */
     .reveal {
       opacity: 0;
-      transform: translateY(26px);
-      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translate3d(0, 20px, 0);
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .reveal.active {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
     }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
 
-    /* Subtle Paper Grain */
-    .bg-grain::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 50;
-      opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    /* Avoid costly content-visibility jumps while keeping sections crisp */
+    section {
+      contain: layout style;
     }
 
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="bg-cream text-charcoal font-sans antialiased selection:bg-leafolive selection:text-white bg-grain overflow-x-hidden">
+<body class="bg-cream text-charcoal font-sans antialiased selection:bg-leafolive selection:text-white overflow-x-hidden">
 
   <!-- Top Navigation Bar (Translucent Frosted Glass) -->
   <header id="navbar" class="fixed top-0 w-full z-40 transition-all duration-300 py-3 px-3 sm:px-6 md:px-10">
@@ -345,7 +352,7 @@
   </header>
 
   <!-- Compact Mobile Navigation Popover -->
-  <div id="mobile-drawer" class="fixed inset-0 z-50 hidden bg-black/45 backdrop-blur-xs px-4 pt-20 md:hidden">
+  <div id="mobile-drawer" class="fixed inset-0 z-50 hidden bg-black/45 px-4 pt-20 md:hidden">
     <div id="mobile-drawer-card" class="max-w-md mx-auto bg-forest text-cream rounded-3xl p-6 shadow-2xl border border-sage/20 animate-[fadeUp_0.2s_ease]">
       <div class="flex items-center justify-between pb-4 border-b border-cream/10">
         <div class="flex items-center gap-2.5">
@@ -401,8 +408,8 @@
     </div>
   </div>
 
-  <!-- Hero Section (Sweeping Lower Botanical Sprig + Ambient Floating Light Motes + Clean Slow-Zoom Photo) -->
-  <section class="relative pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-32 md:pb-24 px-4 sm:px-8 md:px-10 overflow-hidden">
+  <!-- Hero Section -->
+  <section id="hero-section" class="relative pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-32 md:pb-24 px-4 sm:px-8 md:px-10 overflow-hidden">
     
     <!-- Upper Growing Botanical Sprig From Left Side -->
     <svg class="absolute -left-6 sm:-left-4 top-14 sm:top-16 w-48 sm:w-64 md:w-72 h-auto pointer-events-none select-none z-0 botanical-sprig-wrap opacity-80" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -438,13 +445,11 @@
       </g>
     </svg>
 
-    <!-- Sweeping Lower Botanical Branch Covering Half the Lower Hero Width -->
+    <!-- Sweeping Lower Botanical Branch -->
     <svg class="absolute -left-6 sm:-left-4 bottom-0 sm:bottom-2 w-[320px] sm:w-[460px] md:w-[540px] lg:w-[620px] h-auto pointer-events-none select-none z-0 botanical-sprig-lower opacity-85" viewBox="0 0 560 460" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Long Sweeping Branch Stem & Side Offshoot -->
       <path class="sprig-lower-stem" d="M 6 446 C 110 385, 245 305, 425 182" stroke="#2D3E32" stroke-width="1.75" stroke-linecap="round"/>
       <path class="sprig-lower-twig" d="M 102 388 C 94 348, 90 318, 86 286" stroke="#2D3E32" stroke-width="1.5" stroke-linecap="round"/>
 
-      <!-- Leaf 1 (Lower-Mid Rounded Leaf) -->
       <g class="sprig-lower-leaf-1">
         <path class="sprig-wash" d="M 154 326 C 140 354, 156 388, 196 394 C 236 400, 268 386, 272 376 C 244 356, 204 334, 154 326 Z" fill="#9EB384"/>
         <path d="M 168 315 C 152 344, 168 378, 208 382 C 246 386, 278 372, 286 364 C 258 344, 218 320, 168 315 Z" stroke="#2D3E32" stroke-width="1.45" stroke-linejoin="round"/>
@@ -452,7 +457,6 @@
         <path d="M 192 328 C 182 344, 177 356, 176 370 M 214 338 C 204 354, 199 366, 198 378 M 238 348 C 229 362, 225 372, 225 380 M 200 326 C 212 324, 222 326, 232 330 M 228 338 C 240 338, 250 340, 260 346" stroke="#2D3E32" stroke-width="0.8" stroke-linecap="round" opacity="0.72"/>
       </g>
 
-      <!-- Leaf 2 (Mid-Left Upright Leaf) -->
       <g class="sprig-lower-leaf-2">
         <path class="sprig-wash" d="M 186 286 C 132 282, 104 232, 114 180 C 120 156, 128 148, 136 148 C 168 180, 186 226, 186 286 Z" fill="#8EA69B"/>
         <path d="M 200 280 C 144 276, 114 226, 124 172 C 130 148, 138 140, 146 140 C 182 174, 202 222, 200 280 Z" stroke="#2D3E32" stroke-width="1.45" stroke-linejoin="round"/>
@@ -460,7 +464,6 @@
         <path d="M 188 252 C 168 254, 148 252, 134 244 M 176 224 C 156 226, 138 222, 124 212 M 164 196 C 146 198, 132 192, 122 182 M 154 168 C 142 170, 132 166, 126 158 M 186 244 C 194 230, 196 216, 194 204 M 172 212 C 180 196, 182 184, 178 174" stroke="#2D3E32" stroke-width="0.8" stroke-linecap="round" opacity="0.72"/>
       </g>
 
-      <!-- Leaf 3 (Upper-Center Large Leaf) -->
       <g class="sprig-lower-leaf-3">
         <path class="sprig-wash" d="M 284 238 C 278 172, 316 112, 384 82 C 394 90, 402 114, 396 152 C 388 210, 344 244, 284 238 Z" fill="#9EB384"/>
         <path d="M 268 236 C 260 164, 302 100, 376 66 C 384 74, 392 102, 386 144 C 376 206, 330 242, 268 236 Z" stroke="#2D3E32" stroke-width="1.5" stroke-linejoin="round"/>
@@ -468,7 +471,6 @@
         <path d="M 290 206 C 280 184, 278 162, 282 142 M 312 174 C 302 152, 302 130, 310 110 M 334 142 C 326 122, 328 102, 336 86 M 294 202 C 316 206, 338 204, 356 194 M 316 170 C 338 174, 358 170, 374 158 M 338 138 C 356 140, 370 134, 382 122" stroke="#2D3E32" stroke-width="0.8" stroke-linecap="round" opacity="0.72"/>
       </g>
 
-      <!-- Leaf 4 (Lower-Right Sweeping Leaf) -->
       <g class="sprig-lower-leaf-4">
         <path class="sprig-wash" d="M 284 264 C 328 242, 386 238, 436 244 C 426 268, 384 290, 328 288 C 308 286, 294 276, 284 264 Z" fill="#8EA69B"/>
         <path d="M 290 256 C 336 232, 396 226, 448 232 C 436 258, 392 280, 334 278 C 314 276, 300 268, 290 256 Z" stroke="#2D3E32" stroke-width="1.45" stroke-linejoin="round"/>
@@ -476,7 +478,6 @@
         <path d="M 324 252 C 342 242, 358 234, 376 230 M 362 246 C 380 238, 396 232, 414 230 M 330 252 C 348 262, 366 268, 384 270 M 370 248 C 388 256, 404 260, 422 258" stroke="#2D3E32" stroke-width="0.8" stroke-linecap="round" opacity="0.72"/>
       </g>
 
-      <!-- Leaf 5 (Tip Crown Leaf Reaching Halfway Across Page) -->
       <g class="sprig-lower-leaf-5">
         <path class="sprig-wash" d="M 392 198 C 414 152, 464 126, 524 122 C 524 146, 496 184, 446 202 C 424 208, 406 206, 392 198 Z" fill="#9EB384"/>
         <path d="M 384 192 C 408 144, 462 116, 526 112 C 526 138, 496 178, 442 196 C 420 202, 400 200, 384 192 Z" stroke="#2D3E32" stroke-width="1.45" stroke-linejoin="round"/>
@@ -485,7 +486,7 @@
       </g>
     </svg>
 
-    <!-- Creative Ambient Floating Warm Light Motes (Drifting Gently in Open Space, Not Over Photo) -->
+    <!-- Ambient Floating Warm Light Motes -->
     <div class="absolute top-36 left-[28%] w-3.5 h-3.5 rounded-full ambient-mote-1 pointer-events-none"></div>
     <div class="absolute top-64 left-[44%] w-4 h-4 rounded-full ambient-mote-2 pointer-events-none"></div>
     <div class="absolute bottom-28 left-[36%] w-3 h-3 rounded-full ambient-mote-3 pointer-events-none"></div>
@@ -518,7 +519,7 @@
         </div>
       </div>
 
-      <!-- Right Visual Card (Clean Café Photo with Slow Zoom + Soft Breathing Light Overlay) -->
+      <!-- Right Visual Card -->
       <div class="md:col-span-5 relative flex justify-center">
         <div class="relative rounded-[2.25rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5] w-full max-w-sm lg:max-w-md bg-sand group">
           <img 
@@ -528,10 +529,7 @@
             class="w-full h-full object-cover hero-slow-zoom"
           />
 
-          <!-- Soft Warm Light Overlay That Changes Opacity -->
           <div class="absolute inset-0 hero-warm-overlay pointer-events-none"></div>
-
-          <!-- Bottom Readability Gradient -->
           <div class="absolute inset-0 bg-gradient-to-t from-forest/85 via-forest/15 to-transparent pointer-events-none"></div>
           
           <!-- Official Circular Emblem Overlay -->
@@ -886,17 +884,18 @@
     </div>
   </section>
 
-  <!-- Clean Simplified Footer + Portfolio Concept Disclaimer -->
-  <footer class="bg-forest text-cream/85 py-12 px-4 sm:px-8 md:px-10 border-t border-cream/10">
-    <div class="max-w-7xl mx-auto space-y-8">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+  <!-- Sleek Mobile-Optimized Footer + Compact Expandable Portfolio Disclaimer -->
+  <footer class="bg-forest text-cream/85 py-10 sm:py-12 px-4 sm:px-8 md:px-10 border-t border-cream/10">
+    <div class="max-w-7xl mx-auto space-y-6">
+      <!-- Top Row: Brand & Instagram Pill -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
         <div class="flex items-center gap-3">
           <div class="w-9 h-9 rounded-full bg-leafolive flex items-center justify-center shrink-0">
             <svg viewBox="0 0 100 100" class="w-6 h-6 text-white fill-current">
               <path d="M52,18 C72,18 85,32 85,50 C85,66 72,76 58,76 C47,76 39,68 39,58 C39,50 45,44 53,44 C59,44 64,49 64,55 C64,59 60,62 56,62 C53,62 51,60 51,57 C51,55 53,54 54,54 C53,52 49,53 48,57 C47,62 51,67 57,67 C65,67 71,60 71,52 C71,40 61,32 49,32 C34,32 23,44 23,60 C23,72 28,83 36,90 C32,78 33,63 40,51 C30,60 25,74 28,88 C18,78 14,62 18,46 C23,28 37,18 52,18 Z" />
             </svg>
           </div>
-          <div>
+          <div class="text-left">
             <span class="font-logo text-lg font-bold text-white tracking-[0.14em] block leading-none">LEAF</span>
             <span class="text-xs text-sage block mt-1">A café by Advanced Nature</span>
           </div>
@@ -912,17 +911,25 @@
         </a>
       </div>
 
-      <!-- Portfolio Concept Disclaimer -->
-      <div class="pt-6 border-t border-cream/10 text-center sm:text-left">
-        <p class="text-[11px] leading-relaxed text-cream/60 max-w-4xl">
-          <strong class="text-cream/85 font-semibold">Portfolio Concept Disclaimer:</strong> This website is an unsolicited UI/UX design prototype created solely by <strong>NoahStudio</strong> for personal portfolio demonstration purposes. It is not the official website of, nor is it currently affiliated with, endorsed by, or commissioned by <em>Leaf — A Café by Advanced Nature</em>. All brand names, logos, menu items, and photographs belong to their respective owners and are displayed strictly as non-commercial design placeholders.
-        </p>
+      <!-- Compact Portfolio Disclaimer Pill (Clean on Mobile, Expandable on Tap) -->
+      <div class="pt-5 border-t border-cream/10 flex flex-col items-center sm:items-start">
+        <button type="button" id="disclaimer-toggle" aria-expanded="false" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cream/8 hover:bg-cream/15 border border-cream/15 text-[11px] text-cream/75 transition-colors cursor-pointer">
+          <span class="w-1.5 h-1.5 rounded-full bg-sage"></span>
+          <span>Portfolio Concept by <strong class="text-white font-semibold">NoahStudio</strong> &bull; <span class="underline decoration-cream/40">Disclaimer</span></span>
+          <i data-lucide="chevron-down" id="disclaimer-chevron" class="w-3.5 h-3.5 text-sage transition-transform duration-300"></i>
+        </button>
+
+        <div id="disclaimer-body" class="hidden mt-3 rounded-2xl bg-black/25 border border-cream/10 p-4 max-w-3xl text-left">
+          <p class="text-[11px] leading-relaxed text-cream/75">
+            <strong class="text-white font-semibold">Portfolio Concept Disclaimer:</strong> This website is an unsolicited UI/UX design prototype created solely by <strong>NoahStudio</strong> for personal portfolio demonstration purposes. It is not the official website of, nor is it currently affiliated with, endorsed by, or commissioned by <em>Leaf — A Café by Advanced Nature</em>. All brand names, logos, menu items, and photographs belong to their respective owners and are displayed strictly as non-commercial design placeholders.
+          </p>
+        </div>
       </div>
     </div>
   </footer>
 
   <!-- Find a Table Modal -->
-  <div id="table-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+  <div id="table-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-4">
     <div class="bg-cream border border-leafolive/20 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative animate-[fadeUp_0.25s_ease]">
       <button onclick="closeTableModal()" aria-label="Close modal" class="absolute top-5 right-5 p-2 rounded-full hover:bg-sand text-forest cursor-pointer">
         <i data-lucide="x" class="w-5 h-5"></i>
@@ -985,7 +992,7 @@
   </div>
 
   <!-- Guest Feedback Modal -->
-  <div id="feedback-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+  <div id="feedback-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-4">
     <div class="bg-cream border border-leafolive/20 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative animate-[fadeUp_0.25s_ease]">
       <button onclick="closeFeedbackModal()" aria-label="Close feedback modal" class="absolute top-5 right-5 p-2 rounded-full hover:bg-sand text-forest cursor-pointer">
         <i data-lucide="x" class="w-5 h-5"></i>
@@ -1104,7 +1111,7 @@
           <div class="aspect-[4/3] overflow-hidden relative bg-sand">
             <img src="${suit.image}" alt="${suit.name}" draggable="false" class="w-full h-full object-cover" />
             <div class="absolute inset-0 bg-gradient-to-t from-forest/70 via-transparent to-transparent"></div>
-            <span class="absolute top-3 left-3 bg-forest/90 backdrop-blur-xs text-white text-[9.5px] uppercase tracking-widest px-2.5 py-1 rounded-full font-semibold">
+            <span class="absolute top-3 left-3 bg-forest/90 text-white text-[9.5px] uppercase tracking-widest px-2.5 py-1 rounded-full font-semibold">
               ${suit.tag}
             </span>
             <span class="absolute top-3 right-3 w-7 h-7 rounded-full bg-cream/95 text-forest font-sans text-xs font-bold flex items-center justify-center shadow-2xs">
@@ -1253,7 +1260,7 @@
       if (isDraggingSuit) finishSuitDrag();
     });
 
-    window.addEventListener("resize", () => updateSuitDeck(0));
+    window.addEventListener("resize", () => updateSuitDeck(0), { passive: true });
     initSuitDeck();
 
     const CAFE_MENU = [
@@ -1398,7 +1405,7 @@
 
         const sectionEl = document.createElement("div");
         sectionEl.id = `menu-card-${section.id}`;
-        sectionEl.className = "w-full shrink-0 snap-center bg-white/95 backdrop-blur-sm rounded-3xl p-5 sm:p-9 border border-forest/10 shadow-sm flex flex-col justify-between";
+        sectionEl.className = "w-full shrink-0 snap-center bg-white rounded-3xl p-5 sm:p-9 border border-forest/10 shadow-sm flex flex-col justify-between";
 
         let itemsHtml = filteredItems.map(item => `
           <div class="py-3.5 sm:py-4 border-b border-forest/10 last:border-b-0 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1.5 sm:gap-4">
@@ -1485,6 +1492,37 @@
 
     renderMenu();
     lucide.createIcons();
+
+    // Pause hero infinite animations when hero leaves viewport for silky mobile scroll
+    const heroEl = document.getElementById("hero-section");
+    if (heroEl) {
+      const heroVisibilityObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            heroEl.classList.remove("hero-paused");
+          } else {
+            heroEl.classList.add("hero-paused");
+          }
+        });
+      }, { threshold: 0 });
+      heroVisibilityObserver.observe(heroEl);
+    }
+
+    // Disclaimer Expand/Collapse Toggle
+    const disclaimerToggle = document.getElementById("disclaimer-toggle");
+    const disclaimerBody = document.getElementById("disclaimer-body");
+    const disclaimerChevron = document.getElementById("disclaimer-chevron");
+
+    if (disclaimerToggle && disclaimerBody) {
+      disclaimerToggle.addEventListener("click", () => {
+        const isHidden = disclaimerBody.classList.contains("hidden");
+        disclaimerBody.classList.toggle("hidden", !isHidden);
+        disclaimerToggle.setAttribute("aria-expanded", String(isHidden));
+        if (disclaimerChevron) {
+          disclaimerChevron.style.transform = isHidden ? "rotate(180deg)" : "rotate(0deg)";
+        }
+      });
+    }
 
     const ratingCard = document.getElementById("rating-showcase-card");
     const ratingCounterEl = document.getElementById("rating-counter");
@@ -1632,7 +1670,7 @@
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
 
     document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
   </script>
