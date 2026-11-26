@@ -8,6 +8,9 @@
   <title>Leaf — Concept Website Design | Portfolio Prototype</title>
   <meta name="description" content="Unsolicited web design concept prototype created for portfolio demonstration." />
   
+  <!-- Preload Hero LCP Image Immediately -->
+  <link rel="preload" as="image" href="assets/cafe-ceiling.webp" fetchpriority="high" />
+
   <!-- Preconnect & Non-Blocking Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,7 +73,6 @@
     .font-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
     .font-sans { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
 
-    /* Layout & Spacing Utilities */
     .container-7xl { max-width: 80rem; margin-left: auto; margin-right: auto; width: 100%; }
     .container-6xl { max-width: 72rem; margin-left: auto; margin-right: auto; width: 100%; }
 
@@ -82,16 +84,15 @@
       width: 100%;
       z-index: 40;
       padding: 0.75rem;
-      transition: all 0.3s ease;
     }
     @media (min-width: 640px) { .site-header { padding-left: 1.5rem; padding-right: 1.5rem; } }
     @media (min-width: 768px) { .site-header { padding-left: 2.5rem; padding-right: 2.5rem; } }
 
     .glass-nav {
-      background: rgba(248, 246, 240, 0.85);
+      background: rgba(248, 246, 240, 0.88);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.75);
       box-shadow: 0 4px 20px -4px rgba(30, 47, 35, 0.08);
       border-radius: 9999px;
       padding: 0.5rem 0.875rem;
@@ -120,7 +121,6 @@
       justify-content: center;
       flex-shrink: 0;
     }
-    .mobile-menu-btn:hover { background: rgba(255, 255, 255, 0.5); }
     @media (min-width: 768px) { .mobile-menu-btn { display: none; } }
 
     /* Animations */
@@ -268,7 +268,7 @@
       align-items: center;
       gap: 0.5rem;
       box-shadow: 0 4px 12px rgba(30, 47, 35, 0.14);
-      transition: background-color 0.25s ease, transform 0.2s ease;
+      transition: background-color 0.25s ease;
       cursor: pointer;
     }
     .btn-primary:hover { background-color: var(--forest); }
@@ -321,7 +321,7 @@
     }
     @media (min-width: 1024px) { .emblem-badge { width: 9rem; height: 9rem; } }
 
-    /* Rating Section (Responsive Mobile-First Alignment) */
+    /* Rating Section */
     .rating-card-inner {
       border-radius: 1.5rem;
       background: rgba(248, 246, 240, 0.85);
@@ -343,12 +343,8 @@
       gap: 0.75rem;
       width: 100%;
     }
-    @media (min-width: 640px) {
-      .rating-quotes-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    @media (min-width: 900px) {
-      .rating-quotes-grid { flex: 1; max-width: 36rem; }
-    }
+    @media (min-width: 640px) { .rating-quotes-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 900px) { .rating-quotes-grid { flex: 1; max-width: 36rem; } }
 
     .rating-star-item { opacity: 0; transform: scale(0.2); display: inline-flex; }
     .rating-star-item.pop-in { animation: starPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
@@ -431,7 +427,7 @@
     .gallery-card img { transition: transform 0.7s ease; }
     .gallery-card:hover img { transform: scale(1.05); }
 
-    /* Booking Banner & Buttons (Responsive Centered Mobile + Inline Desktop) */
+    /* Booking Banner & Buttons */
     .booking-card {
       border-radius: 2rem;
       background: #FFFFFF;
@@ -445,37 +441,14 @@
       width: 100%;
     }
     @media (min-width: 640px) { .booking-card { padding: 2.25rem; } }
-    @media (min-width: 1024px) {
-      .booking-card { flex-direction: row; padding: 2.5rem; }
-    }
+    @media (min-width: 1024px) { .booking-card { flex-direction: row; padding: 2.5rem; } }
 
-    .booking-copy {
-      max-width: 30rem;
-      width: 100%;
-      text-align: center;
-    }
+    .booking-copy { max-width: 30rem; width: 100%; text-align: center; }
     @media (min-width: 1024px) { .booking-copy { text-align: left; } }
 
-    .booking-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      width: 100%;
-    }
-    @media (min-width: 640px) {
-      .booking-actions {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-    }
-    @media (min-width: 1024px) {
-      .booking-actions {
-        flex-wrap: nowrap;
-        width: auto;
-        flex-shrink: 0;
-      }
-    }
+    .booking-actions { display: flex; flex-direction: column; gap: 0.75rem; width: 100%; }
+    @media (min-width: 640px) { .booking-actions { flex-direction: row; flex-wrap: wrap; justify-content: center; } }
+    @media (min-width: 1024px) { .booking-actions { flex-wrap: nowrap; width: auto; flex-shrink: 0; } }
 
     .btn-swiggy {
       background-color: var(--swiggy);
@@ -523,13 +496,10 @@
     .btn-district:hover { background-color: #5811c4; transform: translateY(-2px); }
 
     @media (min-width: 640px) {
-      .btn-swiggy, .btn-zomato, .btn-district {
-        width: auto;
-        justify-content: center;
-      }
+      .btn-swiggy, .btn-zomato, .btn-district { width: auto; justify-content: center; }
     }
 
-    /* Visit Card Responsive Grid */
+    /* Visit Card & Lite Map Facade */
     .visit-card {
       background: #FFFFFF;
       border-radius: 2rem;
@@ -537,19 +507,10 @@
       border: 1px solid rgba(30, 47, 35, 0.1);
       width: 100%;
     }
-    @media (min-width: 640px) {
-      .visit-card { border-radius: 2.5rem; padding: 2.5rem; }
-    }
+    @media (min-width: 640px) { .visit-card { border-radius: 2.5rem; padding: 2.5rem; } }
 
-    .visit-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.75rem;
-      align-items: center;
-    }
-    @media (min-width: 768px) {
-      .visit-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-    }
+    .visit-grid { display: grid; grid-template-columns: 1fr; gap: 1.75rem; align-items: center; }
+    @media (min-width: 768px) { .visit-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; } }
 
     .visit-map-box {
       width: 100%;
@@ -557,8 +518,62 @@
       border-radius: 1.5rem;
       overflow: hidden;
       border: 4px solid var(--sand);
+      position: relative;
+      background: linear-gradient(135deg, #EFECE2 0%, #E3DFD1 100%);
     }
     @media (min-width: 640px) { .visit-map-box { height: 20rem; } }
+
+    /* Symmetrical Footer (Desktop & Mobile) */
+    .site-footer {
+      background: var(--forest);
+      color: rgba(248, 246, 240, 0.92);
+      padding: 2.25rem 1.25rem;
+      border-top: 1px solid rgba(248, 246, 240, 0.12);
+    }
+    .footer-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      text-align: center;
+    }
+    @media (min-width: 640px) {
+      .footer-bar {
+        flex-direction: row;
+        text-align: left;
+      }
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.625rem;
+    }
+    @media (min-width: 640px) {
+      .footer-actions { justify-content: flex-end; }
+    }
+    .footer-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 1rem;
+      border-radius: 9999px;
+      background: rgba(248, 246, 240, 0.1);
+      border: 1px solid rgba(248, 246, 240, 0.18);
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+      cursor: pointer;
+    }
+    .footer-pill:hover { background: var(--leafolive); border-color: var(--leafolive); }
 
     /* Scroll Reveal */
     .reveal {
@@ -810,21 +825,20 @@
     <section style="padding:2.75rem 1rem;background:#FFFFFF;border-top:1px solid rgba(30,47,35,0.1);border-bottom:1px solid rgba(30,47,35,0.1);">
       <div id="rating-showcase-card" class="container-6xl rating-card-inner reveal">
         
-        <!-- Score + Staggered Popping Stars + Animated Capsule Distribution -->
         <div style="display:flex;align-items:center;justify-content:center;gap:1.15rem;flex-shrink:0;max-width:100%;">
           <div style="text-align:center;flex-shrink:0;">
             <div id="rating-counter" class="font-sans" style="font-size:2.65rem;font-weight:700;color:var(--forest);line-height:1;font-variant-numeric:tabular-nums;">1.0</div>
-            <div id="rating-stars-row" aria-label="4.7 out of 5 stars" style="display:flex;align-items:center;justify-content:center;gap:0.15rem;color:#D97706;margin-top:0.5rem;">
-              <span class="rating-star-item" style="animation-delay:0.05s;">&#9733;</span>
-              <span class="rating-star-item" style="animation-delay:0.16s;">&#9733;</span>
-              <span class="rating-star-item" style="animation-delay:0.27s;">&#9733;</span>
-              <span class="rating-star-item" style="animation-delay:0.38s;">&#9733;</span>
-              <span class="rating-star-item" style="animation-delay:0.49s;">&#9733;</span>
+            <div id="rating-stars-row" role="img" aria-label="Rated 4.7 out of 5 stars" style="display:flex;align-items:center;justify-content:center;gap:0.15rem;color:#B45309;margin-top:0.5rem;">
+              <span aria-hidden="true" class="rating-star-item" style="animation-delay:0.05s;">&#9733;</span>
+              <span aria-hidden="true" class="rating-star-item" style="animation-delay:0.16s;">&#9733;</span>
+              <span aria-hidden="true" class="rating-star-item" style="animation-delay:0.27s;">&#9733;</span>
+              <span aria-hidden="true" class="rating-star-item" style="animation-delay:0.38s;">&#9733;</span>
+              <span aria-hidden="true" class="rating-star-item" style="animation-delay:0.49s;">&#9733;</span>
             </div>
-            <p style="font-size:0.75rem;color:rgba(26,28,26,0.78);margin-top:0.375rem;font-weight:600;">456 Google Reviews</p>
+            <p style="font-size:0.75rem;color:rgba(26,28,26,0.82);margin-top:0.375rem;font-weight:600;">456 Google Reviews</p>
           </div>
 
-          <div style="display:flex;flex-direction:column;gap:0.375rem;width:8.25rem;font-size:0.7rem;color:rgba(26,28,26,0.8);border-left:1px solid rgba(30,47,35,0.12);padding-left:0.875rem;">
+          <div style="display:flex;flex-direction:column;gap:0.375rem;width:8.25rem;font-size:0.7rem;color:rgba(26,28,26,0.85);border-left:1px solid rgba(30,47,35,0.12);padding-left:0.875rem;">
             <div style="display:flex;align-items:center;gap:0.5rem;"><span style="width:0.75rem;font-weight:700;color:var(--forest);">5</span><div style="flex:1;height:0.5rem;background:var(--sand);border-radius:9999px;overflow:hidden;"><div data-target-width="82%" style="transition-delay:0.1s;" class="rating-bar-fill"></div></div></div>
             <div style="display:flex;align-items:center;gap:0.5rem;"><span style="width:0.75rem;font-weight:700;color:var(--forest);">4</span><div style="flex:1;height:0.5rem;background:var(--sand);border-radius:9999px;overflow:hidden;"><div data-target-width="13%" style="transition-delay:0.2s;" class="rating-bar-fill"></div></div></div>
             <div style="display:flex;align-items:center;gap:0.5rem;"><span style="width:0.75rem;font-weight:700;color:var(--forest);">3</span><div style="flex:1;height:0.5rem;background:var(--sand);border-radius:9999px;overflow:hidden;"><div data-target-width="3%" style="transition-delay:0.3s;" class="rating-bar-fill"></div></div></div>
@@ -833,7 +847,6 @@
           </div>
         </div>
 
-        <!-- Verified Diner Quote Pills -->
         <div class="rating-quotes-grid">
           <div style="background:#FFFFFF;border-radius:1rem;padding:0.875rem;border:1px solid rgba(30,47,35,0.1);">
             <p style="font-size:0.75rem;font-weight:600;color:var(--forest);line-height:1.4;">&ldquo;Unmatched aesthetic &amp; calm vibe&rdquo;</p>
@@ -849,7 +862,6 @@
           </div>
         </div>
 
-        <!-- Review Action Button -->
         <div style="flex-shrink:0;">
           <a href="https://maps.google.com/?q=Leaf+-+A+café+by+Advanced+Nature+Hadapsar+Pune" target="_blank" rel="noopener noreferrer" style="padding:0.75rem 1.35rem;border-radius:9999px;background:#FFFFFF;border:1px solid rgba(30,47,35,0.25);font-size:0.75rem;font-weight:700;color:var(--forest);display:inline-flex;align-items:center;gap:0.4rem;">
             <span>Read Google Reviews</span>
@@ -878,13 +890,11 @@
           </div>
         </div>
 
-        <!-- Compact 3D Perspective Stage -->
         <div id="suit-stage" class="suit-stage"></div>
 
-        <!-- Selector Dock / Suit Pips -->
         <div style="margin-top:1rem;display:flex;flex-direction:column;align-items:center;gap:0.5rem;">
           <div id="suit-dots" style="display:flex;align-items:center;justify-content:center;gap:0.25rem;"></div>
-          <p style="font-size:0.72rem;color:rgba(26,28,26,0.78);font-weight:600;">&harr; Swipe left or right to lock in your dish</p>
+          <p style="font-size:0.72rem;color:rgba(26,28,26,0.82);font-weight:600;">&harr; Swipe left or right to lock in your dish</p>
         </div>
       </div>
     </section>
@@ -895,10 +905,9 @@
         <div class="reveal" style="text-align:center;max-width:42rem;margin:0 auto 2rem;">
           <span style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.25em;color:var(--leafolive);font-weight:700;">Leaf Kitchen &amp; Coffee Bar</span>
           <h2 class="font-serif" style="font-size:2.5rem;font-weight:600;color:var(--forest);margin-top:0.5rem;">Full Café Menu</h2>
-          <p style="font-size:0.875rem;color:rgba(26,28,26,0.8);margin-top:0.5rem;">Please inform your server of any allergies or intolerances. Government taxes as applicable.</p>
+          <p style="font-size:0.875rem;color:rgba(26,28,26,0.82);margin-top:0.5rem;">Please inform your server of any allergies or intolerances. Government taxes as applicable.</p>
         </div>
 
-        <!-- Search + Category Filter Pills -->
         <div class="reveal" style="margin-bottom:2rem;display:flex;flex-direction:column;gap:1rem;">
           <div style="max-width:28rem;width:100%;margin:0 auto;position:relative;">
             <input 
@@ -922,16 +931,14 @@
           </div>
         </div>
 
-        <!-- Swipe Controls & Indicator Bar -->
         <div id="menu-swipe-controls" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;padding:0 0.25rem;">
-          <span id="menu-page-indicator" style="font-size:0.75rem;color:rgba(26,28,26,0.8);font-weight:600;">&harr; Swipe left or right &bull; 1 of 8</span>
+          <span id="menu-page-indicator" style="font-size:0.75rem;color:rgba(26,28,26,0.82);font-weight:600;">&harr; Swipe left or right &bull; 1 of 8</span>
           <div style="display:flex;align-items:center;gap:0.5rem;">
             <button type="button" id="menu-prev-btn" aria-label="Previous Menu Category" style="width:2.5rem;height:2.5rem;border-radius:9999px;background:#FFFFFF;border:1px solid rgba(30,47,35,0.2);display:flex;align-items:center;justify-content:center;color:var(--forest);cursor:pointer;">&lsaquo;</button>
             <button type="button" id="menu-next-btn" aria-label="Next Menu Category" style="width:2.5rem;height:2.5rem;border-radius:9999px;background:#FFFFFF;border:1px solid rgba(30,47,35,0.2);display:flex;align-items:center;justify-content:center;color:var(--forest);cursor:pointer;">&rsaquo;</button>
           </div>
         </div>
 
-        <!-- Horizontal Swipe Track -->
         <div id="menu-sections-container" class="menu-track no-scrollbar"></div>
 
         <div id="menu-empty" class="hidden" style="text-align:center;padding:3rem 0;">
@@ -949,7 +956,7 @@
             <span style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.25em;color:#D8E4C8;font-weight:700;">Advanced Nature Studio</span>
             <h2 class="font-serif" style="font-size:2.5rem;font-weight:600;color:#FFFFFF;margin-top:0.25rem;">Inside Leaf Café</h2>
           </div>
-          <p style="font-size:0.875rem;color:rgba(248,246,240,0.88);max-width:28rem;">
+          <p style="font-size:0.875rem;color:rgba(248,246,240,0.9);max-width:28rem;">
             Handcrafted sculptural lanterns, upcycled industrial columns, and warm terracotta dining tables.
           </p>
         </div>
@@ -1015,7 +1022,7 @@
       </div>
     </section>
 
-    <!-- Direct Table Booking Banner (Centered & Properly Aligned on Mobile & Desktop) -->
+    <!-- Direct Table Booking Banner -->
     <section style="padding:3.75rem 1rem;background:rgba(236,232,220,0.7);border-bottom:1px solid rgba(30,47,35,0.1);">
       <div class="container-6xl booking-card reveal">
         <div class="booking-copy">
@@ -1027,7 +1034,6 @@
         </div>
 
         <div class="booking-actions">
-          <!-- Swiggy -->
           <a href="https://www.swiggy.com/restaurants" target="_blank" rel="noopener noreferrer" class="btn-swiggy">
             <div style="display:flex;align-items:center;gap:0.75rem;">
               <span style="width:2.5rem;height:2.5rem;border-radius:0.75rem;background:var(--swiggy);border:1px solid rgba(26,28,26,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -1044,7 +1050,6 @@
             <span aria-hidden="true">&#8599;</span>
           </a>
 
-          <!-- Zomato -->
           <a href="https://www.zomato.com/pune/leaf-a-cafe-by-advanced-nature-hadapsar" target="_blank" rel="noopener noreferrer" class="btn-zomato">
             <div style="display:flex;align-items:center;gap:0.75rem;">
               <span style="width:2.5rem;height:2.5rem;border-radius:0.75rem;background:#FFFFFF;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0 0.25rem;">
@@ -1058,7 +1063,6 @@
             <span aria-hidden="true">&#8599;</span>
           </a>
 
-          <!-- District by Zomato -->
           <a href="https://www.district.in/" target="_blank" rel="noopener noreferrer" class="btn-district">
             <div style="display:flex;align-items:center;gap:0.75rem;">
               <span style="width:2.5rem;height:2.5rem;border-radius:0.75rem;background:#6D17E8;border:1px solid rgba(255,255,255,0.35);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;padding:0 0.25rem;">
@@ -1076,7 +1080,7 @@
       </div>
     </section>
 
-    <!-- Visit & Location (Zero Horizontal Clipping on Narrow Mobile Screens) -->
+    <!-- Visit & Location (Lite Interactive Map Facade Saves ~450KB on Initial Load) -->
     <section id="visit" style="padding:4rem 1rem;">
       <div class="container-7xl visit-card reveal">
         <div class="visit-grid">
@@ -1103,58 +1107,67 @@
             </div>
           </div>
 
-          <div class="visit-map-box">
-            <iframe 
-              title="Leaf Café Hadapsar Location Map"
-              src="https://www.google.com/maps?q=Leaf+-+A+cafe+by+Advanced+Nature,+Hadapsar+Industrial+Estate,+Pune&output=embed" 
-              style="width:100%;height:100%;border:0;" 
-              loading="lazy">
-            </iframe>
+          <div id="map-facade" class="visit-map-box">
+            <!-- Lightweight Architectural Map Preview (Loads Live Google Maps Iframe on Tap) -->
+            <svg aria-hidden="true" viewBox="0 0 400 320" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+              <rect width="400" height="320" fill="#EAE6D9"/>
+              <path d="M-20 80 L420 140 M60 -10 L140 330 M260 -10 L210 330 M-20 230 L420 190" stroke="#FFFFFF" stroke-width="14" fill="none"/>
+              <path d="M-20 80 L420 140 M60 -10 L140 330" stroke="#D5CEBC" stroke-width="2" fill="none"/>
+              <rect x="145" y="105" width="75" height="65" rx="12" fill="#DCE5CE"/>
+              <circle cx="200" cy="145" r="22" fill="rgba(85,107,47,0.18)"/>
+              <circle cx="200" cy="145" r="8" fill="#556B2F" stroke="#FFFFFF" stroke-width="2.5"/>
+            </svg>
+            <div style="position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.25rem;text-align:center;background:rgba(248,246,240,0.45);">
+              <span style="background:#FFFFFF;color:var(--forest);font-size:0.75rem;font-weight:700;padding:0.4rem 0.9rem;border-radius:9999px;box-shadow:0 4px 12px rgba(0,0,0,0.08);margin-bottom:0.75rem;">
+                Hadapsar Industrial Estate, Pune
+              </span>
+              <button type="button" onclick="loadInteractiveMap()" style="padding:0.7rem 1.35rem;background:var(--leafolive);color:#FFFFFF;border-radius:9999px;font-size:0.78rem;font-weight:700;box-shadow:0 6px 16px rgba(30,47,35,0.2);cursor:pointer;">
+                Load Interactive Map
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Sleek Mobile-Optimized Footer + Compact Expandable Portfolio Disclaimer -->
-  <footer style="background:var(--forest);color:rgba(248,246,240,0.92);padding:2.5rem 1rem;border-top:1px solid rgba(248,246,240,0.12);">
-    <div class="container-7xl" style="display:flex;flex-direction:column;gap:1.5rem;">
-      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;">
-        <div style="display:flex;align-items:center;gap:0.75rem;">
-          <div style="width:2.25rem;height:2.25rem;border-radius:9999px;background:var(--leafolive);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg viewBox="0 0 100 100" style="width:1.4rem;height:1.4rem;color:#fff;fill:currentColor;" aria-hidden="true">
+  <!-- Symmetrical Clean Footer (Desktop & Mobile) -->
+  <footer class="site-footer">
+    <div class="container-7xl">
+      <div class="footer-bar">
+        <div class="footer-brand">
+          <div style="width:2.35rem;height:2.35rem;border-radius:9999px;background:var(--leafolive);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg viewBox="0 0 100 100" style="width:1.45rem;height:1.45rem;color:#fff;fill:currentColor;" aria-hidden="true">
               <path d="M52,18 C72,18 85,32 85,50 C85,66 72,76 58,76 C47,76 39,68 39,58 C39,50 45,44 53,44 C59,44 64,49 64,55 C64,59 60,62 56,62 C53,62 51,60 51,57 C51,55 53,54 54,54 C53,52 49,53 48,57 C47,62 51,67 57,67 C65,67 71,60 71,52 C71,40 61,32 49,32 C34,32 23,44 23,60 C23,72 28,83 36,90 C32,78 33,63 40,51 C30,60 25,74 28,88 C18,78 14,62 18,46 C23,28 37,18 52,18 Z" />
             </svg>
           </div>
-          <div>
+          <div style="text-align:left;">
             <span class="font-logo" style="font-size:1.125rem;font-weight:700;color:#FFFFFF;letter-spacing:0.14em;display:block;line-height:1;">LEAF</span>
             <span style="font-size:0.75rem;color:#D8E4C8;display:block;margin-top:0.2rem;">A café by Advanced Nature</span>
           </div>
         </div>
 
-        <a href="https://www.instagram.com/leafcafepune?jplx=MTdoM2ZxcGtmaDhmbg==" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.625rem 1.25rem;border-radius:9999px;background:rgba(248,246,240,0.12);color:#FFFFFF;font-size:0.75rem;font-weight:600;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1rem;height:1rem;flex-shrink:0;" aria-hidden="true">
-            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-          </svg>
-          <span>@leafcafepune</span>
-        </a>
+        <div class="footer-actions">
+          <a href="https://www.instagram.com/leafcafepune?jplx=MTdoM2ZxcGtmaDhmbg==" target="_blank" rel="noopener noreferrer" class="footer-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:0.95rem;height:0.95rem;flex-shrink:0;" aria-hidden="true">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+            </svg>
+            <span>@leafcafepune</span>
+          </a>
+
+          <button type="button" id="disclaimer-toggle" aria-expanded="false" class="footer-pill">
+            <span>Concept by <strong>NoahStudio</strong> &bull; <span style="text-decoration:underline;">Disclaimer</span></span>
+            <span id="disclaimer-chevron" style="display:inline-block;transition:transform 0.25s ease;">&#9662;</span>
+          </button>
+        </div>
       </div>
 
-      <!-- Compact Expandable Portfolio Disclaimer -->
-      <div style="padding-top:1.25rem;border-top:1px solid rgba(248,246,240,0.12);">
-        <button type="button" id="disclaimer-toggle" aria-expanded="false" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.45rem 0.9rem;border-radius:9999px;background:rgba(248,246,240,0.1);border:1px solid rgba(248,246,240,0.18);font-size:0.72rem;color:#F8F6F0;cursor:pointer;">
-          <span style="width:0.4rem;height:0.4rem;border-radius:9999px;background:#D8E4C8;"></span>
-          <span>Portfolio Concept by <strong>NoahStudio</strong> &bull; <span style="text-decoration:underline;">Disclaimer</span></span>
-          <span id="disclaimer-chevron" style="display:inline-block;transition:transform 0.25s ease;">&#9662;</span>
-        </button>
-
-        <div id="disclaimer-body" class="hidden" style="margin-top:0.75rem;border-radius:1rem;background:rgba(0,0,0,0.28);border:1px solid rgba(248,246,240,0.12);padding:1rem;max-width:48rem;">
-          <p style="font-size:0.72rem;line-height:1.6;color:rgba(248,246,240,0.88);">
-            <strong style="color:#FFFFFF;">Portfolio Concept Disclaimer:</strong> This website is an unsolicited UI/UX design prototype created solely by <strong>NoahStudio</strong> for personal portfolio demonstration purposes. It is not the official website of, nor is it currently affiliated with, endorsed by, or commissioned by <em>Leaf — A Café by Advanced Nature</em>. All brand names, logos, menu items, and photographs belong to their respective owners and are displayed strictly as non-commercial design placeholders.
-          </p>
-        </div>
+      <div id="disclaimer-body" class="hidden" style="margin-top:1.25rem;border-radius:1rem;background:rgba(0,0,0,0.28);border:1px solid rgba(248,246,240,0.14);padding:1rem;text-align:left;">
+        <p style="font-size:0.75rem;line-height:1.6;color:rgba(248,246,240,0.92);">
+          <strong style="color:#FFFFFF;">Portfolio Concept Disclaimer:</strong> This website is an unsolicited UI/UX design prototype created solely by <strong>NoahStudio</strong> for personal portfolio demonstration purposes. It is not the official website of, nor is it currently affiliated with, endorsed by, or commissioned by <em>Leaf — A Café by Advanced Nature</em>. All brand names, logos, menu items, and photographs belong to their respective owners and are displayed strictly as non-commercial design placeholders.
+        </p>
       </div>
     </div>
   </footer>
@@ -1228,11 +1241,11 @@
         <div>
           <span style="display:block;font-size:0.75rem;font-weight:700;color:var(--forest);margin-bottom:0.375rem;">Your Rating</span>
           <div style="display:flex;align-items:center;gap:0.35rem;" id="feedback-stars" role="group" aria-label="Star Rating">
-            <button type="button" data-rating="1" aria-label="Rate 1 out of 5 stars" class="star-btn" style="width:2.5rem;height:2.5rem;border-radius:0.5rem;background:#FFFFFF;border:1px solid rgba(30,47,35,0.15);color:#D97706;font-size:1.15rem;cursor:pointer;">&#9733;</button>
-            <button type="button" data-rating="2" aria-label="Rate 2 out of 5 stars" class="star-btn" style="width:2.5rem;height:2.5rem;border-radius:0.5rem;background:#FFFFFF;border:1px solid rgba(30,47,35,0.15);color:#D97706;font-size:1.15rem;cursor:pointer;">&#9733;</button>
-            <button type="button" data-rating="3" aria-label="Rate 3 out of 5 stars" class="star-btn" style="width:2.5rem;height:2.5rem;border-radius:0.5rem;background:#FFFFFF;border:1px solid rgba(30,47,35,0.15);color:#D97706;font-size:1.15rem;cursor:pointer;">&#9733;</button>
-            <button type="button" data-rating="4" aria-label="Rate 4 out of 5 stars" class="star-btn" style="width:2.5rem;height:2.5rem;border-radius:0.5rem;background:#FFFFFF;border:1px solid rgba(30,47,35,0.15);color:#D97706;font-size:1.15rem;cursor:pointer;">&#9733;</button>
-            <button type="button" data-rating="5" aria-label="Rate 5 out of 5 stars" class="star-btn" style="width:2.5rem;height:2.5rem;border-radius:0.5rem;background:#FFFFFF;border:1px solid rgba(30,47,35,0.15);color:#D97706;font-size:1.15rem;cursor:pointer;">&#9733;</button>
+            <button type="button" data-rating="1" aria-label="Rate 1 out of 5 stars" class="star-btn" style="width:2.5rem;height:2.5rem;border-radius:0.5rem;background:#FFFFFF;border:1px solid rgba(30,47,35,0.15);color:#B45309;font-size:1.15rem;cursor:pointer;">&#9733;</button>
+            <button type="button" data-rating="2" aria-label="Rate 2 out of 5 stars" class="star-btn" style="width:2.5rem;height:2.5rem;border-radius:0.5rem;background:#FFFFFF;border:1px solid rgba(30,47,35,0.15);color:#B45309;font-size:1.15rem;cursor:pointer;">&#9733;</button>
+            <button type="button" data-rating="3" aria-label="Rate 3 out of 5 stars" class="star-btn" style="width:2.5rem;height:2.5rem;border-radius:0.5rem;background:#FFFFFF;border:1px solid rgba(30,47,35,0.15);color:#B45309;font-size:1.15rem;cursor:pointer;">&#9733;</button>
+            <button type="button" data-rating="4" aria-label="Rate 4 out of 5 stars" class="star-btn" style="width:2.5rem;height:2.5rem;border-radius:0.5rem;background:#FFFFFF;border:1px solid rgba(30,47,35,0.15);color:#B45309;font-size:1.15rem;cursor:pointer;">&#9733;</button>
+            <button type="button" data-rating="5" aria-label="Rate 5 out of 5 stars" class="star-btn" style="width:2.5rem;height:2.5rem;border-radius:0.5rem;background:#FFFFFF;border:1px solid rgba(30,47,35,0.15);color:#B45309;font-size:1.15rem;cursor:pointer;">&#9733;</button>
             <span id="rating-label" style="font-size:0.75rem;font-weight:700;color:var(--leafolive);margin-left:0.5rem;">5 / 5 Stars</span>
           </div>
         </div>
@@ -1256,6 +1269,12 @@
   </div>
 
   <script>
+    function loadInteractiveMap() {
+      const box = document.getElementById("map-facade");
+      if (!box) return;
+      box.innerHTML = `<iframe title="Leaf Café Hadapsar Location Map" src="https://www.google.com/maps?q=Leaf+-+A+cafe+by+Advanced+Nature,+Hadapsar+Industrial+Estate,+Pune&output=embed" style="width:100%;height:100%;border:0;" loading="lazy"></iframe>`;
+    }
+
     const HIGHLIGHT_SUITS = [
       {
         code: "01",
@@ -1641,7 +1660,7 @@
                 <span style="width:0.625rem;height:0.625rem;border-radius:9999px;background:var(--leafolive);flex-shrink:0;"></span>
                 <span class="font-logo" style="font-size:1.05rem;font-weight:700;letter-spacing:0.16em;color:var(--forest);">${section.title}</span>
               </div>
-              <span style="font-size:0.72rem;font-weight:600;color:rgba(26,28,26,0.72);">${filteredItems.length} items</span>
+              <span style="font-size:0.72rem;font-weight:600;color:rgba(26,28,26,0.75);">${filteredItems.length} items</span>
             </div>
             <div>${itemsHtml}</div>
           </div>
@@ -1816,7 +1835,7 @@
         document.getElementById("rating-label").textContent = `${selectedRating} / 5 Stars`;
         document.querySelectorAll(".star-btn").forEach(b => {
           const val = parseInt(b.getAttribute("data-rating"), 10);
-          b.style.color = val <= selectedRating ? "#D97706" : "rgba(26,28,26,0.28)";
+          b.style.color = val <= selectedRating ? "#B45309" : "rgba(26,28,26,0.35)";
         });
       });
     });
