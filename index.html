@@ -11,14 +11,6 @@
   <!-- Preload Hero LCP Image Immediately -->
   <link rel="preload" as="image" href="assets/cafe-ceiling.webp" fetchpriority="high" />
 
-  <!-- Preconnect & Non-Blocking Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  </noscript>
-
   <script>
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
@@ -49,7 +41,7 @@
     html {
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       color: var(--charcoal);
       background-color: var(--cream);
       overflow-x: hidden;
@@ -69,9 +61,10 @@
     button { background: none; border: none; }
     a { color: inherit; text-decoration: none; }
 
-    .font-logo { font-family: 'Cinzel', Georgia, serif; }
-    .font-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
-    .font-sans { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
+    /* Zero-Latency Editorial Font Stacks */
+    .font-logo { font-family: "Cinzel", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif; }
+    .font-serif { font-family: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; }
+    .font-sans { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
 
     .container-7xl { max-width: 80rem; margin-left: auto; margin-right: auto; width: 100%; }
     .container-6xl { max-width: 72rem; margin-left: auto; margin-right: auto; width: 100%; }
@@ -89,10 +82,8 @@
     @media (min-width: 768px) { .site-header { padding-left: 2.5rem; padding-right: 2.5rem; } }
 
     .glass-nav {
-      background: rgba(248, 246, 240, 0.88);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.75);
+      background: rgba(248, 246, 240, 0.92);
+      border: 1px solid rgba(30, 47, 35, 0.12);
       box-shadow: 0 4px 20px -4px rgba(30, 47, 35, 0.08);
       border-radius: 9999px;
       padding: 0.5rem 0.875rem;
@@ -100,7 +91,6 @@
       align-items: center;
       justify-content: space-between;
       gap: 0.5rem;
-      transform: translateZ(0);
     }
     @media (min-width: 640px) { .glass-nav { padding: 0.5rem 1.5rem; } }
 
@@ -123,7 +113,7 @@
     }
     @media (min-width: 768px) { .mobile-menu-btn { display: none; } }
 
-    /* Animations */
+    /* Animations (Delayed start so initial LCP paint is instant) */
     @keyframes floatSlow {
       0%, 100% { transform: translate3d(0, 0px, 0) rotate(0deg); }
       50% { transform: translate3d(0, -10px, 0) rotate(2.5deg); }
@@ -177,24 +167,24 @@
       50% { transform: rotate(-2.2deg) translate3d(0, -4px, 0); }
     }
 
-    .animate-float-slow { animation: floatSlow 7s ease-in-out infinite; }
-    .hero-slow-zoom { animation: heroSlowZoom 24s ease-in-out infinite; will-change: transform; }
+    .animate-float-slow { animation: floatSlow 7s ease-in-out 2s infinite; }
+    .hero-slow-zoom { animation: heroSlowZoom 24s ease-in-out 2.5s infinite; }
     .hero-warm-overlay {
       background: radial-gradient(circle at 38% 28%, rgba(255, 210, 128, 0.5) 0%, rgba(214, 124, 56, 0.2) 55%, rgba(30, 47, 35, 0.08) 100%);
-      animation: softLightOverlay 8s ease-in-out infinite;
+      animation: softLightOverlay 8s ease-in-out 2.5s infinite;
     }
 
     .ambient-mote-1 {
       background: radial-gradient(circle, rgba(235, 168, 72, 0.85) 0%, rgba(235, 168, 72, 0) 70%);
-      animation: moteDrift1 7.2s ease-in-out infinite;
+      animation: moteDrift1 7.2s ease-in-out 1.5s infinite;
     }
     .ambient-mote-2 {
       background: radial-gradient(circle, rgba(138, 166, 98, 0.8) 0%, rgba(138, 166, 98, 0) 70%);
-      animation: moteDrift2 8.6s ease-in-out 1.4s infinite;
+      animation: moteDrift2 8.6s ease-in-out 2s infinite;
     }
 
-    .botanical-sprig-wrap { transform-origin: 10px 330px; animation: gentleBreeze 8s ease-in-out 2.2s infinite; will-change: transform; }
-    .botanical-sprig-lower { transform-origin: 10px 440px; animation: gentleBreezeLower 9s ease-in-out 2.8s infinite; will-change: transform; }
+    .botanical-sprig-wrap { transform-origin: 10px 330px; animation: gentleBreeze 8s ease-in-out 2.2s infinite; }
+    .botanical-sprig-lower { transform-origin: 10px 440px; animation: gentleBreezeLower 9s ease-in-out 2.8s infinite; }
     .sprig-stem { stroke-dasharray: 420; stroke-dashoffset: 420; animation: drawStem 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards; }
     .sprig-twig { stroke-dasharray: 120; stroke-dashoffset: 120; animation: drawStem 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards; }
     .sprig-leaf-1 { opacity: 0; transform-origin: 145px 215px; animation: leafBloom 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards; }
@@ -247,7 +237,7 @@
     }
 
     .hero-title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-family: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
       font-size: 2.35rem;
       font-weight: 600;
       color: var(--forest);
@@ -499,7 +489,7 @@
       .btn-swiggy, .btn-zomato, .btn-district { width: auto; justify-content: center; }
     }
 
-    /* Visit Card & Lite Map Facade */
+    /* Visit Card & Auto-Hydrating Map Box */
     .visit-card {
       background: #FFFFFF;
       border-radius: 2rem;
@@ -519,11 +509,11 @@
       overflow: hidden;
       border: 4px solid var(--sand);
       position: relative;
-      background: linear-gradient(135deg, #EFECE2 0%, #E3DFD1 100%);
+      background: #EAE6D9;
     }
     @media (min-width: 640px) { .visit-map-box { height: 20rem; } }
 
-    /* Symmetrical Footer (Desktop & Mobile) */
+    /* Symmetrical Footer */
     .site-footer {
       background: var(--forest);
       color: rgba(248, 246, 240, 0.92);
@@ -539,26 +529,12 @@
       text-align: center;
     }
     @media (min-width: 640px) {
-      .footer-bar {
-        flex-direction: row;
-        text-align: left;
-      }
+      .footer-bar { flex-direction: row; text-align: left; }
     }
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .footer-actions {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 0.625rem;
-    }
-    @media (min-width: 640px) {
-      .footer-actions { justify-content: flex-end; }
-    }
+    .footer-brand { display: flex; align-items: center; gap: 0.75rem; }
+    .footer-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.625rem; }
+    @media (min-width: 640px) { .footer-actions { justify-content: flex-end; } }
+
     .footer-pill {
       display: inline-flex;
       align-items: center;
@@ -610,7 +586,6 @@
   <header id="navbar" class="site-header">
     <div class="container-7xl glass-nav">
       
-      <!-- Brand Logo -->
       <a href="#" style="display:flex;align-items:center;gap:0.65rem;min-width:0;">
         <div style="width:2.3rem;height:2.3rem;border-radius:9999px;background:var(--leafolive);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
           <svg viewBox="0 0 100 100" style="width:1.45rem;height:1.45rem;color:#fff;fill:currentColor;" aria-hidden="true">
@@ -623,7 +598,6 @@
         </div>
       </a>
 
-      <!-- Desktop Navigation Links -->
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="#highlights">Highlights</a>
         <a href="#menu">Menu</a>
@@ -632,7 +606,6 @@
         <button type="button" onclick="openFeedbackModal()" style="cursor:pointer;">Feedback</button>
       </nav>
 
-      <!-- Mobile Hamburger Toggle -->
       <button type="button" id="mobile-menu-btn" aria-label="Open Navigation Menu" class="mobile-menu-btn">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
           <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
@@ -764,7 +737,6 @@
       <div aria-hidden="true" style="position:absolute;top:16rem;left:44%;width:1rem;height:1rem;border-radius:9999px;pointer-events:none;" class="ambient-mote-2"></div>
 
       <div class="container-7xl hero-grid">
-        <!-- Left Copy -->
         <div class="hero-left" style="display:flex;flex-direction:column;gap:1.25rem;min-width:0;">
           <h1 class="hero-title">
             Food, Art &amp; <span style="font-style:italic;font-weight:400;color:var(--leafolive);">Community</span> under handcrafted lanterns.
@@ -783,24 +755,22 @@
           </div>
         </div>
 
-        <!-- Right Visual Card -->
         <div class="hero-right" style="display:flex;justify-content:center;position:relative;min-width:0;">
           <div class="hero-card">
             <img 
               src="assets/cafe-ceiling.webp" 
-              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=80';"
+              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=720&q=75';"
               alt="Leaf Café hanging sculptural lamps, mezzanine and rustic art" 
               width="720"
               height="900"
               fetchpriority="high"
-              decoding="async"
+              decoding="sync"
               style="width:100%;height:100%;object-fit:cover;"
               class="hero-slow-zoom"
             />
             <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;" class="hero-warm-overlay"></div>
             <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to top, rgba(30,47,35,0.88), rgba(30,47,35,0.12), transparent);pointer-events:none;"></div>
             
-            <!-- Official Circular Emblem Overlay -->
             <div class="emblem-badge animate-float-slow">
               <div style="display:flex;align-items:center;gap:0.35rem;">
                 <svg viewBox="0 0 100 100" style="width:1.4rem;height:1.4rem;fill:currentColor;flex-shrink:0;" aria-hidden="true">
@@ -965,7 +935,7 @@
           <div class="gallery-card reveal">
             <img 
               src="assets/cafe-ceiling.webp" 
-              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80';"
+              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=75';"
               alt="Sculptural lotus-leaf hanging lamps and wooden mezzanine at Leaf Café" 
               width="600"
               height="800"
@@ -984,7 +954,7 @@
           <div class="gallery-card reveal reveal-delay-1">
             <img 
               src="assets/cafe-dining.webp" 
-              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=800&q=80';"
+              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=600&q=75';"
               alt="Warm pendant lamps and hand-painted dining tables at Leaf Café" 
               width="600"
               height="800"
@@ -1003,7 +973,7 @@
           <div class="gallery-card reveal reveal-delay-2">
             <img 
               src="assets/cafe-mezzanine.webp" 
-              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80';"
+              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=75';"
               alt="Mezzanine overhead view of Leaf Café Pune" 
               width="600"
               height="800"
@@ -1080,7 +1050,7 @@
       </div>
     </section>
 
-    <!-- Visit & Location (Lite Interactive Map Facade Saves ~450KB on Initial Load) -->
+    <!-- Visit & Location (Auto-Loads Interactive Google Map Before Scroll Without Any Tap) -->
     <section id="visit" style="padding:4rem 1rem;">
       <div class="container-7xl visit-card reveal">
         <div class="visit-grid">
@@ -1107,31 +1077,13 @@
             </div>
           </div>
 
-          <div id="map-facade" class="visit-map-box">
-            <!-- Lightweight Architectural Map Preview (Loads Live Google Maps Iframe on Tap) -->
-            <svg aria-hidden="true" viewBox="0 0 400 320" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
-              <rect width="400" height="320" fill="#EAE6D9"/>
-              <path d="M-20 80 L420 140 M60 -10 L140 330 M260 -10 L210 330 M-20 230 L420 190" stroke="#FFFFFF" stroke-width="14" fill="none"/>
-              <path d="M-20 80 L420 140 M60 -10 L140 330" stroke="#D5CEBC" stroke-width="2" fill="none"/>
-              <rect x="145" y="105" width="75" height="65" rx="12" fill="#DCE5CE"/>
-              <circle cx="200" cy="145" r="22" fill="rgba(85,107,47,0.18)"/>
-              <circle cx="200" cy="145" r="8" fill="#556B2F" stroke="#FFFFFF" stroke-width="2.5"/>
-            </svg>
-            <div style="position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.25rem;text-align:center;background:rgba(248,246,240,0.45);">
-              <span style="background:#FFFFFF;color:var(--forest);font-size:0.75rem;font-weight:700;padding:0.4rem 0.9rem;border-radius:9999px;box-shadow:0 4px 12px rgba(0,0,0,0.08);margin-bottom:0.75rem;">
-                Hadapsar Industrial Estate, Pune
-              </span>
-              <button type="button" onclick="loadInteractiveMap()" style="padding:0.7rem 1.35rem;background:var(--leafolive);color:#FFFFFF;border-radius:9999px;font-size:0.78rem;font-weight:700;box-shadow:0 6px 16px rgba(30,47,35,0.2);cursor:pointer;">
-                Load Interactive Map
-              </button>
-            </div>
-          </div>
+          <div id="map-container" class="visit-map-box"></div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Symmetrical Clean Footer (Desktop & Mobile) -->
+  <!-- Symmetrical Clean Footer -->
   <footer class="site-footer">
     <div class="container-7xl">
       <div class="footer-bar">
@@ -1269,10 +1221,18 @@
   </div>
 
   <script>
-    function loadInteractiveMap() {
-      const box = document.getElementById("map-facade");
-      if (!box) return;
-      box.innerHTML = `<iframe title="Leaf Café Hadapsar Location Map" src="https://www.google.com/maps?q=Leaf+-+A+cafe+by+Advanced+Nature,+Hadapsar+Industrial+Estate,+Pune&output=embed" style="width:100%;height:100%;border:0;" loading="lazy"></iframe>`;
+    // Auto-inject live Google Maps iframe automatically as visitor scrolls near Visit section (zero tap required, zero initial page load cost)
+    const mapContainer = document.getElementById("map-container");
+    if (mapContainer) {
+      const mapObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            mapContainer.innerHTML = `<iframe title="Leaf Café Hadapsar Location Map" src="https://www.google.com/maps?q=Leaf+-+A+cafe+by+Advanced+Nature,+Hadapsar+Industrial+Estate,+Pune&output=embed" style="width:100%;height:100%;border:0;" loading="lazy"></iframe>`;
+            mapObserver.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: "350px 0px" });
+      mapObserver.observe(mapContainer);
     }
 
     const HIGHLIGHT_SUITS = [
@@ -1282,7 +1242,7 @@
         name: "Mango Smoothie",
         price: "₹199",
         desc: "Thick, velvety Alphonso mango smoothie blended chilled to creamy perfection.",
-        image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=600&q=80"
+        image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=500&q=75"
       },
       {
         code: "02",
@@ -1290,7 +1250,7 @@
         name: "Bruschetta Trio (Cold)",
         price: "₹350",
         desc: "Crisp artisanal bread topped with Tomato & Basil, Mushroom & Truffle, and fresh Avocado.",
-        image: "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?auto=format&fit=crop&w=600&q=80"
+        image: "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?auto=format&fit=crop&w=500&q=75"
       },
       {
         code: "03",
@@ -1298,7 +1258,7 @@
         name: "Tex Mex Poppers",
         price: "₹400",
         desc: "Crispy golden bites bursting with a spicy Tex-Mex filling of creamy cheese, jalapeños, bell peppers, and corn.",
-        image: "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=600&q=80"
+        image: "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=500&q=75"
       },
       {
         code: "04",
@@ -1306,7 +1266,7 @@
         name: "Spicy Kokum Cooler",
         price: "₹150",
         desc: "Tangy Konkan kokum infusion balanced with roasted cumin, fresh lime, and a subtle spiced kick.",
-        image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80"
+        image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=500&q=75"
       },
       {
         code: "05",
@@ -1314,7 +1274,7 @@
         name: "Chipotle falafel sliders",
         price: "₹450",
         desc: "Mini chickpea patties, golden and crispy with fresh lettuce, ripe tomatoes, and creamy tahini sauce inside soft slider buns.",
-        image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80"
+        image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=500&q=75"
       },
       {
         code: "06",
@@ -1322,7 +1282,7 @@
         name: "Filter Mocha Madras",
         price: "₹150",
         desc: "Authentic South Indian filter coffee decoction layered with rich dark chocolate ganache and steamed milk.",
-        image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80"
+        image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=500&q=75"
       }
     ];
 
@@ -1341,7 +1301,7 @@
         card.setAttribute("data-index", idx);
         card.innerHTML = `
           <div style="aspect-ratio:4/3;overflow:hidden;position:relative;background:var(--sand);">
-            <img src="${suit.image}" alt="${suit.name}" width="600" height="450" loading="lazy" decoding="async" draggable="false" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="${suit.image}" alt="${suit.name}" width="500" height="375" loading="lazy" decoding="async" draggable="false" style="width:100%;height:100%;object-fit:cover;" />
             <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(to top, rgba(30,47,35,0.75), transparent 60%);"></div>
             <span style="position:absolute;top:0.75rem;left:0.75rem;background:rgba(30,47,35,0.92);color:#FFFFFF;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.12em;padding:0.25rem 0.65rem;border-radius:9999px;font-weight:700;">
               ${suit.tag}
