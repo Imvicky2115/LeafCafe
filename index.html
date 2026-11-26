@@ -49,6 +49,7 @@
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--charcoal);
       background-color: var(--cream);
+      overflow-x: hidden;
     }
 
     body {
@@ -57,6 +58,7 @@
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      width: 100%;
     }
 
     img, svg, iframe { display: block; max-width: 100%; }
@@ -69,13 +71,14 @@
     .font-sans { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
 
     /* Layout & Spacing Utilities */
-    .container-7xl { max-width: 80rem; margin-left: auto; margin-right: auto; }
-    .container-6xl { max-width: 72rem; margin-left: auto; margin-right: auto; }
+    .container-7xl { max-width: 80rem; margin-left: auto; margin-right: auto; width: 100%; }
+    .container-6xl { max-width: 72rem; margin-left: auto; margin-right: auto; width: 100%; }
 
     /* Top Nav */
     .site-header {
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
       z-index: 40;
       padding: 0.75rem;
@@ -85,7 +88,7 @@
     @media (min-width: 768px) { .site-header { padding-left: 2.5rem; padding-right: 2.5rem; } }
 
     .glass-nav {
-      background: rgba(248, 246, 240, 0.82);
+      background: rgba(248, 246, 240, 0.85);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.7);
@@ -115,6 +118,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
     .mobile-menu-btn:hover { background: rgba(255, 255, 255, 0.5); }
     @media (min-width: 768px) { .mobile-menu-btn { display: none; } }
@@ -317,7 +321,35 @@
     }
     @media (min-width: 1024px) { .emblem-badge { width: 9rem; height: 9rem; } }
 
-    /* Rating Section */
+    /* Rating Section (Responsive Mobile-First Alignment) */
+    .rating-card-inner {
+      border-radius: 1.5rem;
+      background: rgba(248, 246, 240, 0.85);
+      border: 1px solid rgba(85, 107, 47, 0.2);
+      padding: 1.375rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.375rem;
+      width: 100%;
+    }
+    @media (min-width: 640px) { .rating-card-inner { padding: 1.75rem; } }
+    @media (min-width: 900px) { .rating-card-inner { flex-direction: row; } }
+
+    .rating-quotes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      width: 100%;
+    }
+    @media (min-width: 640px) {
+      .rating-quotes-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .rating-quotes-grid { flex: 1; max-width: 36rem; }
+    }
+
     .rating-star-item { opacity: 0; transform: scale(0.2); display: inline-flex; }
     .rating-star-item.pop-in { animation: starPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
     .rating-bar-fill { width: 0%; height: 100%; background-color: #FBBF24; border-radius: 9999px; transition: width 1.15s cubic-bezier(0.22, 1, 0.36, 1); }
@@ -399,7 +431,52 @@
     .gallery-card img { transition: transform 0.7s ease; }
     .gallery-card:hover img { transform: scale(1.05); }
 
-    /* Booking Buttons (WCAG AA Accessible Contrast) */
+    /* Booking Banner & Buttons (Responsive Centered Mobile + Inline Desktop) */
+    .booking-card {
+      border-radius: 2rem;
+      background: #FFFFFF;
+      border: 1px solid rgba(85, 107, 47, 0.2);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.75rem;
+      width: 100%;
+    }
+    @media (min-width: 640px) { .booking-card { padding: 2.25rem; } }
+    @media (min-width: 1024px) {
+      .booking-card { flex-direction: row; padding: 2.5rem; }
+    }
+
+    .booking-copy {
+      max-width: 30rem;
+      width: 100%;
+      text-align: center;
+    }
+    @media (min-width: 1024px) { .booking-copy { text-align: left; } }
+
+    .booking-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 100%;
+    }
+    @media (min-width: 640px) {
+      .booking-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+    @media (min-width: 1024px) {
+      .booking-actions {
+        flex-wrap: nowrap;
+        width: auto;
+        flex-shrink: 0;
+      }
+    }
+
     .btn-swiggy {
       background-color: var(--swiggy);
       color: #1A1C1A;
@@ -409,6 +486,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 0.75rem;
+      width: 100%;
       box-shadow: 0 4px 14px rgba(252, 128, 25, 0.28);
       transition: transform 0.25s ease, background-color 0.25s ease;
     }
@@ -423,6 +501,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 0.75rem;
+      width: 100%;
       box-shadow: 0 4px 14px rgba(200, 35, 51, 0.25);
       transition: transform 0.25s ease, background-color 0.25s ease;
     }
@@ -437,10 +516,49 @@
       align-items: center;
       justify-content: space-between;
       gap: 0.75rem;
+      width: 100%;
       box-shadow: 0 4px 14px rgba(109, 23, 232, 0.25);
       transition: transform 0.25s ease, background-color 0.25s ease;
     }
     .btn-district:hover { background-color: #5811c4; transform: translateY(-2px); }
+
+    @media (min-width: 640px) {
+      .btn-swiggy, .btn-zomato, .btn-district {
+        width: auto;
+        justify-content: center;
+      }
+    }
+
+    /* Visit Card Responsive Grid */
+    .visit-card {
+      background: #FFFFFF;
+      border-radius: 2rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(30, 47, 35, 0.1);
+      width: 100%;
+    }
+    @media (min-width: 640px) {
+      .visit-card { border-radius: 2.5rem; padding: 2.5rem; }
+    }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .visit-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    }
+
+    .visit-map-box {
+      width: 100%;
+      height: 17rem;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 4px solid var(--sand);
+    }
+    @media (min-width: 640px) { .visit-map-box { height: 20rem; } }
 
     /* Scroll Reveal */
     .reveal {
@@ -478,15 +596,15 @@
     <div class="container-7xl glass-nav">
       
       <!-- Brand Logo -->
-      <a href="#" style="display:flex;align-items:center;gap:0.75rem;flex-shrink:0;">
-        <div style="width:2.4rem;height:2.4rem;border-radius:9999px;background:var(--leafolive);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg viewBox="0 0 100 100" style="width:1.5rem;height:1.5rem;color:#fff;fill:currentColor;" aria-hidden="true">
+      <a href="#" style="display:flex;align-items:center;gap:0.65rem;min-width:0;">
+        <div style="width:2.3rem;height:2.3rem;border-radius:9999px;background:var(--leafolive);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg viewBox="0 0 100 100" style="width:1.45rem;height:1.45rem;color:#fff;fill:currentColor;" aria-hidden="true">
             <path d="M52,18 C72,18 85,32 85,50 C85,66 72,76 58,76 C47,76 39,68 39,58 C39,50 45,44 53,44 C59,44 64,49 64,55 C64,59 60,62 56,62 C53,62 51,60 51,57 C51,55 53,54 54,54 C53,52 49,53 48,57 C47,62 51,67 57,67 C65,67 71,60 71,52 C71,40 61,32 49,32 C34,32 23,44 23,60 C23,72 28,83 36,90 C32,78 33,63 40,51 C30,60 25,74 28,88 C18,78 14,62 18,46 C23,28 37,18 52,18 Z" />
           </svg>
         </div>
-        <div style="display:flex;flex-direction:column;">
-          <span class="font-logo" style="font-size:1.15rem;font-weight:700;letter-spacing:0.14em;color:var(--forest);line-height:1;">LEAF</span>
-          <span style="font-size:0.56rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--leafolive);font-weight:700;margin-top:0.2rem;white-space:nowrap;">FOOD &bull; ART &bull; COMMUNITY</span>
+        <div style="display:flex;flex-direction:column;min-width:0;">
+          <span class="font-logo" style="font-size:1.1rem;font-weight:700;letter-spacing:0.14em;color:var(--forest);line-height:1;">LEAF</span>
+          <span style="font-size:0.54rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--leafolive);font-weight:700;margin-top:0.2rem;white-space:nowrap;">FOOD &bull; ART &bull; COMMUNITY</span>
         </div>
       </a>
 
@@ -632,7 +750,7 @@
 
       <div class="container-7xl hero-grid">
         <!-- Left Copy -->
-        <div class="hero-left" style="display:flex;flex-direction:column;gap:1.25rem;">
+        <div class="hero-left" style="display:flex;flex-direction:column;gap:1.25rem;min-width:0;">
           <h1 class="hero-title">
             Food, Art &amp; <span style="font-style:italic;font-weight:400;color:var(--leafolive);">Community</span> under handcrafted lanterns.
           </h1>
@@ -651,7 +769,7 @@
         </div>
 
         <!-- Right Visual Card -->
-        <div class="hero-right" style="display:flex;justify-content:center;position:relative;">
+        <div class="hero-right" style="display:flex;justify-content:center;position:relative;min-width:0;">
           <div class="hero-card">
             <img 
               src="assets/cafe-ceiling.webp" 
@@ -690,12 +808,12 @@
 
     <!-- Google Rating & Diner Highlights Section -->
     <section style="padding:2.75rem 1rem;background:#FFFFFF;border-top:1px solid rgba(30,47,35,0.1);border-bottom:1px solid rgba(30,47,35,0.1);">
-      <div id="rating-showcase-card" class="container-6xl reveal" style="border-radius:1.5rem;background:rgba(248,246,240,0.85);border:1px solid rgba(85,107,47,0.2);padding:1.75rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.5rem;">
+      <div id="rating-showcase-card" class="container-6xl rating-card-inner reveal">
         
         <!-- Score + Staggered Popping Stars + Animated Capsule Distribution -->
-        <div style="display:flex;align-items:center;gap:1.25rem;flex-shrink:0;">
+        <div style="display:flex;align-items:center;justify-content:center;gap:1.15rem;flex-shrink:0;max-width:100%;">
           <div style="text-align:center;flex-shrink:0;">
-            <div id="rating-counter" class="font-sans" style="font-size:2.75rem;font-weight:700;color:var(--forest);line-height:1;font-variant-numeric:tabular-nums;">1.0</div>
+            <div id="rating-counter" class="font-sans" style="font-size:2.65rem;font-weight:700;color:var(--forest);line-height:1;font-variant-numeric:tabular-nums;">1.0</div>
             <div id="rating-stars-row" aria-label="4.7 out of 5 stars" style="display:flex;align-items:center;justify-content:center;gap:0.15rem;color:#D97706;margin-top:0.5rem;">
               <span class="rating-star-item" style="animation-delay:0.05s;">&#9733;</span>
               <span class="rating-star-item" style="animation-delay:0.16s;">&#9733;</span>
@@ -706,7 +824,7 @@
             <p style="font-size:0.75rem;color:rgba(26,28,26,0.78);margin-top:0.375rem;font-weight:600;">456 Google Reviews</p>
           </div>
 
-          <div style="display:flex;flex-direction:column;gap:0.375rem;width:9rem;font-size:0.7rem;color:rgba(26,28,26,0.8);border-left:1px solid rgba(30,47,35,0.12);padding-left:1rem;">
+          <div style="display:flex;flex-direction:column;gap:0.375rem;width:8.25rem;font-size:0.7rem;color:rgba(26,28,26,0.8);border-left:1px solid rgba(30,47,35,0.12);padding-left:0.875rem;">
             <div style="display:flex;align-items:center;gap:0.5rem;"><span style="width:0.75rem;font-weight:700;color:var(--forest);">5</span><div style="flex:1;height:0.5rem;background:var(--sand);border-radius:9999px;overflow:hidden;"><div data-target-width="82%" style="transition-delay:0.1s;" class="rating-bar-fill"></div></div></div>
             <div style="display:flex;align-items:center;gap:0.5rem;"><span style="width:0.75rem;font-weight:700;color:var(--forest);">4</span><div style="flex:1;height:0.5rem;background:var(--sand);border-radius:9999px;overflow:hidden;"><div data-target-width="13%" style="transition-delay:0.2s;" class="rating-bar-fill"></div></div></div>
             <div style="display:flex;align-items:center;gap:0.5rem;"><span style="width:0.75rem;font-weight:700;color:var(--forest);">3</span><div style="flex:1;height:0.5rem;background:var(--sand);border-radius:9999px;overflow:hidden;"><div data-target-width="3%" style="transition-delay:0.3s;" class="rating-bar-fill"></div></div></div>
@@ -716,7 +834,7 @@
         </div>
 
         <!-- Verified Diner Quote Pills -->
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));gap:0.75rem;flex:1;min-width:260px;">
+        <div class="rating-quotes-grid">
           <div style="background:#FFFFFF;border-radius:1rem;padding:0.875rem;border:1px solid rgba(30,47,35,0.1);">
             <p style="font-size:0.75rem;font-weight:600;color:var(--forest);line-height:1.4;">&ldquo;Unmatched aesthetic &amp; calm vibe&rdquo;</p>
             <span style="font-size:0.65rem;color:var(--leafolive);font-weight:700;margin-top:0.25rem;display:block;">Ambience &amp; Art</span>
@@ -733,7 +851,7 @@
 
         <!-- Review Action Button -->
         <div style="flex-shrink:0;">
-          <a href="https://maps.google.com/?q=Leaf+-+A+café+by+Advanced+Nature+Hadapsar+Pune" target="_blank" rel="noopener noreferrer" style="padding:0.75rem 1.25rem;border-radius:9999px;background:#FFFFFF;border:1px solid rgba(30,47,35,0.25);font-size:0.75rem;font-weight:700;color:var(--forest);display:inline-flex;align-items:center;gap:0.4rem;">
+          <a href="https://maps.google.com/?q=Leaf+-+A+café+by+Advanced+Nature+Hadapsar+Pune" target="_blank" rel="noopener noreferrer" style="padding:0.75rem 1.35rem;border-radius:9999px;background:#FFFFFF;border:1px solid rgba(30,47,35,0.25);font-size:0.75rem;font-weight:700;color:var(--forest);display:inline-flex;align-items:center;gap:0.4rem;">
             <span>Read Google Reviews</span>
             <span aria-hidden="true">&#8599;</span>
           </a>
@@ -897,54 +1015,60 @@
       </div>
     </section>
 
-    <!-- Direct Table Booking Banner -->
+    <!-- Direct Table Booking Banner (Centered & Properly Aligned on Mobile & Desktop) -->
     <section style="padding:3.75rem 1rem;background:rgba(236,232,220,0.7);border-bottom:1px solid rgba(30,47,35,0.1);">
-      <div class="container-6xl reveal" style="border-radius:2rem;background:#FFFFFF;border:1px solid rgba(85,107,47,0.2);padding:2rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:2rem;">
-        <div style="max-width:30rem;">
+      <div class="container-6xl booking-card reveal">
+        <div class="booking-copy">
           <span style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.875rem;border-radius:9999px;background:rgba(85,107,47,0.12);color:var(--leafolive);font-size:0.75rem;font-weight:700;">&#10024; Exciting Dining Offers</span>
-          <h2 class="font-serif" style="font-size:2.25rem;font-weight:600;color:var(--forest);margin-top:0.5rem;">Reserve Your Table Online</h2>
+          <h2 class="font-serif" style="font-size:2.15rem;font-weight:600;color:var(--forest);margin-top:0.5rem;">Reserve Your Table Online</h2>
           <p style="font-size:0.875rem;color:rgba(26,28,26,0.82);line-height:1.6;margin-top:0.5rem;">
             Book directly through Swiggy Dineout, Zomato, or District to unlock instant dining offers, or follow us on Instagram for weekend workshop updates.
           </p>
         </div>
 
-        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;flex:1;justify-content:flex-end;min-width:260px;">
-          <!-- Swiggy (High-Contrast Dark Text on Brand Orange) -->
+        <div class="booking-actions">
+          <!-- Swiggy -->
           <a href="https://www.swiggy.com/restaurants" target="_blank" rel="noopener noreferrer" class="btn-swiggy">
-            <span style="width:2.5rem;height:2.5rem;border-radius:0.75rem;background:var(--swiggy);border:1px solid rgba(26,28,26,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <svg viewBox="0 0 40 48" style="width:1.4rem;height:1.65rem;" aria-hidden="true">
-                <path fill="#FFFFFF" d="M20 2C10.06 2 2 9.86 2 19.56C2 31.3 17.85 44.3 18.52 44.85C19.38 45.55 20.62 45.55 21.48 44.85C22.15 44.3 38 31.3 38 19.56C38 9.86 29.94 2 20 2Z"/>
-                <path fill="none" stroke="#FC8019" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M20 11.5V18.5H27.5M20 34.5V27.5H12.5"/>
-              </svg>
-            </span>
-            <div>
-              <span style="display:block;font-size:0.875rem;font-weight:800;line-height:1.2;white-space:nowrap;">Book on Swiggy</span>
-              <span style="display:block;font-size:0.65rem;font-weight:700;white-space:nowrap;">Dineout &bull; Flat 15% Off</span>
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+              <span style="width:2.5rem;height:2.5rem;border-radius:0.75rem;background:var(--swiggy);border:1px solid rgba(26,28,26,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg viewBox="0 0 40 48" style="width:1.4rem;height:1.65rem;" aria-hidden="true">
+                  <path fill="#FFFFFF" d="M20 2C10.06 2 2 9.86 2 19.56C2 31.3 17.85 44.3 18.52 44.85C19.38 45.55 20.62 45.55 21.48 44.85C22.15 44.3 38 31.3 38 19.56C38 9.86 29.94 2 20 2Z"/>
+                  <path fill="none" stroke="#FC8019" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M20 11.5V18.5H27.5M20 34.5V27.5H12.5"/>
+                </svg>
+              </span>
+              <div style="text-align:left;">
+                <span style="display:block;font-size:0.875rem;font-weight:800;line-height:1.2;white-space:nowrap;">Book on Swiggy</span>
+                <span style="display:block;font-size:0.65rem;font-weight:700;white-space:nowrap;">Dineout &bull; Flat 15% Off</span>
+              </div>
             </div>
             <span aria-hidden="true">&#8599;</span>
           </a>
 
           <!-- Zomato -->
           <a href="https://www.zomato.com/pune/leaf-a-cafe-by-advanced-nature-hadapsar" target="_blank" rel="noopener noreferrer" class="btn-zomato">
-            <span style="width:2.5rem;height:2.5rem;border-radius:0.75rem;background:#FFFFFF;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0 0.25rem;">
-              <span style="color:#C82333;font-weight:900;font-style:italic;letter-spacing:-0.05em;font-size:0.65rem;line-height:1;">zomato</span>
-            </span>
-            <div>
-              <span style="display:block;font-size:0.875rem;font-weight:700;line-height:1.2;white-space:nowrap;">Book on Zomato</span>
-              <span style="display:block;font-size:0.65rem;font-weight:500;white-space:nowrap;">Instant Table Booking</span>
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+              <span style="width:2.5rem;height:2.5rem;border-radius:0.75rem;background:#FFFFFF;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0 0.25rem;">
+                <span style="color:#C82333;font-weight:900;font-style:italic;letter-spacing:-0.05em;font-size:0.65rem;line-height:1;">zomato</span>
+              </span>
+              <div style="text-align:left;">
+                <span style="display:block;font-size:0.875rem;font-weight:700;line-height:1.2;white-space:nowrap;">Book on Zomato</span>
+                <span style="display:block;font-size:0.65rem;font-weight:500;white-space:nowrap;">Instant Table Booking</span>
+              </div>
             </div>
             <span aria-hidden="true">&#8599;</span>
           </a>
 
           <!-- District by Zomato -->
           <a href="https://www.district.in/" target="_blank" rel="noopener noreferrer" class="btn-district">
-            <span style="width:2.5rem;height:2.5rem;border-radius:0.75rem;background:#6D17E8;border:1px solid rgba(255,255,255,0.35);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;padding:0 0.25rem;">
-              <span style="color:#FFFFFF;font-weight:900;font-size:0.52rem;line-height:1;">district</span>
-              <span style="color:#FFFFFF;font-weight:700;font-size:0.27rem;text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;line-height:1;">BY ZOMATO</span>
-            </span>
-            <div>
-              <span style="display:block;font-size:0.875rem;font-weight:700;line-height:1.2;white-space:nowrap;">Book on District</span>
-              <span style="display:block;font-size:0.65rem;font-weight:500;white-space:nowrap;">By Zomato &bull; Flat 10% Off</span>
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+              <span style="width:2.5rem;height:2.5rem;border-radius:0.75rem;background:#6D17E8;border:1px solid rgba(255,255,255,0.35);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;padding:0 0.25rem;">
+                <span style="color:#FFFFFF;font-weight:900;font-size:0.52rem;line-height:1;">district</span>
+                <span style="color:#FFFFFF;font-weight:700;font-size:0.27rem;text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;line-height:1;">BY ZOMATO</span>
+              </span>
+              <div style="text-align:left;">
+                <span style="display:block;font-size:0.875rem;font-weight:700;line-height:1.2;white-space:nowrap;">Book on District</span>
+                <span style="display:block;font-size:0.65rem;font-weight:500;white-space:nowrap;">By Zomato &bull; Flat 10% Off</span>
+              </div>
             </div>
             <span aria-hidden="true">&#8599;</span>
           </a>
@@ -952,22 +1076,22 @@
       </div>
     </section>
 
-    <!-- Visit & Location -->
+    <!-- Visit & Location (Zero Horizontal Clipping on Narrow Mobile Screens) -->
     <section id="visit" style="padding:4rem 1rem;">
-      <div class="container-7xl reveal" style="background:#FFFFFF;border-radius:2.5rem;padding:2rem;border:1px solid rgba(30,47,35,0.1);">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:2.5rem;align-items:center;">
-          <div style="display:flex;flex-direction:column;gap:1.25rem;">
+      <div class="container-7xl visit-card reveal">
+        <div class="visit-grid">
+          <div style="display:flex;flex-direction:column;gap:1.25rem;min-width:0;">
             <span style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.25em;color:var(--leafolive);font-weight:700;">Find Us in Pune</span>
             <h2 class="font-serif" style="font-size:2.25rem;font-weight:600;color:var(--forest);">Visit Leaf Café</h2>
             
             <div style="display:flex;flex-direction:column;gap:1rem;font-size:0.9375rem;color:rgba(26,28,26,0.85);">
               <div>
                 <p style="font-weight:700;color:var(--forest);">Address</p>
-                <p>Plot 08, Hadapsar Industrial Estate, Hadapsar, Pune, Maharashtra 411013</p>
+                <p style="overflow-wrap:break-word;">Plot 08, Hadapsar Industrial Estate, Hadapsar, Pune, Maharashtra 411013</p>
               </div>
               <div>
                 <p style="font-weight:700;color:var(--forest);">Hours</p>
-                <p>Tuesday – Sunday: 11:00 AM – 10:00 PM (Closed Mondays)</p>
+                <p style="overflow-wrap:break-word;">Tuesday – Sunday: 11:00 AM – 10:00 PM (Closed Mondays)</p>
               </div>
             </div>
 
@@ -979,7 +1103,7 @@
             </div>
           </div>
 
-          <div style="width:100%;height:20rem;border-radius:1.5rem;overflow:hidden;border:4px solid var(--sand);">
+          <div class="visit-map-box">
             <iframe 
               title="Leaf Café Hadapsar Location Map"
               src="https://www.google.com/maps?q=Leaf+-+A+cafe+by+Advanced+Nature,+Hadapsar+Industrial+Estate,+Pune&output=embed" 
@@ -1502,7 +1626,7 @@
 
         let itemsHtml = filteredItems.map((item, idx) => `
           <div style="padding:0.9rem 0;${idx < filteredItems.length - 1 ? "border-bottom:1px solid rgba(30,47,35,0.1);" : ""}display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:0.5rem 1rem;">
-            <div style="max-width:42rem;">
+            <div style="max-width:42rem;min-width:0;">
               <h3 class="font-serif" style="font-size:1.3rem;font-weight:700;color:var(--forest);line-height:1.25;">${item.name}</h3>
               ${item.desc ? `<p style="font-size:0.8125rem;color:rgba(26,28,26,0.8);margin-top:0.25rem;line-height:1.55;">${item.desc}</p>` : ""}
             </div>
